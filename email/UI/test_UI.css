@@ -1,0 +1,6 @@
+
+    .div1 { 
+        grid-area: 1 / 1 / 6 / 2; 
+        border: blue 1px dotted;
+    }
+    .div2 { grid-area: 1 / 2 / 6 / 3; }
