@@ -1,3 +1,13 @@
+<?php
+ $rando = rand(0, 15);
+ if ($rando == 0) {
+    $msjs = "";     
+}else {
+    $msjs= "+".$rando;
+}
+ ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,12 +16,23 @@
     <title>Main UI</title>
     <link rel="stylesheet" href="test_UI.css">
 
+    <style>
+        <?php 
+        if ($rando != 0) {
+            echo '<style type="text/css">
+            .profPict {
+                filter: saturate(3); 
+            }
+            </style>';
+        }
+        ?>
+    </style>
+
 </head>
 
 <body>
     <div class="pantalla">
         <p id="nameMail">DISCORDIA</p>
-
 
         <div id="contacts">
             <div class="newMsg">
@@ -24,30 +45,34 @@
             </div>
 
             <div class="person">
+            <?php echo ""; ?>
                 <div class="profPict"></div>
                 <div class="friendName">Real Name</div>
             </div>
 
             <div class="person">
+            <?php echo $msjs; ?>
                 <div class="profPict"></div>
                 <div class="friendName">Real Name</div>
             </div>
 
             <div class="person">
+            <?php echo $msjs; ?>
                 <div class="profPict"></div>
                 <div class="friendName">Real Name</div>
             </div>
 
             <div class="person">
+            <?php echo $msjs; ?>
                 <div class="profPict"></div>
                 <div class="friendName">Real Name</div>
             </div>
 
             <button class="person">
+            <?php echo $msjs; ?>
                 <div class="profPict"></div>
                 <div class="friendName">Real Name</div>
             </button>
-
 
         </div>
 
@@ -82,5 +107,8 @@
     </div>
 </body>
 
-
 </html>
+
+
+
+
