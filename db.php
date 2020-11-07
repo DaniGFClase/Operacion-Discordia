@@ -20,7 +20,7 @@ function load_config($name, $schema){
 	return $result;
 }
 
-function check_user($name, $password){
+function check_user($nick, $password){
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
 	$ins = "select cod_User, mail from user where (nick = '$name' or mail ='$name')";
@@ -30,7 +30,7 @@ function check_user($name, $password){
 
 	if($resul->rowCount() === 1){	
 
-		$hash = "select password_hash from user where (nick = '$name' or mail ='$name')";
+		$hash = "select password_hash from user where (nick = '$nick' or mail ='$name')";
 		$hash_resul = $db->query($hash);
 		$pass = $hash_resul->fetch();
 		$pass_hash = $pass['password_hash'];
@@ -46,6 +46,33 @@ function check_user($name, $password){
 	}		
 
 }
+
+function register_user($name, $surname, $nick, $email, $password, $gender){
+	
+        // connect
+        $res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
+		$db = new PDO($res[0], $res[1], $res[2]);
+
+		// insert new user
+
+		$password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+
+		$ins = "INSERT INTO `user` 
+		(`cod_user`, `name`, `surname`, `nick`, `mail`, `photo`, `password_hash`, `description`, `gender`) VALUES 
+		(NULL, '$name', '$surname', '$nick', '$email', '', '$password_hash', '', '$gender')";
+
+		$resul = $db->query($ins);
+		
+		if (!$resul) {
+			return FALSE;
+		}
+		
+		return $resul;
+
+}
+
+
 function load_categories(){
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
