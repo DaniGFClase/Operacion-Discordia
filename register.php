@@ -1,3 +1,88 @@
+<?php
+//require_once 'db.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    /*
+    if ($_POST['user'] === "usuario" and checkPassRE($_POST["passw"])) {
+    }//end of checking
+     */
+
+
+
+    $cadena_conexion = 'mysql:dbname=discordio;host=127.0.0.1';
+    $usuario = 'root';
+    $clave = '';
+
+
+    $nam = $_POST['name'];
+    $sur = $_POST['surname'];
+    $usr = $_POST['nick'];
+	$pass = $_POST['password'];
+	$gender = $_POST['gender'];
+	$email = $_POST['email'];
+
+    if ($gender == "male") {
+        $male_selected = "selected";
+        $female_selected = "";
+        $other_selected = "";
+    } elseif ($gender == "female") {
+        $male_selected = "";
+        $female_selected = "selected";
+        $other_selected = "";
+    } elseif ($gender == "othe") {
+		$male_selected = "";
+        $female_selected = "";
+        $other_selected = "selected";
+    }
+    
+
+
+    echo "name ".$nam." surname ".$sur." nick ".$usr." password ".$pass." mail ".$email." gender ".$gender;
+	
+    try {
+        // connect
+        $bd = new PDO($cadena_conexion, $usuario, $clave);
+     
+        // insert new user
+        $ins = "insert into user(name, surname, nick, password, email, gender) values('$nam', '$sur', '$usr', '$pass', '$email', '$gender');";
+        $resul = $bd->query($ins);
+   
+
+    } catch (PDOException $e) {
+        echo 'Database error: ' . $e->getMessage();
+    }
+
+}
+function checkName($clave)
+{
+    if (strlen($clave) < 6 or strlen($clave) > 15) {
+        return false;
+    }
+
+    $caps = preg_match("/[A-Z]/", $clave);
+    $lower = preg_match("/[a-z]/", $clave);
+    $nume = preg_match("/[0-9]/", $clave);
+    $noalfa = preg_match("/[!-\\\\]/", $clave);
+    return $lower and $caps and $nume and $noalfa;
+}
+
+function checkPassRE($clave)
+{
+    if (strlen($clave) < 6 or strlen($clave) > 15) {
+        return false;
+    }
+
+    $caps = preg_match("/[A-Z]/", $clave);
+    $lower = preg_match("/[a-z]/", $clave);
+    $nume = preg_match("/[0-9]/", $clave);
+    $noalfa = preg_match("/[!-\\\\]/", $clave);
+    return $lower and $caps and $nume and $noalfa;
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -9,9 +94,9 @@
 
 <body>
 
-	<form action="/action_page.php" method="post">
+	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 		<div class="imgcontainer">
-		  <img src="falloTecnico.jpg" alt="Avatar" class="avatar">
+		  <img src="#" alt="Avatar" class="avatar">
 		</div>
 	  
 		<div class="container">
