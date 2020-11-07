@@ -23,14 +23,24 @@ function load_config($name, $schema){
 function check_user($name, $password){
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
-	$ins = "select codRes, mail from restaurants where mail = '$name' 
-			and password = '$password'";
-	$resul = $db->query($ins);	
-	if($resul->rowCount() === 1){		
-		return $resul->fetch();		
-	}else{
-		return FALSE;
-	}
+	$ins = "select cod_User, mail from restaurants where (nick = '$name' or mail ='$name') 
+			and password_hash = '$password'";
+	
+	$hash = "select password_hash from restaurants where (nick = '$name' or mail ='$name') 
+			and password_hash = '$password'";
+	$hash_resul = $db->query($ins);
+	
+			if (password_verify('$password', $hash_resul)) {
+				$resul = $db->query($ins);	
+				if($resul->rowCount() === 1){		
+					return $resul->fetch();		
+				}else{
+					return FALSE;
+				}
+			} else {
+				return FALSE;
+			}
+
 }
 function load_categories(){
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
