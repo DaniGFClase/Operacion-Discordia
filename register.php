@@ -9,6 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	
 	if ($resul) {
 		header("Location: login.php");
+	}else {
+		echo "error";
 	}
 	
 

@@ -23,14 +23,14 @@ function load_config($name, $schema){
 function check_user($nick, $password){
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
-	$ins = "select cod_User, mail from user where (nick = '$name' or mail ='$name')";
+	$ins = "select cod_User, mail from user where (name = '$nick' or mail ='$nick')";
 	
 	
 	$resul = $db->query($ins);
 
 	if($resul->rowCount() === 1){	
 
-		$hash = "select password_hash from user where (nick = '$nick' or mail ='$name')";
+		$hash = "select password_hash from user where (nick = '$nick' or mail ='$nick')";
 		$hash_resul = $db->query($hash);
 		$pass = $hash_resul->fetch();
 		$pass_hash = $pass['password_hash'];
