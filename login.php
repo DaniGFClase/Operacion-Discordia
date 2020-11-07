@@ -17,26 +17,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}	
 }
 ?>
+
+
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Login form</title>
-		<meta charset = "UTF-8">
-	</head>
-	<body>	
-		<?php if(isset($_GET["redirected"])){
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Log in</title>
+    <link rel="stylesheet" href="login.css">
+
+</head>
+
+<body>
+	<?php 
+		if(isset($_GET["redirected"])){
 			echo "<p>Login to continue</p>";
-		}?>
-		<?php if(isset($err) and $err == true){
+	}?>
+	<?php 
+		if(isset($err) and $err == true){
 			echo "<p>Check user and password</p>";
-		}?>
-		<form action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method = "POST">
-			<label for = "user">user</label> 
-			<input value = "<?php if(isset($user))echo $user;?>"
-			id = "user" name = "user" type = "text">		
-			<label for = "password">password</label> 
-			<input id = "password" name = "password" type = "password">					
-			<input type = "submit">
-		</form>
-	</body>
+	}?>
+
+    <div class="container">
+        <a class="linkT" href="distractedLoL.gif">
+            <div class="image"></div>
+        </a>
+
+        <div class="companyName"> DISCORDIA</div>
+
+
+
+
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+		
+            <div class="log">
+                <label for="user"><b>Username or E-mail</b></label>
+                <input type="text" placeholder="Enter Username or E-mail" name="user" value = "<?php if(isset($user))echo $user;?>">
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+
+                <button type="submit">Login</button>
+                <button type="submit" class="singIn">Sing in</button>
+                <label>
+					<input type="checkbox" checked="checked" name="remember"> Remember me
+				</label>
+
+                <span class="psw">
+					Forgot <a href="#">password?</a>
+				</span>
+
+            </div>
+
+        </form>
+
+    </div>
+</body>
+
+
 </html>
