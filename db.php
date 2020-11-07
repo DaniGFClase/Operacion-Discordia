@@ -23,7 +23,7 @@ function load_config($name, $schema){
 function check_user($nick, $password){
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
-	$ins = "select cod_User, mail from user where (name = '$nick' or mail ='$nick')";
+	$ins = "select cod_User from user where (name = '$nick' or mail ='$nick')";
 	
 	
 	$resul = $db->query($ins);
@@ -49,14 +49,10 @@ function check_user($nick, $password){
 
 function register_user($name, $surname, $nick, $email, $password, $gender){
 	
-        // connect
         $res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 		$db = new PDO($res[0], $res[1], $res[2]);
 
-		// insert new user
-
 		$password_hash = password_hash($password, PASSWORD_DEFAULT);
-
 
 		$ins = "INSERT INTO `user` 
 		(`cod_user`, `name`, `surname`, `nick`, `mail`, `photo`, `password_hash`, `description`, `gender`) VALUES 
@@ -71,6 +67,12 @@ function register_user($name, $surname, $nick, $email, $password, $gender){
 		return $resul;
 
 }
+
+function sendMenssage (){
+	
+}
+
+
 
 
 function load_categories(){

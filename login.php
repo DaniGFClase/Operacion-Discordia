@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		session_start();
 		// $usu has two fields: mail and codRes
 		$_SESSION['user'] = $usu;
-		$_SESSION['cart'] = [];
 		header("Location: main.php");
 		return;
 	}	
