@@ -47,16 +47,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="user"><b>Username or E-mail</b></label>
                 <input type="text" placeholder="Enter Username or E-mail" name="user" value = "<?php if(isset($user))echo $user;?>">
 
-                <label for="psw"><b>Password</b></label>
+                <label for="password"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="password" required>
 
                 <button type="submit">Login</button>
                 <button type="submit" class="singIn" onclick="window.location.href='register.php';">Sing in</button>
-                <label>
-					<input type="checkbox" checked="checked" name="remember"> Remember me
-				</label>
 
-                <span class="psw">
+                <span class="password">
 					Forgot <a href="#">password?</a>
 				</span>
 

@@ -15,26 +15,29 @@
 		</div>
 	  
 		<div class="container">
-		  <label for="uname"><b>Username</b></label>
-		  <input type="text" placeholder="Enter Username" name="uname" required>
-	  
-		  <label for="psw"><b>Password</b></label>
-		  <input type="password" placeholder="Enter Password" name="psw" required>
+        <label for="name"><b>Name</b></label>
+          <input type="text" placeholder="Enter your name" name="name" required>
+          
+          <label for="name"><b>Surname</b></label>
+		  <input type="text" placeholder="Enter your surname" name="surname" required>
 
-		  <label for="age"><b>Age</b></label>
-		  <input type="text" placeholder="Enter age" name="age" required>
+		  <label for="nick"><b>Nickname</b></label>
+		  <input type="text" placeholder="Enter your nick" name="nick" required>
+	  
+		  <label for="password"><b>Password</b></label>
+		  <input type="password" placeholder="Enter your password" name="password" required>
 
 		  <label for="email"><b>E-mail</b></label>
-		  <input type="text" placeholder="Enter E-mail" name="email" required>
+		  <input type="text" placeholder="Enter your E-mail" name="email" required>
 
-		  <label for="gender"><b>Gender</b></label>
+		  <label for="gender"><b>Choose your gender</b></label>
 		  <select name="gender">
 			  <option value="male">Male</option>
 			  <option value="female">Female</option>
 			  <option value="other">Other</option>
 		  </select>
 
-		  <label for="selcProf"><b>Select profile picture</b></label>
+		  <label for="selcProf"><b>Select a profile picture</b></label>
 		  <button type="button" name="selcProf" class="smt">Submit</button>
 		
 			  
