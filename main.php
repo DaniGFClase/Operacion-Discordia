@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Main UI</title>
-    <link rel="stylesheet" href="test_UI.css">
+    <link rel="stylesheet" href="main.css">
 
 </head>
 
