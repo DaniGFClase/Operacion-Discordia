@@ -29,6 +29,7 @@ function check_user($name, $password){
 	$hash = "select password_hash from restaurants where (nick = '$name' or mail ='$name') 
 			and password_hash = '$password'";
 	$hash_resul = $db->query($ins);
+	echo ($name);
 	
 			if (password_verify('$password', $hash_resul)) {
 				$resul = $db->query($ins);	
