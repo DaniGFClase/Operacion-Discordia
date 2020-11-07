@@ -79,3 +79,7 @@ span.psw {
 .companyName {
     margin-left: 40px;
 }
+
+p {
+    color: red;
+}

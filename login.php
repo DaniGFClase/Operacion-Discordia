@@ -30,14 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-	<?php 
-		if(isset($_GET["redirected"])){
-			echo "<p>Login to continue</p>";
-	}?>
-	<?php 
-		if(isset($err) and $err == true){
-			echo "<p>Check user and password</p>";
-	}?>
 
     <div class="container">
         <a class="linkT" href="distractedLoL.gif">
@@ -59,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="password" placeholder="Enter Password" name="password" required>
 
                 <button type="submit">Login</button>
-                <button type="submit" class="singIn">Sing in</button>
+                <button type="submit" class="singIn" onclick="window.location.href='register.php';">Sing in</button>
                 <label>
 					<input type="checkbox" checked="checked" name="remember"> Remember me
 				</label>
@@ -67,6 +59,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <span class="psw">
 					Forgot <a href="#">password?</a>
 				</span>
+
+				
+					<?php 
+						if(isset($_GET["redirected"])){
+						echo "<p>Login to continue</p>";
+					}?>
+					<?php 
+						if(isset($err) and $err == true){
+						echo "<p>Check user and password</p>";
+					}?>
+
+				
 
             </div>
 
