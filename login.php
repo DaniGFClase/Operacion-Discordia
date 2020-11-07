@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		// $usu has two fields: mail and codRes
 		$_SESSION['user'] = $usu;
 		$_SESSION['cart'] = [];
-		header("Location: categories.php");
+		header("Location: main.php");
 		return;
 	}	
 }
