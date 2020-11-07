@@ -1,0 +1,19 @@
+Project (preview)
+==================
+Basic functionality:
+- Log in
+- See incoming messages (differenciating between read and unread ones)
+- See one message in detail
+- Send messages (using the username)
+
+Extras (1 or 2 points):
+- Sending messages to multiple recipients.
+- Encrypted passwords.
+- Friendship. 
+- Groups.
+- User auto registration.
+- Password recovery. 
+- User avatars (shown alongside  user's messages)
+- Images inserted into the messages.
+- Single-page-application.
+- User profile.
