@@ -32,9 +32,7 @@ function check_user($name, $password){
 
 	if ($hash_resul->rowCount() === 1) {    
 		$pass = $hash_resul->fetch();
-		echo($pass['password_hash']);
 	}
-	
 		
 	$resul = $db->query($ins);	
 	if($resul->rowCount() === 1 && password_verify($password, $pass)){		
