@@ -29,7 +29,7 @@ body {
     height: 100%;
 }
 
-#contacts {
+#leftSide {
     overflow: auto;
     float: left;
     padding-left: 0em;
