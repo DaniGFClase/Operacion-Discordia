@@ -93,6 +93,8 @@ body {
 }
 
 .person {
+    display: flex;
+    flex-wrap: nowrap;
     margin-top: 1.5em;
     margin-bottom: 1.5em;
     align-self: center;
@@ -108,26 +110,43 @@ body {
     transform: scale(1.1);
 }
 
+.photo {
+    border: red dotted;
+}
+
+.photo>.profPict {
+    width: 15px;
+    height: 15px;
+    border: red dotted;
+}
+
 .userPerSpa {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 15%;
     z-index: 2;
     background-color: #232329;
     border: purple dotted;
 }
 
-.userPerSpa>div {
-    float: left;
-}
-
 .options {
+    display: flex;
+    flex-wrap: nowrap;
     height: 100%;
     border: rgb(255, 0, 179) dotted;
 }
 
-.addFri {}
+.addFri {
+    border: dotted lime;
+}
 
-.newGro {}
+.newGro {
+    border: dotted gold;
+}
 
-.opt {}
+.opt {
+    border: dotted white;
+}
 
 .chatP {
     display: grid;

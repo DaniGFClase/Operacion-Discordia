@@ -47,10 +47,9 @@ button:hover {
     opacity: 0.8;
 }
 
-.cancelbtn {
+.singIn {
     width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
+    background-color: #36f456;
 }
 
 .log {
