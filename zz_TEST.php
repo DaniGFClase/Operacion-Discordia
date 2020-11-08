@@ -21,49 +21,53 @@ function load_config($name, $schema){
 
 function send_Message($myUser, $toUser, $message){
 
+    $users = explode (" ", $toUser);
+
     $firstUser = "";
     $secondUser = "";
 
-    if ($myUser < $toUser) {
-        $firstUser = $myUser;
-        $secondUser = $toUser;
-    }else {
-        $firstUser = $toUser;
-        $secondUser = $myUser;
-    }
+    foreach ($users as $use) {
 
-
-	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
-	$db = new PDO($res[0], $res[1], $res[2]);
-	$ins = "select count(*) as count, group_concat(cod_user separator ',') as users, cod_room
-    from user_room 
-    group by cod_room
-    having count like 2";
-	
-    $resul = $db->query($ins);
-    $result = $db->query($ins);
-    $r = $resul->fetch();
+        if ($myUser < $use) {
+            $firstUser = $myUser;
+            $secondUser = $use;
+        }else {
+            $firstUser = $use;
+            $secondUser = $myUser;
+        }
     
-
-    if (!$r) {
-        createTable ($firstUser, $secondUser);
-    }
-
-    $cod_room = "";
-    foreach($result as $re){	
-
-       if ($re['users']==($myUser.",".$toUser) || $re['users']==($toUser.",".$myUser)) {
-        $cod_room = $re['cod_room'];
-       }else {
-        createTable($firstUser, $secondUser);
-       }
-    }
-
     
+        $res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
+        $db = new PDO($res[0], $res[1], $res[2]);
+        $ins = "select count(*) as count, group_concat(cod_user separator ',') as users, cod_room
+        from user_room 
+        group by cod_room
+        having count like 2";
+        
+        $resul = $db->query($ins);
+        $result = $db->query($ins);
+        $r = $resul->fetch();
+        
+    
+        if (!$r) {
+            createTable ($firstUser, $secondUser);
+        }
+    
+        $cod_room = "";
+        foreach($result as $re){	
+    
+           if ($re['users']==($myUser.",".$secondUser) || $re['users']==($secondUser.",".$myUser)) {
+            $cod_room = $re['cod_room'];
+           }else {
+            createTable($firstUser, $secondUser);
+           }
+        }
+        
+        $ins = "INSERT INTO `message` (`cod_message`, `cod_user`, `text_message`, `date_message`, `cod_room`) VALUES (NULL, '$myUser', '$message', current_timestamp(), '$cod_room')";
+        
+        $result = $db->query($ins);
 
-    $ins = "INSERT INTO `message` (`cod_message`, `cod_user`, `text_message`, `date_message`, `cod_room`) VALUES (NULL, '$myUser', '$message', current_timestamp(), '$cod_room')";
-	
-    $result = $db->query($ins);
+    }
 
 }
 
@@ -78,4 +82,4 @@ function createTable ($userA, $userB){
     $resul = $db->query($ins);
 }
 
-send_Message(3, 1, "dime adri");
+send_Message(1, "4 17", "prueba multiiii");
