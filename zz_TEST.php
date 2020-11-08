@@ -21,6 +21,17 @@ function load_config($name, $schema){
 
 function send_Message($myUser, $toUser, $message){
 
+    $firstUser = "";
+    $secondUser = "";
+
+    if ($myUser < $toUser) {
+        $firstUser = $myUser;
+        $secondUser = $toUser;
+    }else {
+        $firstUser = $toUser;
+        $secondUser = $myUser;
+    }
+
 
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
@@ -35,7 +46,7 @@ function send_Message($myUser, $toUser, $message){
     
 
     if (!$r) {
-        createTable ($myUser, $toUser);
+        createTable ($firstUser, $secondUser);
     }
 
     $cod_room = "";
@@ -44,7 +55,7 @@ function send_Message($myUser, $toUser, $message){
        if ($re['users']==($myUser.",".$toUser) || $re['users']==($toUser.",".$myUser)) {
         $cod_room = $re['cod_room'];
        }else {
-        createTable($myUser, $toUser);
+        createTable($firstUser, $secondUser);
        }
     }
 
@@ -67,4 +78,4 @@ function createTable ($userA, $userB){
     $resul = $db->query($ins);
 }
 
-send_Message(17, 4, "te exploto payaso");
+send_Message(3, 1, "dime adri");
