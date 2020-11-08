@@ -5,3 +5,11 @@ having count like 2;
 
 
 show databases like 'discordio';
+
+select * from room r
+join message m
+order by date_message desc;
+
+select * from user
+join room
+where cod_user like 3;
