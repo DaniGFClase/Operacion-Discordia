@@ -23,7 +23,7 @@ function load_config($name, $schema){
 function check_user($nick, $password){
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
-	$ins = "select cod_User from user where (name = '$nick' or mail ='$nick')";
+	$ins = "select cod_user from user where (name = '$nick' or mail ='$nick')";
 	
 	
 	$resul = $db->query($ins);
@@ -117,12 +117,22 @@ function createTable ($userA, $userB){
 }
 
 
-
-
-function load_categories(){
+function load_room($cod){
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
-	$ins = "select codCat, name from categories";
+	$ins = "select u.cod_user as codUser, nick, photo, count(*) as count, ur.cod_room as codRoom, img_room from user as u
+	join user_room as ur
+	on u.cod_user = ur.cod_user
+    join room as r
+    on r.cod_room = ur.cod_room
+	where ur.cod_room in
+	(select ur.cod_room from user as u
+	join user_room as ur
+	on u.cod_user = ur.cod_user
+	where u.cod_user like $cod
+	group by ur.cod_room)
+	and u.cod_user not like $cod
+	group by ur.cod_room";
 	$resul = $db->query($ins);	
 	if (!$resul) {
 		return FALSE;

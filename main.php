@@ -1,3 +1,10 @@
+<?php 
+	require 'sessions.php';
+	require_once 'db.php';
+	check_session();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,52 +36,41 @@
 
             <div class="contacts">
 
-                <div class="person">
-                    <div class="profPict"></div>
-                    <div class="friendName">Real Name</div>
-                </div>
+                    
+                		
+        <?php
+            // select u.cod_user, nick, photo, count(*), ur.cod_room
+     
+		$room = load_room($_SESSION['user']['cod_user']);
+		if($room===false){
+			echo "<p class='error'>Error connecting to the database, or no room present</p>";
+		}else{
 
+            
+			foreach($room as $ro){	
+            
 
-                <div class="person">
-                    <div class="profPict"></div>
-                    <div class="friendName">Real Name</div>
-                </div>
+                if ($ro['count'] == 1) {
+                    echo '
+                    <div class="person">            
+                    <img class="profPict" src="images/avatar/'.$ro["photo"].'" alt="image_user">
+                    <div class="friendName">'.$ro["nick"].'</div>
+                    </div>
+                    ';
+                }else {
+                    echo '
+                    <div class="person">            
+                    <img class="profPict" src="images/avatar/'.$ro["img_room"].'" alt="image_user">
+                    <div class="friendName">'.$ro["codRoom"].'</div>
+                    </div>
+                    ';
+                }
 
+			}
 
-                <div class="person">
-                    <div class="profPict"></div>
-                    <div class="friendName">Real Name</div>
-                </div>
+		}
 
-
-                <div class="person">
-                    <div class="profPict"></div>
-                    <div class="friendName">Real Name</div>
-                </div>
-
-
-                <div class="person">
-                    <div class="profPict"></div>
-                    <div class="friendName">Real Name</div>
-                </div>
-
-
-                <div class="person">
-                    <div class="profPict"></div>
-                    <div class="friendName">Real Name</div>
-                </div>
-
-
-                <div class="person">
-                    <div class="profPict"></div>
-                    <div class="friendName">Real Name</div>
-                </div>
-
-
-                <div class="person">
-                    <div class="profPict"></div>
-                    <div class="friendName">Real Name</div>
-                </div>
+        ?>
 
             </div>
 
@@ -84,7 +80,7 @@
                 <div class="options">
 
                     <div class="addFri" href="#">
-                        aaaa
+                        aaaa 
 
                     </div>
 
