@@ -36,5 +36,8 @@ select u.cod_user as codUser, nick, photo, count(*) as count, ur.cod_room as cod
 select * from message
 where cod_room like '1-4';
 
-
-
+-- Mensaje de una sala de todos los usuarios HAY QUE HACER UN SELECT INTERNO O ALGO
+select u.cod_user as codUser, nick, photo, cod_room as codRoom, text_message, date_message from user as u
+    join message as m
+    on u.cod_user = m.cod_user
+    where m.cod_room like '4-17';
