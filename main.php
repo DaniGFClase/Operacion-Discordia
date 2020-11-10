@@ -49,16 +49,7 @@
 			foreach($room as $ro){	
 
 /*
-  <form action="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="chtBot">
-
-                    <input name = 'cod' type='hidden' value = '$cod'>
-                    <button type="submit" class="person">
-                        <div class="profPict"></div>
-                        <div class="friendName">The senate</div>
-                    </button>
-
-
-                </form>
+  
 
                
 */
@@ -66,17 +57,27 @@
             
                 if ($ro['count'] == 1) {
                     echo '
-                    <div class="person">            
-                    <img class="profPict" src="images/avatar/'.$ro["photo"].'" alt="image_user">
-                    <div class="friendName">'.$ro["nick"].'</div>
-                    </div>
+                    <form action="https://trello.com/" class="chtBot">
+
+                        <input name = "name_chat" type="hidden" value = '.$ro["nick"].'>
+                        <button type="submit" class="person">
+                            <img class="profPict" src="images/avatar/'.$ro["photo"].'" alt="image_user">
+                            <div class="friendName">'.$ro["nick"].'</div>
+                        </button>
+    
+                    </form>
                     ';
                 }else {
                     echo '
-                    <div class="person">            
-                    <img class="profPict" src="images/avatar/'.$ro["img_room"].'" alt="image_user">
-                    <div class="friendName">'.$ro["codRoom"].'</div>
-                    </div>
+                    <form action="https://trello.com/" class="chtBot">
+
+                        <input name = "name_chat" type="hidden" value = '.$ro["codRoom"].'>
+                        <button type="submit" class="person">
+                            <img class="profPict" src="images/avatar/'.$ro["img_room"].'" alt="image_user">
+                            <div class="friendName">'.$ro["codRoom"].'</div>
+                        </button>
+    
+                    </form>
                     ';
                 }
 
