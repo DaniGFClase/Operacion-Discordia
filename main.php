@@ -51,7 +51,7 @@
 /*
   <form action="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="chtBot">
 
-
+                    <input name = 'cod' type='hidden' value = '$cod'>
                     <button type="submit" class="person">
                         <div class="profPict"></div>
                         <div class="friendName">The senate</div>
@@ -59,6 +59,8 @@
 
 
                 </form>
+
+               
 */
               
             

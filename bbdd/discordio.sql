@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 07-11-2020 a las 13:55:09
+-- Tiempo de generación: 10-11-2020 a las 21:56:08
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.3.12
 
@@ -34,20 +34,30 @@ CREATE TABLE IF NOT EXISTS `message` (
   `cod_user` int(11) NOT NULL,
   `text_message` varchar(250) NOT NULL,
   `date_message` datetime NOT NULL DEFAULT current_timestamp(),
-  `cod_room` int(11) NOT NULL,
+  `cod_room` varchar(50) NOT NULL,
   PRIMARY KEY (`cod_message`),
   KEY `cod_room` (`cod_room`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `message`
 --
 
 INSERT INTO `message` (`cod_message`, `cod_user`, `text_message`, `date_message`, `cod_room`) VALUES
-(2, 1, 'que pasa loco', '2020-11-07 14:08:06', 1),
-(3, 2, 'eyyyyyy', '2020-11-07 14:08:38', 1),
-(4, 1, 'mataaaa', '2020-11-07 14:22:33', 2),
-(5, 4, 'banderita de españa', '2020-11-07 14:22:51', 2);
+(7, 4, 'aluhabag', '2020-11-07 20:03:53', '4-17'),
+(8, 4, 'qwer', '2020-11-07 20:05:40', '4-17'),
+(9, 17, 'te exploto payaso', '2020-11-07 20:06:37', '4-17'),
+(10, 3, 'que passa', '2020-11-08 12:06:30', '3-4'),
+(11, 4, 'po aquí andamios', '2020-11-08 12:06:47', '3-4'),
+(12, 17, 'se va a liar', '2020-11-08 12:15:36', '4-17'),
+(13, 4, 'nah, que va', '2020-11-08 12:16:00', '4-17'),
+(14, 17, 'esto parece que funsiona', '2020-11-08 12:24:51', '4-17'),
+(16, 18, 'soy tu DJ', '2020-11-08 12:30:04', '1-18'),
+(18, 1, 'daniiiii', '2020-11-08 12:31:13', '1-3'),
+(19, 3, 'dime adri', '2020-11-08 12:31:43', '1-3'),
+(26, 17, 'prueba multi', '2020-11-08 13:43:50', '4-17'),
+(47, 1, 'prueba multiiii', '2020-11-08 13:47:46', '1-4'),
+(48, 1, 'prueba multiiii', '2020-11-08 13:47:46', '1-17');
 
 -- --------------------------------------------------------
 
@@ -57,19 +67,25 @@ INSERT INTO `message` (`cod_message`, `cod_user`, `text_message`, `date_message`
 
 DROP TABLE IF EXISTS `room`;
 CREATE TABLE IF NOT EXISTS `room` (
-  `cod_room` int(11) NOT NULL AUTO_INCREMENT,
-  `name_room` varchar(50) NOT NULL,
+  `cod_room` varchar(50) NOT NULL,
+  `img_room` varchar(50) NOT NULL,
   PRIMARY KEY (`cod_room`),
   KEY `cod_room` (`cod_room`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `room`
 --
 
-INSERT INTO `room` (`cod_room`, `name_room`) VALUES
-(1, ''),
-(2, '');
+INSERT INTO `room` (`cod_room`, `img_room`) VALUES
+('1-17', ''),
+('1-18', ''),
+('1-3', ''),
+('1-4', ''),
+('3-17', ''),
+('3-4', ''),
+('4-17', ''),
+('GRUPO1', 'group_default.jpg');
 
 -- --------------------------------------------------------
 
@@ -87,21 +103,23 @@ CREATE TABLE IF NOT EXISTS `user` (
   `photo` varchar(300) NOT NULL,
   `password_hash` varchar(80) NOT NULL,
   `description` varchar(250) NOT NULL,
-  `gender` varchar(5) NOT NULL,
+  `gender` varchar(6) NOT NULL,
   PRIMARY KEY (`cod_user`),
   UNIQUE KEY `nick` (`nick`),
   UNIQUE KEY `mail` (`mail`),
   KEY `cod_user` (`cod_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `user`
 --
 
 INSERT INTO `user` (`cod_user`, `name`, `surname`, `nick`, `mail`, `photo`, `password_hash`, `description`, `gender`) VALUES
-(1, '', '', 'adri', 'adri', '', '1234', '', ''),
-(3, '', '', 'dani', 'dani', '', '1234', '', ''),
-(4, '', '', 'toros', 'toros', '', '1234', '', '');
+(1, '', '', 'adri', 'adri', 'default.png', '$2y$10$qfpYSsjvATEUv9nzxzdcZO3P.Z4SvNLxNR.N2UEIdLdvFr9kXdS6i', '', ''),
+(3, '', '', 'dani', 'dani', '', '$2y$10$qfpYSsjvATEUv9nzxzdcZO3P.Z4SvNLxNR.N2UEIdLdvFr9kXdS6i', '', ''),
+(4, '', '', 'toros', 'toros', '', '1234', '', ''),
+(17, 'Ruba', 'Bum', 'Ruba', 'alÃ±skdjf', '', '$2y$10$3q1ZS03zXzHuPImB3lWrlOT1b1Y4mWJtR6soeLydpDgK7YXTfzW9e', '', 'female'),
+(18, 'asdf', 'asdf', 'Rober', 'asdasdfasdasdasf', '', '$2y$10$cg8qevehkZ5wmIUJmf2jNuvQdRVSpYIPfmWCu7.i6WX5RtH28zD4y', '', 'male');
 
 -- --------------------------------------------------------
 
@@ -112,7 +130,7 @@ INSERT INTO `user` (`cod_user`, `name`, `surname`, `nick`, `mail`, `photo`, `pas
 DROP TABLE IF EXISTS `user_room`;
 CREATE TABLE IF NOT EXISTS `user_room` (
   `cod_user` int(11) NOT NULL,
-  `cod_room` int(11) NOT NULL,
+  `cod_room` varchar(50) NOT NULL,
   PRIMARY KEY (`cod_user`,`cod_room`),
   KEY `cod_user` (`cod_user`),
   KEY `cor_room` (`cod_room`)
@@ -123,10 +141,21 @@ CREATE TABLE IF NOT EXISTS `user_room` (
 --
 
 INSERT INTO `user_room` (`cod_user`, `cod_room`) VALUES
-(1, 1),
-(1, 2),
-(3, 1),
-(4, 2);
+(1, '1-17'),
+(1, '1-18'),
+(1, '1-3'),
+(1, '1-4'),
+(1, 'GRUPO1'),
+(3, '1-3'),
+(3, '3-17'),
+(3, '3-4'),
+(4, '1-4'),
+(4, '3-4'),
+(4, '4-17'),
+(4, 'GRUPO1'),
+(17, '1-17'),
+(17, 'GRUPO1'),
+(18, '1-18');
 
 --
 -- Restricciones para tablas volcadas
