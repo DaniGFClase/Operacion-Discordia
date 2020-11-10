@@ -34,10 +34,9 @@
                 </div>
             </div>
 
-            <div class="contacts">
-
-                    
-                		
+            <div class="contacts">     
+                
+                        		
         <?php
             // select u.cod_user, nick, photo, count(*), ur.cod_room
      
@@ -48,8 +47,21 @@
 
             
 			foreach($room as $ro){	
-            
 
+/*
+  <form action="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="chtBot">
+
+
+                    <button type="submit" class="person">
+                        <div class="profPict"></div>
+                        <div class="friendName">The senate</div>
+                    </button>
+
+
+                </form>
+*/
+              
+            
                 if ($ro['count'] == 1) {
                     echo '
                     <div class="person">            
