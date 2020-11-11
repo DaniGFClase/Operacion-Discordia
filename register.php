@@ -32,10 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
 	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-		<div class="imgcontainer">
-		  <img src="#" alt="Avatar" class="avatar">
-		</div>
-	  
+	
 		<div class="container">
         <label for="name"><b>Name</b></label>
           <input type="text" placeholder="Enter your name" name="name" required>
