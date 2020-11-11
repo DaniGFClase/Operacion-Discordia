@@ -124,7 +124,7 @@ function createTable ($userA, $userB){
     $ins = " INSERT INTO `room` (`cod_room`, `name_room`) VALUES ('$userA-$userB', '')"; 
     $resul = $db->query($ins);
 
-    $ins = " INSERT INTO `user_room` (`cod_user`, `cod_room`) VALUES ('$userA', '$userA-$userB'), ('$userB', '$userA-$userB')"; 
+    $ins = " INSERT INTO `user_room` (`cod_user`, `cod_room`, `view`) VALUES ('$userA', '$userA-$userB', '1'), ('$userB', '$userA-$userB', '0')"; 
     $resul = $db->query($ins);
 }
 
@@ -191,53 +191,59 @@ function send_chat_Message($myUser, $room, $message){
 
 }
 
-function create_group($myUser, $toUser, $name_group,  $message){
+function create_group($myUser, $toUserGroup, $name_group,  $message){
 
-
+	
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
 
-	$severalUser = explode(" ", $toUser);
-
+	$severalUser = explode(" ", $toUserGroup);
+	
 	$ins = "select * from room
 	where cod_room like '$name_group'";
-	
+
 	$resul = $db->query($ins);
 	
 		if ($resul->rowCount() !== 0) {    
 		return FALSE;
-		
 	}
+
 	
+
 	$ins = "INSERT INTO `room` (`cod_room`, `img_room`) VALUES ('$name_group', 'default_group.jpg')";
 	
 	$result = $db->query($ins);
 	
 
-	$ins = "INSERT INTO `user_room` (`cod_user`, `cod_room`) VALUES ('$myUser', '$name_group')";
+	$ins = "INSERT INTO `user_room` (`cod_user`, `cod_room`, `view`) VALUES ('$myUser', '$name_group', '1')";
 	
 	$result = $db->query($ins);
 	
 	
-
-
 	foreach ($severalUser as $toUser ) {
 		
 	$insCod = "select cod_user from user 
 	where nick like '$toUser'";
 	$resulCod = $db->query($insCod);
 	$CodResult = $resulCod->fetch();
-
-	$ins = "INSERT INTO `user_room` (`cod_user`, `cod_room`) VALUES ('$CodResult[0]', '$name_group')";
+	
+	
+	$ins = "INSERT INTO `user_room` (`cod_user`, `cod_room`, `view`) VALUES ('$CodResult[0]', '$name_group', '0')";
 	
 	$result = $db->query($ins);
 	
 	}
+
 
 	$ins = "INSERT INTO `message` (`cod_message`, `cod_user`, `text_message`, `date_message`, `cod_room`) VALUES (NULL, '$myUser', '$message', current_timestamp(), '$name_group')";
 	
     $result = $db->query($ins);
 
 	header ('Location: main.php');
+	
+	
+	
 
 }
+
+create_group('1', 'dani toros', 'grupo caca23',  'asdf');
