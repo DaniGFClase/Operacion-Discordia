@@ -4,6 +4,14 @@
 	check_session();
 ?>
 
+<?php  
+    if (isset($_SESSION['user']['cod_user']) && isset($_POST['user']) && $_POST['text'] != "") {
+        send_Message($_SESSION['user']['cod_user'], $_POST['user'], $_POST['text']);
+    }
+        
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,47 +44,53 @@
         
             
 <?php
-// select u.cod_user, nick, photo, count(*), ur.cod_room
+            // select u.cod_user, nick, photo, count(*), ur.cod_room
+     
+		$room = load_room($_SESSION['user']['cod_user']);
+		if($room===false){
+			echo "<p class='error'>Error connecting to the database, or no room present</p>";
+		}else{
 
-$room = load_room($_SESSION['user']['cod_user']);
-if($room===false){
-echo "<p class='error'>Error connecting to the database, or no room present</p>";
-}else{
-
-    foreach($room as $ro){	
+            
+			foreach($room as $ro){	
 
 
-        if ($ro['count'] == 1) {
-            echo '
-            <form action="https://trello.com/" class="chtBot">
+                if ($ro['count'] == 1) {
+                    echo '
+                    <form action="chat.php" class="chtBot" method = "POST">
 
-                <input name = "name_chat" type="hidden" value = '.$ro["nick"].'>
-                <button type="submit" class="person">
-                    <img class="profPict" src="images/avatar/'.$ro["photo"].'" alt="image_user">
-                    <div class="friendName">'.$ro["nick"].'</div>
-                </button>
+                        <input name = "name_chat" type="hidden" value = '.$ro["nick"].'>
+                        <input name = "avatar_chat" type="hidden" value = "'.$ro["photo"].'">
+                        <input name = "codRoom" type="hidden" value = "'.$ro["codRoom"].'">
+                        
+                        <button type="submit" class="person">
+                            <img class="profPict" src="images/avatar/'.$ro["photo"].'"alt="image_user">
+                            <div class="friendName">'.$ro["nick"].'</div>
+                        </button>
+    
+                    </form>
+                    ';
+                }else {
+                    echo '
+                    <form action="chat.php" class="chtBot" method = "POST">
 
-            </form>
-            ';
-        }else {
-            echo '
-            <form action="https://trello.com/" class="chtBot">
+                        <input name = "name_chat" type="hidden" value = '.$ro["codRoom"].'>
+                        <input name = "avatar_chat" type="hidden" value = '.$ro["img_room"].'>
+                        <input name = "codRoom" type="hidden" value = "'.$ro["codRoom"].'">
+                        <button type="submit" class="person">
+                            <img class="profPict" src="images/avatar/'.$ro["img_room"].'" alt="image_user">
+                            <div class="friendName">'.$ro["codRoom"].'</div>
+                        </button>
+    
+                    </form>
+                    ';
+                }
 
-                <input name = "name_chat" type="hidden" value = '.$ro["codRoom"].'>
-                <button type="submit" class="person">
-                    <img class="profPict" src="images/avatar/'.$ro["img_room"].'" alt="image_user">
-                    <div class="friendName">'.$ro["codRoom"].'</div>
-                </button>
+			}
 
-            </form>
-            ';
-        }
+		}
 
-    }
-
-}
-
-?>
+        ?>
 
 </div>
 
@@ -108,12 +122,13 @@ echo "<p class='error'>Error connecting to the database, or no room present</p>"
 
         <div class="chat">
 
-            <form action="#">
+            <form action="main.php">
                 <div class="searchBar">
                     <label for="user"><b>Search for someone</b></label>
                     <input type="text" placeholder="Enter Username or E-mail" name="user" value="">
+                    <textarea name="text"></textarea>
 
-                    <button type="submit">Search</button>
+                    <button type="submit">Send</button>
                 </div>
 
             </form>
