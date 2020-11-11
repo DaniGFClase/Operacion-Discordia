@@ -123,10 +123,10 @@
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="chtBot" method = "POST">
 
                 <input type="text" placeholder="Write here" name="text" value="" class="msgBar">
-                <input name = "name_chat" type="hidden" value = '<?php echo $_POST['avatar_chat']?>'>
+                <input name = "avatar_chat" type="hidden" value = '<?php echo $_POST['avatar_chat']?>'>
                 <input name = "codRoom" type="hidden" value = '<?php echo $_POST['codRoom']?>'>
      
-                <input name = "avatar_chat" type="hidden" value = '<?php echo $_POST['name_chat']?>'>
+                <input name = "name_chat" type="hidden" value = '<?php echo $_POST['name_chat']?>'>
                 <button type="submit" class="sendBtn">Send</button>
 
 
