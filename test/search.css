@@ -1,0 +1,288 @@
+html,
+body {
+    background-color: rgb(32, 33, 36);
+    color: white;
+    height: 100%;
+}
+
+#nameMail {
+    border-bottom: -5em;
+}
+
+.pantalla {
+    height: 100%;
+    /*  border: magenta dotted;*/
+}
+
+.leftSide {
+    position: relative;
+    float: left;
+    padding-left: 0em;
+    padding-right: 0em;
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    height: 100%;
+    margin-right: 1em;
+    border: solid thin lightgrey;
+    /*  border: 1px dotted blue;*/
+}
+
+.buttons {
+    border: none;
+}
+
+.newMsgBtn {
+    text-align: center;
+    position: sticky;
+    background-color: #5c5a81;
+    border: rgb(151, 156, 168) thin solid;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.3s;
+}
+
+.newMsgBtn:hover {
+    background-color: rgb(123, 182, 138);
+    border: rgb(13, 13, 14) thin solid;
+    color: black;
+}
+
+.tab {
+    text-align: center;
+    position: sticky;
+    background-color: #5c5a81;
+    float: left;
+    border: rgb(151, 156, 168) thin solid;
+    color: white;
+    cursor: pointer;
+    width: 50%;
+    transition: 0.3s;
+}
+
+.tab:hover {
+    background-color: rgb(151, 156, 168);
+    border: rgb(13, 13, 14) thin solid;
+    color: black;
+}
+
+.contacts {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    height: 80%;
+    overflow: scroll;
+    /*  border: dotted orangered;*/
+}
+
+.contacts::-webkit-scrollbar {
+    width: 0px;
+}
+
+.person2 {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    text-decoration: none;
+    align-self: center;
+    background-color: rgb(32, 33, 36);
+    color: white;
+    cursor: pointer;
+    transition: transform .2s;
+    height: calc(15%);
+    border: none;
+}
+
+.person:hover {
+    transform: scale(1.1);
+}
+
+.friendName {
+    display: flex;
+    width: calc(90%-0.05em);
+    padding-left: 0.5em;
+    height: 100%;
+    /*  border: blue dotted;*/
+}
+
+.userPerSpa {
+    z-index: 2;
+    background-color: #232329;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    flex-direction: row;
+    /*   border: purple dotted;*/
+}
+
+.userPerSpa>div {
+    float: left;
+}
+
+.data {
+    width: 100%;
+}
+
+.usrName {
+    width: 100%;
+}
+
+.addFri {
+    cursor: pointer;
+    background-color: #5c5a81;
+    border: rgb(151, 156, 168) thin solid;
+}
+
+.addFri:hover {
+    color: black;
+    background-color: white;
+}
+
+.newGro {
+    cursor: pointer;
+    background-color: #5c5a81;
+    border: rgb(151, 156, 168) thin solid;
+}
+
+.newGro:hover {
+    color: black;
+    background-color: white;
+}
+
+.opt {
+    cursor: pointer;
+    background-color: #5c5a81;
+    border: rgb(151, 156, 168) thin solid;
+}
+
+.opt:hover {
+    color: black;
+    background-color: white;
+}
+
+.chat {
+    border-top-right-radius: 2.5em;
+    border-top-left-radius: 2.5em;
+    position: relative;
+    background-color: rgb(59, 62, 68);
+    width: calc(89% - 1em);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*  border: 1px dotted green;*/
+}
+
+.searchBar {
+    border: 1px solid black;
+    border-radius: 2.5em;
+    padding: 2.5em;
+    max-width: 50%;
+    width: 50%;
+    height: auto;
+    background-color: rgb(101, 101, 102);
+}
+
+.userSendTo {
+    border-top-right-radius: 2.5em;
+    border-top-left-radius: 2.5em;
+    position: absolute;
+    top: 0px;
+    border: rgb(151, 156, 168) thin solid;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    background-color: rgb(101, 101, 102);
+    /*  border: firebrick dotted;*/
+}
+
+.userSendTo .profPict {
+    width: 40px;
+    height: 40px;
+}
+
+.text {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    width: 100%;
+    height: 80%;
+    overflow: auto;
+    /* border: dotted orangered;*/
+}
+
+.text::-webkit-scrollbar {
+    width: 0px;
+}
+
+.foto {
+    float: left;
+    height: 100%;
+    word-wrap: break-word;
+    /*  border: firebrick thin dotted;*/
+}
+
+.content {
+    display: flex;
+    width: calc(90%-1em);
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    height: 100%;
+    /*  border: dotted thin blue;*/
+}
+
+.chtBot {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    width: 100%;
+    /*  border: indigo dotted;*/
+}
+
+.msgArea {
+    padding-top: 1.5em;
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+    border: skyblue dotted;
+}
+
+.msgBar {
+    color: white;
+    border: none;
+    background-color: rgb(101, 101, 102);
+    width: 95%;
+    height: 25px;
+}
+
+.msgBar:focus {
+    border: none;
+    background-color: rgb(101, 101, 102);
+}
+
+.sendBtn {
+    color: white;
+    border: none;
+    background-color: rgb(101, 101, 102);
+    cursor: pointer;
+    width: calc(5% - 1em);
+    height: 25px;
+}
+
+.sendBtn:hover {
+    background-color: rgb(125, 125, 128);
+}
+
+.profPict {
+    background-image: url(TipoDeIncognito.png);
+    background-size: cover;
+    background-position: center;
+    padding: 16px;
+    width: 40px;
+    height: 40px;
+    float: left;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border: white thin solid;
+}
