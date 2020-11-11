@@ -111,23 +111,49 @@ body {
 .userPerSpa {
     z-index: 2;
     background-color: #232329;
-    border: purple dotted;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    flex-direction: row;
 }
 
 .userPerSpa>div {
     float: left;
 }
 
-.options {
-    height: 100%;
-    border: rgb(255, 0, 179) dotted;
+.addFri {
+    cursor: pointer;
+    background-color: #5c5a81;
+    border: rgb(151, 156, 168) thin solid;
 }
 
-.addFri {}
+.addFri:hover {
+    color: black;
+    background-color: white;
+}
 
-.newGro {}
+.newGro {
+    cursor: pointer;
+    background-color: #5c5a81;
+    border: rgb(151, 156, 168) thin solid;
+}
 
-.opt {}
+.newGro:hover {
+    color: black;
+    background-color: white;
+}
+
+.opt {
+    cursor: pointer;
+    background-color: #5c5a81;
+    border: rgb(151, 156, 168) thin solid;
+}
+
+.opt:hover {
+    color: black;
+    background-color: white;
+}
 
 .chatP {
     display: grid;

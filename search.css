@@ -104,22 +104,48 @@ body {
     border: rgb(255, 0, 179) dotted;
 }
 
-.addFri {}
+.addFri {
+    cursor: pointer;
+    background-color: #5c5a81;
+    border: rgb(151, 156, 168) thin solid;
+}
 
-.newGro {}
+.addFri:hover {
+    color: black;
+    background-color: white;
+}
 
-.opt {}
+.newGro {
+    cursor: pointer;
+    background-color: #5c5a81;
+    border: rgb(151, 156, 168) thin solid;
+}
 
-#nameMail {
-    border-bottom: -5em;
+.newGro:hover {
+    color: black;
+    background-color: white;
+}
+
+.opt {
+    cursor: pointer;
+    background-color: #5c5a81;
+    border: rgb(151, 156, 168) thin solid;
+}
+
+.opt:hover {
+    color: black;
+    background-color: white;
 }
 
 .chat {
-    border-radius: 2.5em;
+    border-top-right-radius: 2.5em;
+    border-top-left-radius: 2.5em;
+    position: relative;
     background-color: rgb(59, 62, 68);
     width: calc(89% - 1em);
     height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     border: 1px dotted green;

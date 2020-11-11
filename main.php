@@ -90,25 +90,27 @@
 
 
             <div class="userPerSpa">
-                <div class="profPict"></div>
-                <div class="options">
+                <div class="photo">
+                    <div class="profPict"></div>
+                </div>
 
-                    <div class="addFri" href="#">
-                        aaaa 
+                <div class="data">
+                    <div class="usrName">Anakin</div>
 
-                    </div>
+                    <form action="#" class="addFri">
+                        Add friend
+                    </form>
 
-                    <div class="newGro" href="#">
-                        aaa
-
-                    </div>
-
-                    <div class="opt" href="#">
-                        aaa
-
-                    </div>
+                    <form action="#" class="newGro">
+                        New group
+                    </form>
+                    <form action="#" class="opt">
+                        Options
+                    </form>
 
                 </div>
+
+
             </div>
 
         </div>
