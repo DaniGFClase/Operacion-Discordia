@@ -1,8 +1,10 @@
 <?php 
 	require 'sessions.php';
 	require_once 'db.php';
-	check_session();
+    check_session();
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -112,10 +114,14 @@
 
 
 
-            <form action="#" class="chtBot">
+            <form action="chat.php" class="chtBot" method = "POST">
 
                 <input type="text" placeholder="Write here" name="msg" value="" class="msgBar">
+                <input name = "name_chat" type="hidden" value = '<?php echo $_POST['avatar_chat']?>'>
+                <input name = "codRoom" type="hidden" value = '<?php echo $_POST['codRoom']?>'>
 
+                
+                <input name = "avatar_chat" type="hidden" value = '<?php echo $_POST['name_chat']?>'>
                 <button type="submit" class="sendBtn">Send</button>
 
 
