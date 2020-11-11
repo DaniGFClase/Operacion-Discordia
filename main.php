@@ -25,7 +25,7 @@
 
             <div class="buttons">
                 <div class="newMsg">
-                    <button class="newMsgBtn">+ Send new message</button>
+                    <button class="newMsgBtn"><a href="search.php">+ Send new message</a></button>
                 </div>
 
                 <div class="menu">
@@ -48,20 +48,17 @@
             
 			foreach($room as $ro){	
 
-/*
-  
 
-               
-*/
-              
-            
                 if ($ro['count'] == 1) {
                     echo '
-                    <form action="https://trello.com/" class="chtBot">
+                    <form action="chat.php" class="chtBot" method = "POST">
 
                         <input name = "name_chat" type="hidden" value = '.$ro["nick"].'>
+                        <input name = "avatar_chat" type="hidden" value = "'.$ro["photo"].'">
+                        <input name = "codRoom" type="hidden" value = "'.$ro["codRoom"].'">
+                        
                         <button type="submit" class="person">
-                            <img class="profPict" src="images/avatar/'.$ro["photo"].'" alt="image_user">
+                            <img class="profPict" src="images/avatar/'.$ro["photo"].'"alt="image_user">
                             <div class="friendName">'.$ro["nick"].'</div>
                         </button>
     
@@ -69,9 +66,11 @@
                     ';
                 }else {
                     echo '
-                    <form action="https://trello.com/" class="chtBot">
+                    <form action="chat.php" class="chtBot" method = "POST">
 
                         <input name = "name_chat" type="hidden" value = '.$ro["codRoom"].'>
+                        <input name = "avatar_chat" type="hidden" value = '.$ro["img_room"].'>
+                        <input name = "codRoom" type="hidden" value = "'.$ro["codRoom"].'">
                         <button type="submit" class="person">
                             <img class="profPict" src="images/avatar/'.$ro["img_room"].'" alt="image_user">
                             <div class="friendName">'.$ro["codRoom"].'</div>

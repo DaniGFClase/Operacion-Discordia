@@ -144,94 +144,23 @@ function load_room($cod){
 	return $resul;	
 }
 
-function load_category($codCat){
+
+function load_chat($cod){
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
-	$ins = "select name, description from categories where codcat = $codCat";
+	$ins = "select u.cod_user as codUser, nick, photo, cod_room as codRoom, text_message, date_message from user as u
+    join message as m
+    on u.cod_user = m.cod_user
+	where m.cod_room like '$cod'";
+	
 	$resul = $db->query($ins);	
 	if (!$resul) {
 		return FALSE;
 	}
 	if ($resul->rowCount() === 0) {    
 		return FALSE;
-    }	
-	//if there is one or more
-	return $resul->fetch();	
-}
-function load_products_category($codCat){
-	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
-	$db = new PDO($res[0], $res[1], $res[2]);	
-	$sql = "select * from products where category  = $codCat";	
-	$resul = $db->query($sql);	
-	if (!$resul) {
-		return FALSE;
-	}
-	if ($resul->rowCount() === 0) {    
-		return FALSE;
-    }	
-	//if there is one or more
-	return $resul;			
-}
-function load_products($codes){
-	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
-	$db = new PDO($res[0], $res[1], $res[2]);
-	$texto_in = implode(",", $codes);
-	$ins = "select * from products where codProd in($texto_in)";
-	$resul = $db->query($ins);	
-	if (!$resul) {
-		return FALSE;
-	}
+    }
 	return $resul;	
 }
-
-
-function insert_order($cart, $codRes){
-	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
-	$db = new PDO($res[0], $res[1], $res[2]);
-	$db->beginTransaction();	
-	$hour = date("Y-m-d H:i:s", time());
-	// insert order
-	$sql = "insert into orders(Date, Sent, Restaurant) 
-			values('$hour',0, $codRes);";
-	$resul = $db->query($sql);	
-	if (!$resul) {
-		return FALSE;
-	}
-	// take id of new order for the detail rows
-	$order = $db->lastInsertId();
-	// inser rows in orderproducts
-	foreach($cart as $codProd=>$units){
-		$sql = "insert into orderproducts(`Order`, Product, Units) 
-		             values($order, $codProd, $units)";			
-		$resul = $db->query($sql);			
-		if (!$resul) {
-			echo $sql . "<br>";
-			print_r($db->errorInfo());
-			$db->rollback();
-			return FALSE;
-		}		
-		$sql = "update products set stock = stock - $units
-		             where codProd = $codProd";			
-		$resul = $db->query($sql);			
-		if (!$resul) {
-			$db->rollback();
-			return FALSE;
-		}
-	}
-	$db->commit();
-	return $order;
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
