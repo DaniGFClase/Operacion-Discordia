@@ -73,6 +73,12 @@ function send_Message($myUser, $toUser, $message){
 
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
+
+	$insCod = "select cod_user from user 
+	where nick like '$toUser'";
+	$resulCod = $db->query($insCod);
+	$CodResult = $resulCod->fetch();
+
 	$ins = "select count(*) as count, group_concat(cod_user separator ',') as users, cod_room
     from user_room 
     group by cod_room
@@ -84,16 +90,16 @@ function send_Message($myUser, $toUser, $message){
     
 
     if (!$r) {
-        createTable ($myUser, $toUser);
+        createTable ($myUser, $CodResult[0]);
     }
 
     $cod_room = "";
     foreach($result as $re){	
 
-       if ($re['users']==($myUser.",".$toUser) || $re['users']==($toUser.",".$myUser)) {
+       if ($re['users']==($myUser.",".$CodResult[0]) || $re['users']==($CodResult[0].",".$myUser)) {
         $cod_room = $re['cod_room'];
        }else {
-        createTable($myUser, $toUser);
+        createTable($myUser, $CodResult[0]);
        }
     }
 

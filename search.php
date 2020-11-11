@@ -122,7 +122,7 @@
 
         <div class="chat">
 
-            <form action="main.php">
+            <form action="send.php" method = "POST">
                 <div class="searchBar">
                     <label for="user"><b>Search for someone</b></label>
                     <input type="text" placeholder="Enter Username or E-mail" name="user" value="">
