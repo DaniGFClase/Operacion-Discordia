@@ -174,10 +174,6 @@ body {
     /*  border: 1px dotted green;*/
 }
 
-#searchB {
-    display: none;
-}
-
 .searchBar {
     border: 1px solid black;
     border-radius: 2.5em;
@@ -217,27 +213,6 @@ body {
 
 .text::-webkit-scrollbar {
     width: 0px;
-}
-
-.msgR {
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
-    align-self: center;
-    background-color: rgb(32, 33, 36);
-    transition: transform .2s;
-    height: calc(15%);
-    width: 100%;
-    border: lightgray thin dotted;
-}
-
-.msgS {
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
-    background-color: rgb(32, 33, 36);
-    transition: transform .2s;
-    height: calc(15%);
-    width: 100%;
-    border: lightgray thin dotted;
 }
 
 .foto {
