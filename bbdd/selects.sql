@@ -19,11 +19,13 @@ on u.cod_user = ur.cod_user
 where ur.cod_room like '1-18' and u.cod_user not like '1';
 
 -- Usuario contrario para cada sala
-select u.cod_user as codUser, nick, photo, count(*) as count, ur.cod_room as codRoom, img_room from user as u
+select u.cod_user as codUser, nick, photo, count(*) as count, ur.cod_room as codRoom, img_room, max(date_message) from user as u
 	join user_room as ur
 	on u.cod_user = ur.cod_user
     join room as r
     on r.cod_room = ur.cod_room
+    join message as m
+    on r.cod_room = m.cod_room
 	where ur.cod_room in
 	(select ur.cod_room from user as u
 	join user_room as ur
@@ -40,5 +42,7 @@ where cod_room like '1-4';
 select u.cod_user as codUser, nick, photo, cod_room as codRoom, text_message, date_message from user as u
     join message as m
     on u.cod_user = m.cod_user
-    where m.cod_room like '1-3'
+    where m.cod_room like '1-17'
     order by date_message;
+    
+
