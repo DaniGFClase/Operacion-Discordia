@@ -5,6 +5,16 @@
 
 ?>
 
+<?php  
+    if (isset($_SESSION['user']['cod_user']) && isset($_POST['codRoom']) && isset($_POST['text'], $_POST['text'])) {
+        send_chat_Message($_SESSION['user']['cod_user'], $_POST['codRoom'], $_POST['text']);
+    }
+
+    $_POST['text'] = null;
+        
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -114,9 +124,9 @@
 
 
 
-            <form action="chat.php" class="chtBot" method = "POST">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="chtBot" method = "POST">
 
-                <input type="text" placeholder="Write here" name="msg" value="" class="msgBar">
+                <input type="text" placeholder="Write here" name="text" value="" class="msgBar">
                 <input name = "name_chat" type="hidden" value = '<?php echo $_POST['avatar_chat']?>'>
                 <input name = "codRoom" type="hidden" value = '<?php echo $_POST['codRoom']?>'>
 

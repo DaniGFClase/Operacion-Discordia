@@ -151,7 +151,9 @@ function load_chat($cod){
 	$ins = "select u.cod_user as codUser, nick, photo, cod_room as codRoom, text_message, date_message from user as u
     join message as m
     on u.cod_user = m.cod_user
-	where m.cod_room like '$cod'";
+	where m.cod_room like '$cod'
+	order by date_message"
+	;
 	
 	$resul = $db->query($ins);	
 	if (!$resul) {
@@ -163,4 +165,17 @@ function load_chat($cod){
 	return $resul;	
 }
 
+
+function send_chat_Message($myUser, $room, $message){
+
+
+	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
+	$db = new PDO($res[0], $res[1], $res[2]);
+	   
+
+    $ins = "INSERT INTO `message` (`cod_message`, `cod_user`, `text_message`, `date_message`, `cod_room`) VALUES (NULL, '$myUser', '$message', current_timestamp(), '$room');";
+	
+    $result = $db->query($ins);
+
+}
 
