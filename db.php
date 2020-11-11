@@ -74,7 +74,10 @@ function send_Message($myUser, $toUser, $message){
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
 
-	$insCod = "select cod_user from user 
+	$severalUser = explode(" ", $toUser);
+
+	foreach ($severalUser as $toUser ) {
+		$insCod = "select cod_user from user 
 	where nick like '$toUser'";
 	$resulCod = $db->query($insCod);
 	$CodResult = $resulCod->fetch();
@@ -108,6 +111,9 @@ function send_Message($myUser, $toUser, $message){
     $ins = "INSERT INTO `message` (`cod_message`, `cod_user`, `text_message`, `date_message`, `cod_room`) VALUES (NULL, '$myUser', '$message', current_timestamp(), '$cod_room')";
 	
     $result = $db->query($ins);
+	}
+
+	
 
 }
 
