@@ -11,6 +11,7 @@ if (isset($_SESSION['user']['cod_user']) && isset($_POST['user']) && $_POST['tex
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,24 +26,24 @@ if (isset($_SESSION['user']['cod_user']) && isset($_POST['user']) && $_POST['tex
     <p id="nameMail">DISCORDIA</p>
 
     <div class="pantalla">
-    <div id="leftSide">
 
-<div class="buttons">
-    <div class="newMsg">
-        <button class="newMsgBtn">+ Send new message</button>
-    </div>
+        <div class="leftSide">
 
-    <div class="menu">
-        <button class="tab">Messages</button>
-        <button class="tab">Friends</button>
-    </div>
-</div>
+            <div class="buttons">
+                <div class="newMsg">
+                    <button class="newMsgBtn" onclick="showSB()">+ Send new message</button>
+                </div>
 
-<div class="contacts">
+                <div class="menu">
+                    <button class="tab">Messages</button>
+                    <button class="tab">Friends</button>
+                </div>
+            </div>
+
+            <div class="contacts">
 
 
-
-<?php
+                <?php
 // select u.cod_user, nick, photo, count(*), ur.cod_room
 
 $room = load_room($_SESSION['user']['cod_user']);
@@ -54,13 +55,13 @@ if ($room === false) {
 
         if ($ro['count'] == 1) {
             echo '
-                    <form action="chat.php" class="chtBot" method = "POST">
+                    <form action="chat.php" class="person" method = "POST">
 
                         <input name = "name_chat" type="hidden" value = ' . $ro["nick"] . '>
                         <input name = "avatar_chat" type="hidden" value = "' . $ro["photo"] . '">
                         <input name = "codRoom" type="hidden" value = "' . $ro["codRoom"] . '">
 
-                        <button type="submit" class="person">
+                        <button type="submit" class="person2">
                             <img class="profPict" src="images/avatar/' . $ro["photo"] . '"alt="image_user">
                             <div class="friendName">' . $ro["nick"] . '</div>
                         </button>
@@ -69,12 +70,12 @@ if ($room === false) {
                     ';
         } else {
             echo '
-                    <form action="chat.php" class="chtBot" method = "POST">
+                    <form action="chat.php" class="person" method = "POST">
 
                         <input name = "name_chat" type="hidden" value = ' . $ro["codRoom"] . '>
                         <input name = "avatar_chat" type="hidden" value = ' . $ro["img_room"] . '>
                         <input name = "codRoom" type="hidden" value = "' . $ro["codRoom"] . '">
-                        <button type="submit" class="person">
+                        <button type="submit" class="person2">
                             <img class="profPict" src="images/avatar/' . $ro["img_room"] . '" alt="image_user">
                             <div class="friendName">' . $ro["codRoom"] . '</div>
                         </button>
@@ -89,10 +90,22 @@ if ($room === false) {
 
 ?>
 
-</div>
+                    <form action="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="person">
+
+                        <button type="submit" class="person2">
+                        <div class="profPict"></div>
+                        <div class="friendName">The senate</div>
+                    </button>
+
+                    </form>
 
 
-<div class="userPerSpa">
+
+
+            </div>
+
+
+            <div class="userPerSpa">
                 <div class="photo">
                     <div class="profPict"></div>
                 </div>
@@ -116,26 +129,28 @@ if ($room === false) {
 
             </div>
 
-</div>
+        </div>
 
 
-<div class="chat" id="chat1">
 
-<form action="#" method="POST" id="searchB">
-    <div class="searchBar">
-        <label for="user"><b>Search for someone</b></label>
-        <input type="text" placeholder="Enter Username or E-mail" name="user" value="">
-        <textarea name="text"></textarea>
+        <div class="chat" id="chat1">
 
-        <button type="submit">Send</button>
-    </div>
+            <form action="#" method="POST" id="searchB">
+                <div class="searchBar">
+                    <label for="user"><b>Search for someone</b></label>
+                    <input type="text" placeholder="Enter Username or E-mail" name="user" value="">
+                    <textarea name="text"></textarea>
 
-</form>
+                    <button type="submit">Send</button>
+                </div>
 
-</div>
+            </form>
+
+        </div>
 
     </div>
 </body>
+
 
 
 </html>
