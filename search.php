@@ -119,20 +119,20 @@ if ($room === false) {
 </div>
 
 
-        <div class="chat">
+<div class="chat" id="chat1">
 
-            <form action="send.php" method = "POST">
-                <div class="searchBar">
-                    <label for="user"><b>Search for someone</b></label>
-                    <input type="text" placeholder="Enter Username or E-mail" name="user" value="">
-                    <textarea name="text"></textarea>
+<form action="#" method="POST" id="searchB">
+    <div class="searchBar">
+        <label for="user"><b>Search for someone</b></label>
+        <input type="text" placeholder="Enter Username or E-mail" name="user" value="">
+        <textarea name="text"></textarea>
 
-                    <button type="submit">Send</button>
-                </div>
+        <button type="submit">Send</button>
+    </div>
 
-            </form>
+</form>
 
-        </div>
+</div>
 
     </div>
 </body>

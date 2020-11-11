@@ -5,12 +5,17 @@ body {
     height: 100%;
 }
 
+#nameMail {
+    border-bottom: -5em;
+}
+
 .pantalla {
     height: 100%;
-    border: magenta dotted;
+    /*  border: magenta dotted;*/
 }
 
 .leftSide {
+    position: relative;
     float: left;
     padding-left: 0em;
     padding-right: 0em;
@@ -19,11 +24,12 @@ body {
     width: 10%;
     height: 100%;
     margin-right: 1em;
-    border: 1px dotted blue;
+    border: solid thin lightgrey;
+    /*  border: 1px dotted blue;*/
 }
 
 .buttons {
-    border: goldenrod dotted;
+    border: none;
 }
 
 .newMsgBtn {
@@ -66,42 +72,59 @@ body {
     padding-bottom: 0.5em;
     height: 80%;
     overflow: scroll;
-    border: dotted orangered;
+    /*  border: dotted orangered;*/
 }
 
 .contacts::-webkit-scrollbar {
     width: 0px;
 }
 
-.person {
+.person2 {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
+    text-decoration: none;
     align-self: center;
     background-color: rgb(32, 33, 36);
     color: white;
     cursor: pointer;
     transition: transform .2s;
     height: calc(15%);
-    border: cyan 1px solid;
+    border: none;
 }
 
 .person:hover {
     transform: scale(1.1);
 }
 
+.friendName {
+    display: flex;
+    width: calc(90%-0.05em);
+    padding-left: 0.5em;
+    height: 100%;
+    /*  border: blue dotted;*/
+}
+
 .userPerSpa {
     z-index: 2;
     background-color: #232329;
-    border: purple dotted;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    flex-direction: row;
+    /*   border: purple dotted;*/
 }
 
 .userPerSpa>div {
     float: left;
 }
 
-.options {
-    height: 100%;
-    border: rgb(255, 0, 179) dotted;
+.data {
+    width: 100%;
+}
+
+.usrName {
+    width: 100%;
 }
 
 .addFri {
@@ -148,7 +171,11 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px dotted green;
+    /*  border: 1px dotted green;*/
+}
+
+#searchB {
+    display: none;
 }
 
 .searchBar {
@@ -159,6 +186,116 @@ body {
     width: 50%;
     height: auto;
     background-color: rgb(101, 101, 102);
+}
+
+.userSendTo {
+    border-top-right-radius: 2.5em;
+    border-top-left-radius: 2.5em;
+    position: absolute;
+    top: 0px;
+    border: rgb(151, 156, 168) thin solid;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    background-color: rgb(101, 101, 102);
+    /*  border: firebrick dotted;*/
+}
+
+.userSendTo .profPict {
+    width: 40px;
+    height: 40px;
+}
+
+.text {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    width: 100%;
+    height: 80%;
+    overflow: auto;
+    /* border: dotted orangered;*/
+}
+
+.text::-webkit-scrollbar {
+    width: 0px;
+}
+
+.msgR {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    align-self: center;
+    background-color: rgb(32, 33, 36);
+    transition: transform .2s;
+    height: calc(15%);
+    width: 100%;
+    border: lightgray thin dotted;
+}
+
+.msgS {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    background-color: rgb(32, 33, 36);
+    transition: transform .2s;
+    height: calc(15%);
+    width: 100%;
+    border: lightgray thin dotted;
+}
+
+.foto {
+    float: left;
+    height: 100%;
+    word-wrap: break-word;
+    /*  border: firebrick thin dotted;*/
+}
+
+.content {
+    display: flex;
+    width: calc(90%-1em);
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    height: 100%;
+    /*  border: dotted thin blue;*/
+}
+
+.chtBot {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    width: 100%;
+    /*  border: indigo dotted;*/
+}
+
+.msgArea {
+    padding-top: 1.5em;
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+    border: skyblue dotted;
+}
+
+.msgBar {
+    color: white;
+    border: none;
+    background-color: rgb(101, 101, 102);
+    width: 95%;
+    height: 25px;
+}
+
+.msgBar:focus {
+    border: none;
+    background-color: rgb(101, 101, 102);
+}
+
+.sendBtn {
+    color: white;
+    border: none;
+    background-color: rgb(101, 101, 102);
+    cursor: pointer;
+    width: calc(5% - 1em);
+    height: 25px;
+}
+
+.sendBtn:hover {
+    background-color: rgb(125, 125, 128);
 }
 
 .profPict {
