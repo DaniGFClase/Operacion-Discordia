@@ -20,6 +20,25 @@ function load_config($name, $schema){
 	return $result;
 }
 
+function load_name_user($coduser){
+	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
+	$db = new PDO($res[0], $res[1], $res[2]);
+	$ins = "select nick from user
+	where cod_user like '$coduser'"
+	;
+	
+	$resul = $db->query($ins);	
+	if (!$resul) {
+		return FALSE;
+	}
+	if ($resul->rowCount() === 0) {    
+		return FALSE;
+	}
+	
+    $r = $resul->fetch();
+	return $r;	
+}
+
 function check_user($nick, $password){
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
