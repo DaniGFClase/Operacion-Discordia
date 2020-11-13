@@ -15,6 +15,7 @@ body {
 }
 
 .leftSide {
+    position: relative;
     float: left;
     padding-left: 0em;
     padding-right: 0em;
@@ -28,7 +29,7 @@ body {
 }
 
 .buttons {
-    /* border: goldenrod dotted;*/
+    border: none;
 }
 
 .newMsgBtn {
@@ -78,22 +79,17 @@ body {
     width: 0px;
 }
 
-.person {
-    border: cyan 1px solid;
-}
-
 .person2 {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
     text-decoration: none;
     align-self: center;
-    background-color: blue;
-    /*background-color: rgb(32, 33, 36);*/
+    background-color: rgb(32, 33, 36);
     color: white;
     cursor: pointer;
     transition: transform .2s;
     height: calc(15%);
-    /*  border: cyan 1px solid;*/
+    border: none;
 }
 
 .person:hover {
@@ -111,11 +107,24 @@ body {
 .userPerSpa {
     z-index: 2;
     background-color: #232329;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    flex-direction: row;
     /*   border: purple dotted;*/
 }
 
 .userPerSpa>div {
     float: left;
+}
+
+.data {
+    width: 100%;
+}
+
+.usrName {
+    width: 100%;
 }
 
 
@@ -125,16 +134,38 @@ body {
     background-image: url(anakin.jpg);
 }
 
-.options {
-    height: 100%;
-    /* border: rgb(255, 0, 179) dotted;*/
+.addFri {
+    cursor: pointer;
+    background-color: #5c5a81;
+    border: rgb(151, 156, 168) thin solid;
 }
 
-.addFri {}
+.addFri:hover {
+    color: black;
+    background-color: white;
+}
 
-.newGro {}
+.newGro {
+    cursor: pointer;
+    background-color: #5c5a81;
+    border: rgb(151, 156, 168) thin solid;
+}
 
-.opt {}
+.newGro:hover {
+    color: black;
+    background-color: white;
+}
+
+.opt {
+    cursor: pointer;
+    background-color: #5c5a81;
+    border: rgb(151, 156, 168) thin solid;
+}
+
+.opt:hover {
+    color: black;
+    background-color: white;
+}
 
 .chat {
     border-top-right-radius: 2.5em;
@@ -148,6 +179,20 @@ body {
     align-items: center;
     justify-content: center;
     /*  border: 1px dotted green;*/
+}
+
+#searchB {
+    display: none;
+}
+
+.searchBar {
+    border: 1px solid black;
+    border-radius: 2.5em;
+    padding: 2.5em;
+    max-width: 50%;
+    width: 50%;
+    height: auto;
+    background-color: rgb(101, 101, 102);
 }
 
 .userSendTo {
