@@ -37,11 +37,8 @@
 <div class="contacts">
 
 
-<<<<<<< Updated upstream
-            
-			foreach($room as $ro){	
-                $view = "";
-=======
+
+  
     <?php
     // select u.cod_user, nick, photo, count(*), ur.cod_room
 
@@ -49,10 +46,9 @@
         if ($room === false) {
             echo "<p class='error'>Error connecting to the database, or no room present</p>";
         } else {
-
             foreach($room as $ro){	
+                $view = "";
 
->>>>>>> Stashed changes
 
                 if ($ro['count'] == 1) {
                     $picture = $ro["photo"];
@@ -74,12 +70,10 @@
 
 
                     echo '
-<<<<<<< Updated upstream
-                    <form action="chat.php" class="chtBot '.$view.'" method = "POST">
-=======
-                    <form action="chat.php" class="person" method = "POST">
->>>>>>> Stashed changes
 
+                    <form action="chat.php" class="person '.$view.'" method = "POST">
+
+            
                         <input name = "name_chat" type="hidden" value = '.$name.'>
                         <input name = "avatar_chat" type="hidden" value = "'.$picture.'">
                         <input name = "codRoom" type="hidden" value = "'.$ro["codRoom"].'">
