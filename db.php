@@ -162,9 +162,9 @@ function load_room($cod){
 	(select ur.cod_room from user as u
 	join user_room as ur
 	on u.cod_user = ur.cod_user
-	where u.cod_user like 1
+	where u.cod_user like '$cod'
 	group by ur.cod_room)
-	and u.cod_user not like 1
+	and u.cod_user not like '$cod'
 	group by ur.cod_room
     order by date_msg desc";
 	$resul = $db->query($ins);	
