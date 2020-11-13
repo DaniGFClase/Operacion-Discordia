@@ -37,8 +37,6 @@
 <div class="contacts">
 
 
-
-  
     <?php
     // select u.cod_user, nick, photo, count(*), ur.cod_room
 
@@ -46,8 +44,8 @@
         if ($room === false) {
             echo "<p class='error'>Error connecting to the database, or no room present</p>";
         } else {
+
             foreach($room as $ro){	
-                $view = "";
 
 
                 if ($ro['count'] == 1) {
@@ -57,23 +55,9 @@
                     $picture = $ro["img_room"];
                     $name = $ro["codRoom"];
                 }
-
-                $view_MSG = load_view($_SESSION['user']['cod_user'], $ro["codRoom"] );
-                if($view_MSG===false){
-                    echo "<p class='error'>Error connecting to the database, or no room present</p>";
-                }else{
-                    if ($view_MSG['view'] == 0) {
-                        $view = "notView";
-                    }
-                }
-                        
-
-
                     echo '
+                    <form action="chat.php" class="person" method = "POST">
 
-                    <form action="chat.php" class="person '.$view.'" method = "POST">
-
-            
                         <input name = "name_chat" type="hidden" value = '.$name.'>
                         <input name = "avatar_chat" type="hidden" value = "'.$picture.'">
                         <input name = "codRoom" type="hidden" value = "'.$ro["codRoom"].'">
