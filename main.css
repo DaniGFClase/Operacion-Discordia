@@ -119,50 +119,18 @@ body {
     float: left;
 }
 
-.data {
-    width: 100%;
-}
-
+.data,
 .usrName {
     width: 100%;
 }
 
-
-/* Gilipollez exclusiva de aqui */
-
-.userPerSpa .profPict {
-    background-image: url(anakin.jpg);
-}
-
-.addFri {
+.data form {
     cursor: pointer;
     background-color: #5c5a81;
     border: rgb(151, 156, 168) thin solid;
 }
 
-.addFri:hover {
-    color: black;
-    background-color: white;
-}
-
-.newGro {
-    cursor: pointer;
-    background-color: #5c5a81;
-    border: rgb(151, 156, 168) thin solid;
-}
-
-.newGro:hover {
-    color: black;
-    background-color: white;
-}
-
-.opt {
-    cursor: pointer;
-    background-color: #5c5a81;
-    border: rgb(151, 156, 168) thin solid;
-}
-
-.opt:hover {
+.data form:hover {
     color: black;
     background-color: white;
 }
@@ -237,37 +205,12 @@ body {
     border: lightgray thin dotted;
 }
 
-
-/* Gilipollez exclusiva de aqui */
-
-.msgS .profPict {
-    background-image: url(anakin.jpg);
-}
-
-.msgS {
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
-    background-color: rgb(32, 33, 36);
-    transition: transform .2s;
-    height: calc(15%);
-    width: 100%;
-    border: lightgray thin dotted;
-}
-
-.foto {
-    float: left;
-    height: 100%;
-    word-wrap: break-word;
-    /*  border: firebrick thin dotted;*/
-}
-
 .content {
     display: flex;
     width: calc(90%-1em);
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     height: 100%;
-    /*  border: dotted thin blue;*/
 }
 
 .chtBot {
@@ -276,7 +219,6 @@ body {
     justify-content: center;
     z-index: 2;
     width: 100%;
-    /*  border: indigo dotted;*/
 }
 
 .msgArea {
@@ -328,21 +270,6 @@ body {
     -webkit-border-radius: 50%;
     border: white thin solid;
 }
-
-
-/*.profPict {
-    background-image: url(TipoDeIncognito.png);
-    background-size: cover;
-    background-position: center;
-    padding: 16px;
-    width: 40px;
-    height: 40px;
-    float: left;
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border: white thin solid;
-}*/
 
 .notView {
     background-color: brown;

@@ -24,7 +24,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Chat</title>
-    <link rel="stylesheet" href="chat.css">
+    <link rel="stylesheet" href="main.css">
 
 </head>
 
