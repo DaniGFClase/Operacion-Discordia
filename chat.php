@@ -76,8 +76,8 @@ foreach($room as $ro){
             <input name = "avatar_chat" type="hidden" value = "'.$picture.'">
             <input name = "codRoom" type="hidden" value = "'.$ro["codRoom"].'">
             
-            <button type="submit" class="person2">
-                <img class="profPict" src="images/avatar/'.$picture.'"alt="image_user">
+            <button type="submit" class="person2" >
+                <img class="profPict"  src="images/avatar/'.$picture.'"alt="image_user">
                 <div class="friendName">'.$name.'</div>
             </button>
 
