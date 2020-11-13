@@ -38,9 +38,8 @@ select u.cod_user as codUser, nick, photo, count(*) as count, ur.cod_room as cod
     
     -- usuarios en una sala
     select count(*) as count from user_room
+    where cod_room like '1-18'
     group by cod_room;
-    
-      select * from user_room;
     
 
 -- Ver si la sala esta vista
