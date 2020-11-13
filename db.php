@@ -246,4 +246,26 @@ function create_group($myUser, $toUserGroup, $name_group,  $message){
 
 }
 
-create_group('1', 'dani toros', 'grupo caca23',  'asdf');
+function setNotView($codRoom, $codUser)
+{
+		
+	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
+	$db = new PDO($res[0], $res[1], $res[2]);
+
+	
+	$ins = "UPDATE user_room SET view='0' WHERE cod_room='$cod_room' and cod_user not like '$codUser' ";
+	
+	$result = $db->query($ins);
+}
+
+function setView($codRoom, $codUser)
+{
+		
+	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
+	$db = new PDO($res[0], $res[1], $res[2]);
+
+	
+	$ins = "UPDATE user_room SET view='1' WHERE cod_room='$codRoom' and cod_user like '$codUser' ";
+	
+	$result = $db->query($ins);
+}

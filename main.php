@@ -50,36 +50,27 @@
 
 
                 if ($ro['count'] == 1) {
+                    $picture = $ro["photo"];
+                    $name = $ro["nick"];
+                }else {
+                    $picture = $ro["img_room"];
+                    $name = $ro["codRoom"];
+                }
                     echo '
                     <form action="chat.php" class="chtBot" method = "POST">
 
-                        <input name = "name_chat" type="hidden" value = '.$ro["nick"].'>
-                        <input name = "avatar_chat" type="hidden" value = "'.$ro["photo"].'">
+                        <input name = "name_chat" type="hidden" value = '.$name.'>
+                        <input name = "avatar_chat" type="hidden" value = "'.$picture.'">
                         <input name = "codRoom" type="hidden" value = "'.$ro["codRoom"].'">
                         
                         <button type="submit" class="person">
-                            <img class="profPict" src="images/avatar/'.$ro["photo"].'"alt="image_user">
-                            <div class="friendName">'.$ro["nick"].'</div>
+                            <img class="profPict" src="images/avatar/'.$picture.'"alt="image_user">
+                            <div class="friendName">'.$name.'</div>
                         </button>
     
                     </form>
                     ';
-                }else {
-                    echo '
-                    <form action="chat.php" class="chtBot" method = "POST">
-
-                        <input name = "name_chat" type="hidden" value = '.$ro["codRoom"].'>
-                        <input name = "avatar_chat" type="hidden" value = '.$ro["img_room"].'>
-                        <input name = "codRoom" type="hidden" value = "'.$ro["codRoom"].'">
-                        <button type="submit" class="person">
-                            <img class="profPict" src="images/avatar/'.$ro["img_room"].'" alt="image_user">
-                            <div class="friendName">'.$ro["codRoom"].'</div>
-                        </button>
-    
-                    </form>
-                    ';
-                }
-
+                
 			}
 
 		}
