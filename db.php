@@ -132,19 +132,22 @@ function createTable ($userA, $userB){
 function load_room($cod){
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
-	$ins = "select u.cod_user as codUser, nick, photo, count(*) as count, ur.cod_room as codRoom, img_room from user as u
+	$ins = "select u.cod_user as codUser, nick, photo, count(*) as count, ur.cod_room as codRoom, img_room, max(date_message) as date_msg from user as u
 	join user_room as ur
 	on u.cod_user = ur.cod_user
     join room as r
     on r.cod_room = ur.cod_room
+    join message as m
+    on r.cod_room = m.cod_room
 	where ur.cod_room in
 	(select ur.cod_room from user as u
 	join user_room as ur
 	on u.cod_user = ur.cod_user
-	where u.cod_user like $cod
+	where u.cod_user like 1
 	group by ur.cod_room)
-	and u.cod_user not like $cod
-	group by ur.cod_room";
+	and u.cod_user not like 1
+	group by ur.cod_room
+    order by date_msg desc";
 	$resul = $db->query($ins);	
 	if (!$resul) {
 		return FALSE;
@@ -209,25 +212,19 @@ function create_group($myUser, $toUserGroup, $name_group,  $message){
 	}
 
 	
-
 	$ins = "INSERT INTO `room` (`cod_room`, `img_room`) VALUES ('$name_group', 'default_group.jpg')";
-	
 	$result = $db->query($ins);
 	
 
 	$ins = "INSERT INTO `user_room` (`cod_user`, `cod_room`, `view`) VALUES ('$myUser', '$name_group', '1')";
-	
 	$result = $db->query($ins);
 	
 	
-	foreach ($severalUser as $toUser ) {
-		
+	foreach ($severalUser as $toUser ) {	
 	$insCod = "select cod_user from user 
 	where nick like '$toUser'";
 	$resulCod = $db->query($insCod);
 	$CodResult = $resulCod->fetch();
-	
-	
 	$ins = "INSERT INTO `user_room` (`cod_user`, `cod_room`, `view`) VALUES ('$CodResult[0]', '$name_group', '0')";
 	
 	$result = $db->query($ins);
@@ -236,14 +233,29 @@ function create_group($myUser, $toUserGroup, $name_group,  $message){
 
 
 	$ins = "INSERT INTO `message` (`cod_message`, `cod_user`, `text_message`, `date_message`, `cod_room`) VALUES (NULL, '$myUser', '$message', current_timestamp(), '$name_group')";
-	
     $result = $db->query($ins);
 
 	header ('Location: main.php');
 	
-	
-	
+}
 
+function load_view($coduser, $codroom){
+	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
+	$db = new PDO($res[0], $res[1], $res[2]);
+	$ins = "select * from user_room
+	where cod_user like '$coduser' and cod_room like '$codroom';"
+	;
+	
+	$resul = $db->query($ins);	
+	if (!$resul) {
+		return FALSE;
+	}
+	if ($resul->rowCount() === 0) {    
+		return FALSE;
+	}
+	
+    $r = $resul->fetch();
+	return $r;	
 }
 
 function setNotView($codRoom, $codUser)
@@ -268,4 +280,5 @@ function setView($codRoom, $codUser)
 	$ins = "UPDATE user_room SET view='1' WHERE cod_room='$codRoom' and cod_user like '$codUser' ";
 	
 	$result = $db->query($ins);
+	
 }

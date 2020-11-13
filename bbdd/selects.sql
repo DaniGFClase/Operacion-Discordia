@@ -36,7 +36,10 @@ select u.cod_user as codUser, nick, photo, count(*) as count, ur.cod_room as cod
 	group by ur.cod_room
     order by date_msg desc;
     
+-- Ver si la sala esta vista
 
+select * from user_room
+where cod_user like '1' and cod_room like '1-17';
 
 select * from message
 where cod_room like '1-4';
