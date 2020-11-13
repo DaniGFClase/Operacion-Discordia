@@ -253,7 +253,7 @@ function setNotView($codRoom, $codUser)
 	$db = new PDO($res[0], $res[1], $res[2]);
 
 	
-	$ins = "UPDATE user_room SET view='0' WHERE cod_room='$cod_room' and cod_user not like '$codUser' ";
+	$ins = "UPDATE user_room SET view='0' WHERE cod_room='$codRoom' and cod_user not like '$codUser' ";
 	
 	$result = $db->query($ins);
 }
