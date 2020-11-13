@@ -57,11 +57,19 @@
                     $name = $ro["codRoom"];
                 }
 
-                
+                $view_MSG = load_view($_SESSION['user']['cod_user'], $ro["codRoom"] );
+                if($view_MSG===false){
+                    echo "<p class='error'>Error connecting to the database, or no room present</p>";
+                }else{
+                    if ($view_MSG['view'] == 0) {
+                        $view = "notView";
+                    }
+                }
+                        
 
 
                     echo '
-                    <form action="chat.php" class="chtBot" '.$view.'method = "POST">
+                    <form action="chat.php" class="chtBot '.$view.'" method = "POST">
 
                         <input name = "name_chat" type="hidden" value = '.$name.'>
                         <input name = "avatar_chat" type="hidden" value = "'.$picture.'">
