@@ -49,8 +49,9 @@
             foreach($room as $ro){	
                 $view = "";
 
+                $count = numberUserRoom($ro["codRoom"]);
 
-                if ($ro['count'] == 1) {
+                if ($count['count'] == 2) {
                     $picture = $ro["photo"];
                     $name = $ro["nick"];
                 }else {

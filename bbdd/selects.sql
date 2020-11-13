@@ -36,6 +36,12 @@ select u.cod_user as codUser, nick, photo, count(*) as count, ur.cod_room as cod
 	group by ur.cod_room
     order by date_msg desc;
     
+    -- usuarios en una sala
+    select count(*) as count from user_room
+    group by cod_room;
+    
+      select * from user_room;
+    
 
 -- Ver si la sala esta vista
 

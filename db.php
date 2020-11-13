@@ -258,6 +258,28 @@ function create_group($myUser, $toUserGroup, $name_group,  $message){
 	
 }
 
+function numberUserRoom($codroom)
+{
+	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
+	$db = new PDO($res[0], $res[1], $res[2]);
+	$ins = "
+	
+	select count(*) as count from user_room
+    where cod_room like '$codroom'
+    group by cod_room";
+	
+	$resul = $db->query($ins);	
+	if (!$resul) {
+		return FALSE;
+	}
+	if ($resul->rowCount() === 0) {    
+		return FALSE;
+	}
+	
+    $r = $resul->fetch();
+	return $r;	
+}
+
 function load_view($coduser, $codroom){
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
