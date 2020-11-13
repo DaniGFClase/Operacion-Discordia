@@ -114,8 +114,8 @@ Add friend
 <form action="#" class="newGro">
 New group
 </form>
-<form action="#" class="opt">
-Options
+<form action="profile.php" class="opt">
+Profile
 </form>
 
 </div>

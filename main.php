@@ -117,7 +117,7 @@
             New group
         </form>
         <form action="#" class="opt">
-            Options
+        Profile
         </form>
 
     </div>
