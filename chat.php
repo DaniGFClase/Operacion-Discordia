@@ -100,7 +100,12 @@ foreach($room as $ro){
 </div>
 
 <div class="data">
-<div class="usrName">Anakin</div>
+<?php 
+        $resul = load_name_user($_SESSION['user']['cod_user']);
+        $nick = $resul['nick'];
+        echo '<div class="usrName">'.$nick.'</div>';
+    ?>
+        
 
 <form action="#" class="addFri">
 Add friend
