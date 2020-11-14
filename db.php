@@ -262,9 +262,7 @@ function numberUserRoom($codroom)
 {
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
-	$ins = "
-	
-	select count(*) as count from user_room
+	$ins = "select count(*) as count from user_room
     where cod_room like '$codroom'
     group by cod_room";
 	
