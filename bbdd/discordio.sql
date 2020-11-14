@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 13-11-2020 a las 16:43:10
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.10
+-- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 14-11-2020 a las 19:17:01
+-- Versión del servidor: 10.4.10-MariaDB
+-- Versión de PHP: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,16 +25,45 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `friend`
+--
+
+DROP TABLE IF EXISTS `friend`;
+CREATE TABLE IF NOT EXISTS `friend` (
+  `userA` int(11) NOT NULL,
+  `userB` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  PRIMARY KEY (`userA`,`userB`),
+  KEY `userA` (`userA`),
+  KEY `userB` (`userB`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `friend`
+--
+
+INSERT INTO `friend` (`userA`, `userB`, `status`) VALUES
+(1, 3, 0),
+(1, 17, 1),
+(17, 1, 1),
+(17, 3, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `message`
 --
 
-CREATE TABLE `message` (
-  `cod_message` int(11) NOT NULL,
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE IF NOT EXISTS `message` (
+  `cod_message` int(11) NOT NULL AUTO_INCREMENT,
   `cod_user` int(11) NOT NULL,
   `text_message` varchar(250) NOT NULL,
   `date_message` datetime NOT NULL DEFAULT current_timestamp(),
-  `cod_room` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `cod_room` varchar(50) NOT NULL,
+  PRIMARY KEY (`cod_message`),
+  KEY `cod_room` (`cod_room`)
+) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `message`
@@ -54,36 +84,37 @@ INSERT INTO `message` (`cod_message`, `cod_user`, `text_message`, `date_message`
 (26, 17, 'prueba multi', '2020-11-08 13:43:50', '4-17'),
 (47, 1, 'prueba multiiii', '2020-11-08 13:47:46', '1-4'),
 (48, 1, 'prueba multiiii', '2020-11-08 13:47:46', '1-17'),
-(49, 1, 'asdf', '2020-11-11 18:08:59', '1-3'),
-(50, 1, 'asdf', '2020-11-11 18:09:03', '1-3'),
-(51, 1, 'tes', '2020-11-11 18:09:17', '1-3'),
-(52, 1, 'asdf', '2020-11-11 18:10:16', '1-3'),
-(53, 1, 'asdf', '2020-11-11 18:10:20', '1-3'),
-(54, 1, 'asdf', '2020-11-11 18:10:23', '1-3'),
-(55, 1, 'asdf', '2020-11-11 18:14:13', '1-3'),
-(56, 1, 'asdfasdfasdfasdf', '2020-11-11 18:51:39', '1-3'),
-(58, 1, 'eyy', '2020-11-11 18:52:25', '1-4'),
-(59, 1, 'asdf', '2020-11-11 19:02:55', '1-4'),
-(60, 1, 'jooo', '2020-11-11 19:05:11', '1-3'),
-(61, 1, 'ertgsgsd', '2020-11-11 19:07:36', 'GRUPO1'),
-(63, 1, 'multi', '2020-11-11 19:08:59', '1-4'),
-(64, 1, 'noooo\r\n', '2020-11-11 19:18:09', '1-3'),
-(66, 1, 'hola', '2020-11-11 19:27:42', '1-3'),
-(67, 1, 'hola', '2020-11-11 19:27:54', '1-3'),
-(69, 1, 'hola2', '2020-11-11 19:28:11', '1-3'),
-(70, 1, 'hola2', '2020-11-11 19:28:11', '1-4'),
-(71, 1, 'lo que tu digas bro', '2020-11-11 19:48:56', '1-3'),
-(72, 1, 'asdf', '2020-11-11 19:53:50', '1-3'),
-(73, 1, 'asdf', '2020-11-11 20:00:21', '1-3'),
-(74, 1, 'hola', '2020-11-11 20:32:56', 'grupo12'),
-(75, 1, 'hola', '2020-11-11 20:34:09', 'grupo123'),
-(76, 1, 'asdf', '2020-11-13 15:10:51', 'grupo caca23'),
-(77, 1, 'hola', '2020-11-13 15:10:57', '1-17'),
-(78, 1, 'hola', '2020-11-13 15:31:15', 'GRUPO1'),
-(79, 1, 'asdf', '2020-11-13 15:45:38', 'GRUPO1'),
-(80, 1, 'asdf', '2020-11-13 15:46:41', 'GRUPO1'),
-(81, 1, 'asdf', '2020-11-13 15:48:07', 'GRUPO1'),
-(82, 1, 'asdf', '2020-11-13 16:34:58', '1-17');
+(49, 1, 'asdfasdf test', '2020-11-11 15:17:49', '1-3'),
+(50, 1, ', ', '2020-11-11 15:28:57', '1-17'),
+(51, 1, ', asdfadsf', '2020-11-11 15:35:53', '1-18'),
+(52, 1, ', test', '2020-11-11 15:36:04', '1-18'),
+(53, 1, ', afafa', '2020-11-11 15:36:09', '1-18'),
+(54, 1, 'que pasa dani!!', '2020-11-11 15:37:09', '1-3'),
+(55, 1, 'que pasaaaaaa', '2020-11-11 15:37:27', '1-3'),
+(56, 1, 'que pasaaaaaa', '2020-11-11 15:37:29', '1-3'),
+(57, 1, 'que pasaaaaaa', '2020-11-11 15:37:31', '1-3'),
+(58, 1, 'que pasaaaaaa', '2020-11-11 15:38:21', '1-3'),
+(59, 1, 'toro', '2020-11-11 15:38:29', '1-4'),
+(60, 1, '', '2020-11-11 15:38:31', '1-4'),
+(61, 1, '', '2020-11-11 15:39:00', '1-4'),
+(62, 1, 'asdfasdf', '2020-11-11 15:39:44', 'GRUPO1'),
+(63, 1, 'asdfasdf', '2020-11-11 15:39:45', 'GRUPO1'),
+(64, 1, 'test', '2020-11-11 15:40:30', '1-17'),
+(65, 17, 'hola', '2020-11-11 15:40:48', '1-17'),
+(66, 1, 'asdfasdf', '2020-11-11 15:41:18', '1-17'),
+(67, 1, 'asdfasdf', '2020-11-11 15:41:19', '1-17'),
+(68, 1, 'asdfasdf', '2020-11-11 15:41:20', '1-17'),
+(69, 1, 'asdf', '2020-11-11 22:23:34', '1-3'),
+(70, 1, '', '2020-11-11 22:24:25', 'truÃ±o grupo'),
+(71, 1, 'asdf', '2020-11-11 22:24:58', 'truÃ±o grupo2'),
+(72, 1, 'asdf', '2020-11-11 22:25:52', 'no se'),
+(73, 1, 'asdf', '2020-11-11 22:27:50', 'nose'),
+(74, 1, 'asdf', '2020-11-11 22:38:46', 'nose2'),
+(75, 1, 'asdf', '2020-11-11 22:43:42', 'nose23'),
+(76, 1, 'asdf', '2020-11-11 22:45:09', 'noseasdf2'),
+(77, 1, 'asdf', '2020-11-11 22:46:01', 'nose2456'),
+(78, 1, 'asdf', '2020-11-11 22:47:19', '12345'),
+(79, 1, 'asdf', '2020-11-11 22:58:38', 'grupo caca23');
 
 -- --------------------------------------------------------
 
@@ -91,9 +122,12 @@ INSERT INTO `message` (`cod_message`, `cod_user`, `text_message`, `date_message`
 -- Estructura de tabla para la tabla `room`
 --
 
-CREATE TABLE `room` (
+DROP TABLE IF EXISTS `room`;
+CREATE TABLE IF NOT EXISTS `room` (
   `cod_room` varchar(50) NOT NULL,
-  `img_room` varchar(50) NOT NULL
+  `img_room` varchar(50) NOT NULL,
+  PRIMARY KEY (`cod_room`),
+  KEY `cod_room` (`cod_room`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -105,16 +139,28 @@ INSERT INTO `room` (`cod_room`, `img_room`) VALUES
 ('1-18', ''),
 ('1-3', ''),
 ('1-4', ''),
+('12345', 'default_group.jpg'),
+('1234s5', 'default_group.jpg'),
+('12sdf34s5', 'default_group.jpg'),
 ('3-17', ''),
 ('3-4', ''),
 ('4-17', ''),
+('grupo caca', 'default_group.jpg'),
+('grupo caca2', 'default_group.jpg'),
 ('grupo caca23', 'default_group.jpg'),
-('grupo nuevo', 'default_group.jpg'),
-('grupo nuevo2', 'default_group.jpg'),
 ('GRUPO1', 'group_default.jpg'),
-('grupo12', 'default_group.jpg'),
-('grupo123', 'default_group.jpg'),
-('grupo2', 'default_group.jpg');
+('no se', 'default_group.jpg'),
+('nose', 'default_group.jpg'),
+('nose2', 'default_group.jpg'),
+('nose23', 'default_group.jpg'),
+('nose2456', 'default_group.jpg'),
+('noseasdf2', 'default_group.jpg'),
+('sasdfsasdsss', 'default_group.jpg'),
+('sasdfssss', 'default_group.jpg'),
+('sss', 'default_group.jpg'),
+('ssss', 'default_group.jpg'),
+('truÃ±o grupo', 'default_group.jpg'),
+('truÃ±o grupo2', 'default_group.jpg');
 
 -- --------------------------------------------------------
 
@@ -122,8 +168,9 @@ INSERT INTO `room` (`cod_room`, `img_room`) VALUES
 -- Estructura de tabla para la tabla `user`
 --
 
-CREATE TABLE `user` (
-  `cod_user` int(11) NOT NULL,
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `cod_user` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   `surname` varchar(50) NOT NULL,
   `nick` varchar(20) NOT NULL,
@@ -131,8 +178,12 @@ CREATE TABLE `user` (
   `photo` varchar(300) NOT NULL,
   `password_hash` varchar(80) NOT NULL,
   `description` varchar(250) NOT NULL,
-  `gender` varchar(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `gender` varchar(6) NOT NULL,
+  PRIMARY KEY (`cod_user`),
+  UNIQUE KEY `nick` (`nick`),
+  UNIQUE KEY `mail` (`mail`),
+  KEY `cod_user` (`cod_user`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `user`
@@ -151,10 +202,14 @@ INSERT INTO `user` (`cod_user`, `name`, `surname`, `nick`, `mail`, `photo`, `pas
 -- Estructura de tabla para la tabla `user_room`
 --
 
-CREATE TABLE `user_room` (
+DROP TABLE IF EXISTS `user_room`;
+CREATE TABLE IF NOT EXISTS `user_room` (
   `cod_user` int(11) NOT NULL,
   `cod_room` varchar(50) NOT NULL,
-  `view` tinyint(1) NOT NULL
+  `view` tinyint(1) NOT NULL,
+  PRIMARY KEY (`cod_user`,`cod_room`),
+  KEY `cod_user` (`cod_user`),
+  KEY `cor_room` (`cod_room`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -162,86 +217,39 @@ CREATE TABLE `user_room` (
 --
 
 INSERT INTO `user_room` (`cod_user`, `cod_room`, `view`) VALUES
-(1, '1-17', 1),
+(1, '1-17', 0),
 (1, '1-18', 0),
 (1, '1-3', 0),
 (1, '1-4', 0),
-(1, 'grupo nuevo', 0),
-(1, 'grupo nuevo2', 0),
-(1, 'GRUPO1', 1),
-(1, 'grupo12', 0),
-(1, 'grupo123', 0),
+(1, 'grupo caca', 1),
+(1, 'grupo caca2', 1),
+(1, 'grupo caca23', 1),
+(1, 'GRUPO1', 0),
 (3, '1-3', 0),
-(3, '3-17', 0),
+(3, '3-17', 1),
 (3, '3-4', 0),
-(3, 'GRUPO1', 0),
-(3, 'grupo123', 0),
+(3, 'grupo caca2', 0),
+(3, 'grupo caca23', 0),
 (4, '1-4', 0),
 (4, '3-4', 0),
 (4, '4-17', 0),
+(4, 'grupo caca23', 0),
 (4, 'GRUPO1', 0),
 (17, '1-17', 0),
-(17, 'grupo nuevo', 0),
-(17, 'grupo nuevo2', 0),
 (17, 'GRUPO1', 0),
-(17, 'grupo12', 0),
-(17, 'grupo123', 0),
+(17, 'nose23', 0),
 (18, '1-18', 0);
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `message`
---
-ALTER TABLE `message`
-  ADD PRIMARY KEY (`cod_message`),
-  ADD KEY `cod_room` (`cod_room`);
-
---
--- Indices de la tabla `room`
---
-ALTER TABLE `room`
-  ADD PRIMARY KEY (`cod_room`),
-  ADD KEY `cod_room` (`cod_room`);
-
---
--- Indices de la tabla `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`cod_user`),
-  ADD UNIQUE KEY `nick` (`nick`),
-  ADD UNIQUE KEY `mail` (`mail`),
-  ADD KEY `cod_user` (`cod_user`);
-
---
--- Indices de la tabla `user_room`
---
-ALTER TABLE `user_room`
-  ADD PRIMARY KEY (`cod_user`,`cod_room`),
-  ADD KEY `cod_user` (`cod_user`),
-  ADD KEY `cor_room` (`cod_room`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `message`
---
-ALTER TABLE `message`
-  MODIFY `cod_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
-
---
--- AUTO_INCREMENT de la tabla `user`
---
-ALTER TABLE `user`
-  MODIFY `cod_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `friend`
+--
+ALTER TABLE `friend`
+  ADD CONSTRAINT `friend_ibfk_1` FOREIGN KEY (`userA`) REFERENCES `user` (`cod_user`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `friend_ibfk_2` FOREIGN KEY (`userB`) REFERENCES `user` (`cod_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `message`
