@@ -23,7 +23,7 @@ function load_config($name, $schema){
 function load_name_user($coduser){
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
-	$ins = "select nick from user
+	$ins = "select nick, photo from user
 	where cod_user like '$coduser'"
 	;
 	
@@ -167,6 +167,29 @@ function load_room($cod){
 	and u.cod_user not like '$cod'
 	group by ur.cod_room
     order by date_msg desc";
+	$resul = $db->query($ins);	
+	if (!$resul) {
+		return FALSE;
+	}
+	if ($resul->rowCount() === 0) {    
+		return FALSE;
+    }
+	//if there is one or more
+	return $resul;	
+}
+
+function load_friends($cod){
+	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
+	$db = new PDO($res[0], $res[1], $res[2]);
+	$ins = "select nick, photo from user as u
+    join friend as f
+    on u.cod_user = f.userB
+    where cod_user in 
+    (select userB from user as u
+    join friend as f
+    on u.cod_user = f.userA
+    where userA like '$cod')
+    group by cod_user";
 	$resul = $db->query($ins);	
 	if (!$resul) {
 		return FALSE;

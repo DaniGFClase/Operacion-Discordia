@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 14-11-2020 a las 19:17:01
+-- Tiempo de generación: 14-11-2020 a las 19:53:05
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.3.12
 
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `message` (
   `cod_room` varchar(50) NOT NULL,
   PRIMARY KEY (`cod_message`),
   KEY `cod_room` (`cod_room`)
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `message`
@@ -114,7 +114,11 @@ INSERT INTO `message` (`cod_message`, `cod_user`, `text_message`, `date_message`
 (76, 1, 'asdf', '2020-11-11 22:45:09', 'noseasdf2'),
 (77, 1, 'asdf', '2020-11-11 22:46:01', 'nose2456'),
 (78, 1, 'asdf', '2020-11-11 22:47:19', '12345'),
-(79, 1, 'asdf', '2020-11-11 22:58:38', 'grupo caca23');
+(79, 1, 'asdf', '2020-11-11 22:58:38', 'grupo caca23'),
+(80, 1, 'malvado soy', '2020-11-14 20:18:36', '1-3'),
+(81, 1, 'asdfasdf', '2020-11-14 20:18:45', '1-3'),
+(82, 3, 'safasdf', '2020-11-14 20:19:05', '1-3'),
+(83, 3, 'soy malvado', '2020-11-14 20:19:36', '1-3');
 
 -- --------------------------------------------------------
 
@@ -190,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`cod_user`, `name`, `surname`, `nick`, `mail`, `photo`, `password_hash`, `description`, `gender`) VALUES
-(1, '', '', 'adri', 'adri', 'default.png', '$2y$10$qfpYSsjvATEUv9nzxzdcZO3P.Z4SvNLxNR.N2UEIdLdvFr9kXdS6i', '', ''),
+(1, '', '', 'adri', 'adri', 'adri.jpg', '$2y$10$qfpYSsjvATEUv9nzxzdcZO3P.Z4SvNLxNR.N2UEIdLdvFr9kXdS6i', '', ''),
 (3, '', '', 'dani', 'dani', 'dani.jpg', '$2y$10$qfpYSsjvATEUv9nzxzdcZO3P.Z4SvNLxNR.N2UEIdLdvFr9kXdS6i', '', ''),
 (4, '', '', 'toros', 'toros', '', '1234', '', ''),
 (17, 'Ruba', 'Bum', 'Ruba', 'alÃ±skdjf', '', '$2y$10$3q1ZS03zXzHuPImB3lWrlOT1b1Y4mWJtR6soeLydpDgK7YXTfzW9e', '', 'female'),
@@ -219,13 +223,13 @@ CREATE TABLE IF NOT EXISTS `user_room` (
 INSERT INTO `user_room` (`cod_user`, `cod_room`, `view`) VALUES
 (1, '1-17', 0),
 (1, '1-18', 0),
-(1, '1-3', 0),
+(1, '1-3', 1),
 (1, '1-4', 0),
 (1, 'grupo caca', 1),
 (1, 'grupo caca2', 1),
 (1, 'grupo caca23', 1),
 (1, 'GRUPO1', 0),
-(3, '1-3', 0),
+(3, '1-3', 1),
 (3, '3-17', 1),
 (3, '3-4', 0),
 (3, 'grupo caca2', 0),
