@@ -45,6 +45,22 @@
 				return false;
 			}
 
+			function sendNewMessage() {
+				var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						document.getElementById("chat1").innerHTML = this.responseText;
+					}
+				};
+			
+                var num1 = document.getElementById("userTo").value;
+				var num2 = document.getElementById("textMessage").value;
+				xhttp.open("POST", "send_message_newMessage_AJAX.php", true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send("user=" + num1 + "&text=" + num2);
+				return false;
+			}
+			
 
             function showSB() {
                 
