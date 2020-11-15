@@ -30,22 +30,24 @@
 			}
 
             function sendMessage() {
-                
 				var xhttp = new XMLHttpRequest();
 					xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
-						document.getElementById("chat1").innerHTML =
-													this.responseText;
+						document.getElementById("chat1").innerHTML = this.responseText;
 					}
 				};
-				var textMessage = document.getElementById("textMessage").value;
-                var codRoom = document.getElementById("codRoomMessage").value;
+                var textMessage = document.getElementById("textMessage").value;
+                var codRoom = document.getElementById("codRoom").value;
+				
+               			
 				xhttp.open("POST", "send_message_AJAX.php", true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhttp.send("text=" + textMessage + "&codRoom=" + codRoom);
-				return false; 
+				return false;
 			}
 
+
+            
             function showSB() {
                 
 				var xhttp = new XMLHttpRequest();
