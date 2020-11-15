@@ -44,13 +44,21 @@
 		}
         ?>
 
-        <?php $codeRoom = $_POST['codRoom']; ?> 
-
+        <?php 
+        
+        $codeRoom = $_POST['codRoom']; 
+        $avatar_chat = $_POST['avatar_chat']; 
+        $name_chat = $_POST['name_chat']; 
+        
+        ?> 
+        
             </div>
 
             <form onsubmit = "return sendMessage();" class="chtBot">
 			    <input type="text" placeholder="Write here" id="textMessage" value="" class="msgBar">     
                 <input id="codRoomMessage" type="hidden" value = "<?php echo $codeRoom?>">
+                <input id="avatar_chat" type="hidden" value = "<?php echo $avatar_chat?>">
+                <input id="name_chat" type="hidden" value = "<?php echo $name_chat?>">
 			    <input type = "submit" class="sendBtn">
 		    </form>
 

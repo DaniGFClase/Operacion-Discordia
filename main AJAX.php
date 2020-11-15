@@ -33,7 +33,11 @@
 				var xhttp = new XMLHttpRequest();
 					xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
-						document.getElementById("chat1").innerHTML = this.responseText;
+						showContacts();
+						var var1 = document.getElementById("codRoomMessage").value;
+						var var2 = document.getElementById("avatar_chat").value;
+						var var3 = document.getElementById("name_chat").value;
+						loadChat(var1, var2, var3);
 					}
 				};
 			
@@ -51,6 +55,7 @@
 					xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
 						document.getElementById("chat1").innerHTML = this.responseText;
+						showContacts();
 					}
 				};
 			
