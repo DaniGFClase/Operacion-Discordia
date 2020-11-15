@@ -19,8 +19,9 @@
                 var xhttp = new XMLHttpRequest();
 					xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
-						document.getElementById("chat1").innerHTML =
-													this.responseText;
+						document.getElementById("chat1").innerHTML = this.responseText;
+						var myDiv = document.getElementById("textChat");
+						myDiv.scrollTop = myDiv.scrollHeight;
 					}
 				};
 				xhttp.open("POST", "chat_AJAX.php", true);

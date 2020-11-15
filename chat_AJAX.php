@@ -16,7 +16,7 @@
             </div>
 
 
-            <div class="text">
+            <div class="text" id="textChat">
 
             <?php
             // select u.cod_user, nick, photo, count(*), ur.cod_room
