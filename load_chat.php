@@ -1,5 +1,6 @@
-<?php
 
+<?php
+/*
 
 	require 'sessions.php';
 	require_once 'db.php';
@@ -15,8 +16,6 @@
     }
 
   
-
-
 $room = load_chat($_POST['codRoom']);
 if($room===false){
    echo "";
@@ -58,4 +57,6 @@ echo '
 </div>
 
 ';
+*/
+
 ?>

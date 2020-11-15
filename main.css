@@ -148,10 +148,6 @@ body {
     justify-content: center;
 }
 
-#searchB {
-    display: none;
-}
-
 .searchBar {
     border: 1px solid black;
     border-radius: 2.5em;
