@@ -36,16 +36,7 @@
 						document.getElementById("chat1").innerHTML = this.responseText;
 					}
 				};
-				/*
-				var textMessage = document.getElementById("textMessage").value;
-                var codRoom = document.getElementById("codRoom").value;
-				
-               			
-				xhttp.open("POST", "send_message_AJAX.php", true);
-				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				xhttp.send("text=" + textMessage + "&codRoom=" + codRoom);
-				return false;
-				 */
+			
                 var num1 = document.getElementById("codRoomMessage").value;
 				var num2 = document.getElementById("textMessage").value;
 				xhttp.open("POST", "send_message_AJAX.php", true);
