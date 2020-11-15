@@ -44,11 +44,13 @@
 		}
         ?>
 
+        <?php $codeRoom = $_POST['codRoom']; ?> 
+
             </div>
 
             <form onsubmit = "return sendMessage();" class="chtBot">
 			    <input type="text" placeholder="Write here" id="textMessage" value="" class="msgBar">     
-                <input id="textMessage" type="hidden" value = "<?php echo $_POST['codRoom']?>">
+                <input id="codRoomMessage" type="hidden" value = "<?php echo $codeRoom?>">
 			    <input type = "submit" class="sendBtn">
 		    </form>
 

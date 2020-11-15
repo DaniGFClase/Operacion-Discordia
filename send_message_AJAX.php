@@ -11,5 +11,6 @@ check_session();
             setNotView($_POST['codRoom'], $_SESSION['user']['cod_user']);
         }
     }else{
-        echo "asdf";
+        echo "Error";
     }
+
