@@ -75,7 +75,7 @@ function register_user($name, $surname, $nick, $email, $password, $gender){
 
 		$ins = "INSERT INTO `user` 
 		(`cod_user`, `name`, `surname`, `nick`, `mail`, `photo`, `password_hash`, `description`, `gender`) VALUES 
-		(NULL, '$name', '$surname', '$nick', '$email', '', '$password_hash', '', '$gender')";
+		(NULL, '$name', '$surname', '$nick', '$email', 'default.png', '$password_hash', '', '$gender')";
 
 		$resul = $db->query($ins);
 		
