@@ -274,7 +274,24 @@ body {
 }
 
 .notView {
-    background-color: brown;
+    animation-name: example;
+    animation-duration: 0.25s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes example {
+    0% {
+        background-color: #41ff00;
+    }
+    25% {
+        background-color: #00e4ff;
+    }
+    50% {
+        background-color: #fc466b;
+    }
+    100% {
+        background-color: #eaff00;
+    }
 }
 
 .container {
