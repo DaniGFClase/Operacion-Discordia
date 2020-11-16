@@ -59,7 +59,7 @@ select u.cod_user as codUser, nick, photo, cod_room as codRoom, text_message, da
     
     
     -- si son amigos dos usuarios (no se sabe el orden) se crea 1-7 y el 17-1
-    select nick, photo from user as u
+    select nick, photo, status from user as u
     join friend as f
     on u.cod_user = f.userB
     where cod_user in 
