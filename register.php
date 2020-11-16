@@ -3,9 +3,7 @@ require_once 'db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-
 	$resul = register_user($_POST['name'], $_POST['surname'], $_POST['nick'], $_POST['email'], $_POST['password'], $_POST['gender']);
-	
 	
 	if ($resul) {
 		header("Location: login.php");
@@ -13,8 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		echo "error";
 	}
 	
-
-
 }
 
 ?>
