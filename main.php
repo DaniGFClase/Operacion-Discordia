@@ -120,7 +120,11 @@
 
 <body>
     <div class="pantalla">
-        <p id="nameMail"><a href="main.php">DISCORDIA</a></p>
+		<p id="nameMail"><a href="main.php">DISCORDIA</a></p>
+		
+		<form action="logout.php">
+			<button type="submit" class="logout">Log out</button>
+		</form>
 
 
 
