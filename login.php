@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="password" placeholder="Enter Password" name="password" required>
 
                 <button type="submit">Login</button>
-                <button type="submit" class="singIn" onclick="window.location.href='register.php';">Sing in</button>
+                <button class="singIn" onclick="window.location.href='register.php';">Sing in</button>
 
                 <span class="password">
 					Forgot <a href="#">password?</a>
