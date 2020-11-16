@@ -14,6 +14,14 @@ body {
     /*  border: magenta dotted;*/
 }
 
+.logout {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: red;
+    color: white;
+}
+
 .leftSide {
     position: relative;
     float: left;
