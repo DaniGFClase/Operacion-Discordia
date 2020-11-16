@@ -6,7 +6,7 @@
 
         $room = load_friends($_SESSION['user']['cod_user']);
         if ($room === false) {
-            echo "<p class='error'>Error connecting to the database, or no room present</p>";
+            echo "<p class='error'>You have no friends and should be sad haha</p>";
         } else {
             foreach($room as $ro){	
                

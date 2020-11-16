@@ -42,7 +42,7 @@ function load_name_user($coduser){
 function check_user($nick, $password){
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
-	$ins = "select cod_user from user where (name = '$nick' or mail ='$nick')";
+	$ins = "select cod_user from user where (nick = '$nick' or mail ='$nick')";
 	
 	
 	$resul = $db->query($ins);
@@ -113,8 +113,8 @@ function send_Message($myUser, $toUser, $message){
 
     if (!$r) {
 		createTable ($myUser, $CodResult[0]);
-		
-    }
+	}
+	
 
     $cod_room = "";
     foreach($result as $re){
@@ -125,13 +125,13 @@ function send_Message($myUser, $toUser, $message){
 		createTable($myUser, $CodResult[0]);
        }
 	}
-	
-	
 
-    $ins = "INSERT INTO `message` (`cod_message`, `cod_user`, `text_message`, `date_message`, `cod_room`) VALUES (NULL, '$myUser', '$message', current_timestamp(), '$cod_room')";
+	$ins = "INSERT INTO `message` (`cod_message`, `cod_user`, `text_message`, `date_message`, `cod_room`) VALUES (NULL, '$myUser', '$message', current_timestamp(), '$cod_room')";
 	
-	$result = $db->query($ins);
 	
+	
+	$insertMessage = $db->query($ins);
+
 	}
 
 	
@@ -140,12 +140,24 @@ function send_Message($myUser, $toUser, $message){
 
 function createTable ($userA, $userB){
     $res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
-    $db = new PDO($res[0], $res[1], $res[2]);
+	$db = new PDO($res[0], $res[1], $res[2]);
+	
+	$userFirst ="";
+	$userSecond ="";
+
+
+	if ($userA > $userB) {
+		$userFirst = $userB;
+		$userSecond = $userA;
+	}else {
+		$userFirst = $userA;
+		$userSecond = $userB;
+	}
     
-    $ins = " INSERT INTO `room` (`cod_room`, `img_room`) VALUES ('$userA-$userB', '')"; 
+    $ins = " INSERT INTO `room` (`cod_room`, `img_room`) VALUES ('$userFirst-$userSecond', '')"; 
     $resul = $db->query($ins);
 
-    $ins = " INSERT INTO `user_room` (`cod_user`, `cod_room`, `view`) VALUES ('$userA', '$userA-$userB', '1'), ('$userB', '$userA-$userB', '0')"; 
+    $ins = " INSERT INTO `user_room` (`cod_user`, `cod_room`, `view`) VALUES ('$userFirst', '$userFirst-$userSecond', '1'), ('$userSecond', '$userFirst-$userSecond', '0')"; 
     $resul = $db->query($ins);
 }
 

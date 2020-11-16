@@ -10,7 +10,7 @@ check_session();
 
         $room = load_room($_SESSION['user']['cod_user']);
         if ($room === false) {
-            echo "<p class='error'>Error connecting to the database, or no room present</p>";
+            echo "<p class='error'>You have no chats :(</p>";
         } else {
             foreach($room as $ro){	
                 $view = "";
