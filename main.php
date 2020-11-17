@@ -169,7 +169,7 @@
         <form action="#" class="newGro">
             New group
         </form>
-        <form action="#" class="opt">
+        <form action="profile.php" class="opt">
         Profile
         </form>
 

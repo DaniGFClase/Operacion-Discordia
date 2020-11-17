@@ -8,9 +8,8 @@ form {
 }
 
 input[type=text],
-input[type=password],
 select[name=gender],
-textarea[name=textArea] {
+textarea[name=description] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -18,6 +17,13 @@ textarea[name=textArea] {
     border: 1px solid #ccc;
     box-sizing: border-box;
     resize: none;
+}
+
+.selPhot {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    background-color: tomato;
 }
 
 button {
