@@ -361,10 +361,11 @@ function setView($codRoom, $codUser)
 function updateProf($name, $surname, $description, $photo){
 	$myUser = $_SESSION['user']['cod_user'];
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
-	$db = new PDO($res[0], $res[1], $res[2]);
-	$ins = "UPDATE `user` SET `name`=$name,`surname`=$surname, `photo`=$photo, `description`=$description 
-	WHERE cod_user like '$myUser'";
+	
 
+	$db = new PDO($res[0], $res[1], $res[2]);
+	$ins = "UPDATE `user` SET `name`='$name',`surname`='$surname', `photo`='$photo', `description`='$description'
+	WHERE cod_user like'$myUser'"; 
 
 	
 	$resul = $db->query($ins);	
