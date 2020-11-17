@@ -1,6 +1,6 @@
 <?php 
-	require 'sessions.php';
-	require_once 'db.php';
+	require '../sessions.php';
+	require_once '../db.php';
 	check_session();
 
 

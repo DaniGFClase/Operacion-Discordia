@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Main</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/main.css">
     <script>
 
 			function loadChat(codRoom, avatar_chat, name_chat) {
@@ -24,7 +24,7 @@
 						myDiv.scrollTop = myDiv.scrollHeight;
 					}
 				};
-				xhttp.open("POST", "chat_AJAX.php", true);
+				xhttp.open("POST", "pages/chat_AJAX.php", true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhttp.send("codRoom=" + codRoom + "&avatar_chat=" + avatar_chat + "&name_chat=" + name_chat);
 				return false;
@@ -44,7 +44,7 @@
 			
                 var num1 = document.getElementById("codRoomMessage").value;
 				var num2 = document.getElementById("textMessage").value;
-				xhttp.open("POST", "send_message_AJAX.php", true);
+				xhttp.open("POST", "pages/send_message_AJAX.php", true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhttp.send("codRoom=" + num1 + "&text=" + num2);
 				return false;
@@ -62,7 +62,7 @@
 			
                 var num1 = document.getElementById("userTo").value;
 				var num2 = document.getElementById("textMessage").value;
-				xhttp.open("POST", "send_message_newMessage_AJAX.php", true);
+				xhttp.open("POST", "pages/send_message_newMessage_AJAX.php", true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhttp.send("user=" + num1 + "&text=" + num2);
 				return false;
@@ -79,7 +79,7 @@
 					}
 				};
 				
-				xhttp.open("POST", "search_bar.php", true);
+				xhttp.open("POST", "pages/search_bar.php", true);
                 xhttp.send();
 				return false;
             }
@@ -93,7 +93,7 @@
 					}
 				};
 				
-				xhttp.open("POST", "contacts.php", true);
+				xhttp.open("POST", "pages/contacts.php", true);
                 xhttp.send();
 				return false;
             }
@@ -107,7 +107,7 @@
 					}
 				};
 				
-				xhttp.open("POST", "friend.php", true);
+				xhttp.open("POST", "pages/friend.php", true);
                 xhttp.send();
 				return false;
             }

@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
 	<title>Create profile</title>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="register.css">
+	<link rel="stylesheet" href="css/register.css">
 </head>
 
 <body>

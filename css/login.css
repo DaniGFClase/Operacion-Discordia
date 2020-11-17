@@ -67,7 +67,7 @@ span.password {
 }
 
 .image {
-    background-image: url(logoDiscordia.png);
+    background-image: url(../images/logoDiscordia.png);
     background-size: cover;
     background-position: center;
     padding: 16px;

@@ -2,8 +2,8 @@
 <?php
 
 
-require 'sessions.php';
-require_once 'db.php';
+require '../sessions.php';
+require_once '../db.php';
 check_session();
 
     // select u.cod_user, nick, photo, count(*), ur.cod_room
