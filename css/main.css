@@ -9,6 +9,14 @@ body {
     border-bottom: -5em;
 }
 
+a:link,
+a:visited,
+a:hover,
+a:active {
+    color: white;
+    text-decoration: none;
+}
+
 .pantalla {
     height: 100%;
     /*  border: magenta dotted;*/
@@ -166,6 +174,10 @@ body {
     background-color: rgb(101, 101, 102);
 }
 
+#textMessage {
+    resize: none;
+}
+
 .userSendTo {
     border-top-right-radius: 2.5em;
     border-top-left-radius: 2.5em;
@@ -256,9 +268,6 @@ body {
 .sendBtn:hover {
     background-color: rgb(125, 125, 128);
 }
-
-
-/* Gilipollez exclusiva de aqui */
 
 .profPict {
     background-size: cover;

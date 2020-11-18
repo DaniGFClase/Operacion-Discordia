@@ -13,7 +13,7 @@
 <head>
     <title>Create profile</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="css/profile.css">
 
 </head>
 
