@@ -34,14 +34,22 @@
 
             <div class="container">
 
-                <label for="name"><b>New name</b></label>
+                <label for="name"><b>Name</b></label>
                 <div class="name"><?php echo $currentData['name']?></div>
             
-                <label for="surname"><b>New surname</b></label>
+                <label for="surname"><b>Surname</b></label>
                 <div  class="surname"><?php echo $currentData['surname']?></div>
 
+                <label for="surname"><b>Nick</b></label>
+                <div  class="surname"><?php echo $currentData['nick']?></div>
 
-                <label for="description"><b>Description about yourself(250 characters)</b></label>
+                <label for="surname"><b>Email</b></label>
+                <div  class="surname"><?php echo $currentData['mail']?></div>
+
+                <label for="surname"><b>Gender</b></label>
+                <div  class="surname"><?php echo $currentData['gender']?></div>
+
+                <label for="description"><b>Description</b></label>
                 <div class="description"><?php echo $currentData['description']?></div>
 
             

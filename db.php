@@ -23,7 +23,7 @@ function load_config($name, $schema){
 function load_name_user($coduser){
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
-	$ins = "SELECT `name`, `surname`, `nick`, `mail`, `photo`, `description`, `gender` FROM `user` 
+	$ins = "SELECT * FROM `user` 
 	WHERE cod_user like '$coduser'";
 	
 	$resul = $db->query($ins);	

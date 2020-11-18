@@ -9,7 +9,7 @@
     updateProf($_POST['name'], $_POST['surname'], $_POST['description'], $_POST['nick'].".jpg");
 
     
-   // header ('Location: ../main.php');
+    header ('Location: ../main.php');
  
 ?>
 
