@@ -1,26 +1,12 @@
 <?php 
-	require 'sessions.php';
-	require_once 'db.php';
-    check_session();
+	require '../sessions.php';
+	require_once '../db.php';
+	check_session();
    
-?>
 
-
-
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Create profile</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/profile.css">
-
-</head>
-
-<body>
-    <?php 
-        $currentData = load_name_user($_SESSION['user']['cod_user']);
+    $currentData = load_name_user($_SESSION['user']['cod_user']);
     ?>
+    
 
     <form action="pages/uploadProfile.php" method="post" enctype="multipart/form-data">
       
