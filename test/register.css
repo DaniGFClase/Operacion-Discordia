@@ -3,29 +3,19 @@ body {
     color: white;
 }
 
-form,
-.mainD {
+form {
     background-color: rgb(59, 62, 68);
 }
 
 input[type=text],
-select[name=gender],
-textarea[name=description],
-.container>div {
+input[type=password],
+select[name=gender] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    resize: none;
-}
-
-.selPhot {
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    background-color: tomato;
 }
 
 button {
@@ -50,18 +40,4 @@ button:hover {
 span.psw {
     float: right;
     padding-top: 16px;
-}
-
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-}
-
-img.profPict {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border: white thin solid;
 }
