@@ -12,32 +12,25 @@
 }
 
 .person {
-    border: red 1px solid;
     margin-left: 5px;
     margin-right: 5px;
 }
 
 .person2 {
     display: flex;
-    border: blue 1px solid;
 }
 
 .rest {
     margin-left: auto;
-    border: solid 1px yellow;
     display: flex;
     flex-direction: column;
 }
 
-.acDecBut {
-    border: green 1px solid;
-}
-
-.ac {
+.ac,
+.dec {
     width: 45%;
 }
 
 .dec {
-    width: 45%;
     margin-left: auto;
 }
