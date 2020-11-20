@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/chat.css">
 	<link rel="stylesheet" href="css/social.css">
-	<!--	<link rel="stylesheet" href="css/profile.css"> -->
+	<link rel="stylesheet" href="css/profile.css"> 
 
     <script>
 
@@ -180,15 +180,17 @@
         <div class="usrName">'.$resul['nick'].'</div>';
     ?>
     
-        <form action="#" class="addFri">
-            Add friend
-        </form>
+		<button class="usrSpaBtn" onclick="showModifyProfile()">
+			Add friend
+        </button>
 
-        <form action="#" class="newGro">
+        <button class="usrSpaBtn" onclick="showModifyProfile()">
             New group
-		</form>
+		</button>
 		
-		<button class="tab" onclick="showModifyProfile()">Profile</button>
+		<button class="usrSpaBtn" onclick="showModifyProfile()">
+			Profile
+		</button>
               
       
 		<!-- showModifyProfile-->

@@ -103,13 +103,13 @@
     width: 100%;
 }
 
-.data form {
+.usrSpaBtn {
     cursor: pointer;
     background-color: #5c5a81;
     border: rgb(151, 156, 168) thin solid;
 }
 
-.data form:hover {
+.usrSpaBtn:hover {
     color: black;
     background-color: white;
 }
