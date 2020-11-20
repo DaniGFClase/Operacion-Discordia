@@ -13,7 +13,8 @@
     <title>Main</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/chat.css">
-    <link rel="stylesheet" href="css/social.css">
+	<link rel="stylesheet" href="css/social.css">
+	<link rel="stylesheet" href="css/profile.css">
     <script>
 
 			function loadChat(codRoom, avatar_chat, name_chat) {
