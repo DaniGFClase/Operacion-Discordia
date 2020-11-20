@@ -37,8 +37,3 @@
         </div>
 
     </form>
-
-
-</body>
-
-</html>
