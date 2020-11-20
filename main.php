@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/chat.css">
 	<link rel="stylesheet" href="css/social.css">
-	<link rel="stylesheet" href="css/profile.css">
+	<!--	<link rel="stylesheet" href="css/profile.css"> -->
+
     <script>
 
 			function loadChat(codRoom, avatar_chat, name_chat) {
@@ -113,6 +114,20 @@
 				xhttp.open("POST", "pages/friend.php", true);
                 xhttp.send();
 				return false;
+			}
+			
+			function showModifyProfile() {
+                
+				var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						document.getElementById("chat1").innerHTML = this.responseText;                         
+					}
+				};
+				
+				xhttp.open("POST", "pages/profile.php", true);
+                xhttp.send();
+				return false;
             }
 
             showContacts();
@@ -171,11 +186,13 @@
 
         <form action="#" class="newGro">
             New group
-        </form>
-        <form action="profile.php" class="opt">
-        Profile
-        </form>
-
+		</form>
+		
+		<button class="tab" onclick="showModifyProfile()">Profile</button>
+              
+      
+		<!-- showModifyProfile-->
+      
     </div>
 
 
