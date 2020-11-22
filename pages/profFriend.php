@@ -12,25 +12,19 @@
     ?>
 
 
-    <div class="mainD">
-
-
         <div class="imgcontainer">
                 <?php 
                 echo '<img src="images/avatar/'.$currentData['photo'].'" class="profPict" alt="Hello there">';
                 ?>
-            </div>
+        </div>
 
 
-            <div class="container">
+      <div class="container">
 
-                <label for="name"><b>Name</b></label>
-                <div class="name"><?php echo $currentData['name']?></div>
-            
-                <label for="surname"><b>Surname</b></label>
-                <div  class="surname"><?php echo $currentData['surname']?></div>
+                <label for="name"><b>Name and surname</b></label>
+                <div class="name"><?php echo $currentData['name']." ".$currentData['surname']?></div>
 
-                <label for="surname"><b>Nick</b></label>
+                <label for="nick"><b>Nick</b></label>
                 <div  class="surname"><?php echo $currentData['nick']?></div>
 
                 <label for="surname"><b>Email</b></label>
@@ -43,6 +37,5 @@
                 <div class="description"><?php echo $currentData['description']?></div>
 
             
-            </div>
+        </div>
 
-    </div>

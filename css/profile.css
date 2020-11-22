@@ -11,13 +11,6 @@
     resize: none;
 }
 
-.selPhot {
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    background-color: tomato;
-}
-
 .container>button {
     background-color: #5c5a81;
     color: white;
