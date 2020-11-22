@@ -88,6 +88,20 @@
 				return false;
             }
 
+			function showSBF() {
+                
+				var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						document.getElementById("chat1").innerHTML = this.responseText;                         
+					}
+				};
+				
+				xhttp.open("POST", "pages/search_bar.php", true);
+                xhttp.send();
+				return false;
+            }
+
             function showContacts() {
                 
 				var xhttp = new XMLHttpRequest();
@@ -180,7 +194,7 @@
         <div class="usrName">'.$resul['nick'].'</div>';
     ?>
     
-		<button class="usrSpaBtn" onclick="showModifyProfile()">
+		<button class="usrSpaBtn" onclick="showSBF()">
 			Add friend
         </button>
 
