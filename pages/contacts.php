@@ -15,9 +15,7 @@ check_session();
             foreach($room as $ro){	
                 $view = "";
 
-                $count = numberUserRoom($ro["codRoom"]);
-
-                if ($count['count'] == 2) {
+                if ($ro["typeOfRoom"] == "chat") {
                     $picture = $ro["photo"];
                     $name = $ro["nick"];
                 }else {
@@ -34,6 +32,7 @@ check_session();
                     }
                 }
 
+            
                 $codRoomString = '\''.$ro["codRoom"].'\'';
                 $pictureString = '\''.$picture.'\'';
                 $nameString = '\''.$name.'\'';
@@ -42,6 +41,7 @@ check_session();
 
                     <div onclick="loadChat('.$codRoomString.','.$pictureString.', '.$nameString.')" class="person '.$view.'">
 
+                    
                         <button class="person2">
                             <img class="profPict" src="images/avatar/'.$picture.'"alt="image_user">
                             <div class="friendName">'.$name.'</div>

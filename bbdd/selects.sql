@@ -19,7 +19,7 @@ on u.cod_user = ur.cod_user
 where ur.cod_room like '1-18' and u.cod_user not like '1';
 
 -- Usuario contrario para cada sala
-select u.cod_user as codUser, nick, photo, count(*) as count, ur.cod_room as codRoom, img_room, max(date_message) as date_msg from user as u
+select u.cod_user as codUser, nick, photo, count(*) as count, ur.cod_room as codRoom, img_room, max(date_message) as date_msg, typeOfRoom from user as u
 	join user_room as ur
 	on u.cod_user = ur.cod_user
     join room as r
@@ -36,12 +36,7 @@ select u.cod_user as codUser, nick, photo, count(*) as count, ur.cod_room as cod
 	group by ur.cod_room
     order by date_msg desc;
     
-    -- usuarios en una sala
-    select count(*) as count from user_room
-    where cod_room like '1-18'
-    group by cod_room;
     
-
 -- Ver si la sala esta vista
 
 select * from user_room
