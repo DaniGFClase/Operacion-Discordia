@@ -59,9 +59,13 @@
                 <input id="codRoomMessage" type="hidden" value = "<?php echo $codeRoom?>">
                 <input id="avatar_chat" type="hidden" value = "<?php echo $avatar_chat?>">
                 <input id="name_chat" type="hidden" value = "<?php echo $name_chat?>">
+
 			    <input type = "submit" class="sendBtn">
                 <label for="file-upload" class="sendBtn"><b>Choose file</b></label>
                 <input id="file-upload" type="file" name="myfile" value="<?php echo $currentData['photo'] ?>">
+
+			    <input type = "submit" class="sendBtn" value="Send">
+
 		    </form>
 
                    

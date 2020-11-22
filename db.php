@@ -360,3 +360,80 @@ function updateProf($name, $surname, $description, $photo){
     $r = $resul->fetch();
 	return $r;	
 }
+
+function acceptFriend($myUser, $otherUser){
+
+	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
+	
+	$db = new PDO($res[0], $res[1], $res[2]);
+	$ins = "UPDATE `friend` SET `status`='1'
+	WHERE (userA like'$myUser' and userB like '$otherUser') or (userB like'$myUser' and userA like '$otherUser')"; 
+
+	
+	$resul = $db->query($ins);	
+	if (!$resul) {
+		return FALSE;
+	}
+	if ($resul->rowCount() === 0) {    
+		return FALSE;
+	}
+	
+    $r = $resul->fetch();
+	return $r;	
+}
+
+function denyFriend($myUser, $otherUser){
+
+	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
+	
+	$db = new PDO($res[0], $res[1], $res[2]);
+	$ins = "DELETE from `friend`
+	WHERE (userA like'$myUser' and userB like '$otherUser') or (userB like'$myUser' and userA like '$otherUser')"; 
+
+	$resul = $db->query($ins);	
+	if (!$resul) {
+		return FALSE;
+	}
+	if ($resul->rowCount() === 0) {    
+		return FALSE;
+	}
+	
+    $r = $resul->fetch();
+	return $r;	
+}
+
+
+function sendFriendship($myUser, $NameOtherUser){
+
+	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
+	$db = new PDO($res[0], $res[1], $res[2]);
+
+
+	$ins = "select cod_user from user
+	where nick like '$NameOtherUser'";
+	
+    $resul = $db->query($ins);
+	$r = $resul->fetch();
+	$otherUser = $r[0];
+	
+	$varMin = "";
+	$varMax = "";
+
+	if ($myUser > $otherUser ) {
+		$varMax = $myUser;
+		$varMin = $otherUser;
+	}else {
+		$varMax = $otherUser;
+		$varMin = $myUser;
+	}
+
+
+
+    $ins = "INSERT INTO `friend` (`userA`, `userB`, `status`, `code`) 
+	VALUES ('varMin', 'varMax', '1', 'varMin-varMax'), ('varMax', 'varMin', '0', 'varMin-varMax')";
+	
+    $result = $db->query($ins);
+}
+
+
+
