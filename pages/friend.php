@@ -12,10 +12,11 @@
                
                     $picture = $ro["photo"];
                     $name = $ro["nick"];
+                    $codUser = $ro["cod_user"];
                 
                     echo '
 
-                    <div class="person" method = "POST">
+                    <div onclick="loadFriendProfile('.$codUser.')" class="person" method = "POST">
 
             
                         <input name = "name_chat" type="hidden" value = '.$name.'>
@@ -27,6 +28,29 @@
     
                     </div>
                     ';
+
+                    
+
+
+                    
+            
+            /*
+
+             <div onclick="loadChat('.$codRoomString.','.$pictureString.', '.$nameString.')" class="person '.$view.'">
+
+            <button class="person2">
+                <img class="profPict" src="images/avatar/'.$picture.'"alt="image_user">
+                <div class="friendName">'.$name.'</div>
+            </button>
+
+        </div>
+            
+            */
+           
+            
+
+
+
                 
             }
 
