@@ -121,7 +121,7 @@ function send_Message($myUser, $toUser, $message){
        if ($re['users']==($myUser.",".$CodResult[0]) || $re['users']==($CodResult[0].",".$myUser)) {
         $cod_room = $re['cod_room'];
        }else {
-		createTable($myUser, $CodResult[0]);
+		$cod_room = createTable($myUser, $CodResult[0]);
        }
 	}
 
@@ -132,7 +132,6 @@ function send_Message($myUser, $toUser, $message){
 	$insertMessage = $db->query($ins);
 
 	}
-
 	
 
 }
@@ -153,11 +152,12 @@ function createTable ($userA, $userB){
 		$userSecond = $userB;
 	}
     
-    $ins = " INSERT INTO `room` (`cod_room`, `img_room`) VALUES ('$userFirst-$userSecond', '')"; 
+    $ins = " INSERT INTO `room` (`cod_room`, `img_room`, `typeOfRoom`) VALUES ('$userFirst-$userSecond', '', 'chat')"; 
     $resul = $db->query($ins);
 
     $ins = " INSERT INTO `user_room` (`cod_user`, `cod_room`, `view`) VALUES ('$userFirst', '$userFirst-$userSecond', '1'), ('$userSecond', '$userFirst-$userSecond', '0')"; 
-    $resul = $db->query($ins);
+	$resul = $db->query($ins);
+	return $userFirst.'-'.$userSecond;
 }
 
 
@@ -267,7 +267,7 @@ function create_group($myUser, $toUserGroup, $name_group,  $message){
 	}
 
 	
-	$ins = "INSERT INTO `room` (`cod_room`, `img_room`) VALUES ('$name_group', 'default_group.jpg')";
+	$ins = "INSERT INTO `room` (`cod_room`, `img_room`, `typeOfRoom`) VALUES ('$name_group', 'default_group.jpg', 'group')";
 	$result = $db->query($ins);
 	
 
