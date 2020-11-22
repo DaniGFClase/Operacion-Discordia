@@ -29,8 +29,9 @@
             <label for="description"><b>Description about yourself(250 characters)</b></label>
             <textarea name="description"><?php echo $currentData['description']?></textarea>
 
-            <label for="photo"><b>Choose avatar photo</b></label>
-            <input type="file" name="myfile" value="<?php echo $currentData['photo'] ?>">
+
+            <label for="file-upload" class="uploadProfPic"><b>Choose avatar photo</b></label>
+            <input id="file-upload" type="file" name="myfile" value="<?php echo $currentData['photo'] ?>">
             <input type="hidden" value="<?php echo $currentData['nick']?>" name="nick">
 
             <button type="submit" class="create">Save changes</button>
