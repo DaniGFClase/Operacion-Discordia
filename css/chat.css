@@ -68,18 +68,11 @@
     width: 100%;
 }
 
-.msgArea {
-    padding-top: 1.5em;
-    padding-left: 2.5em;
-    padding-right: 2.5em;
-    border: skyblue dotted;
-}
-
 .msgBar {
     color: white;
     border: none;
     background-color: rgb(101, 101, 102);
-    width: 95%;
+    width: 85%;
     height: 25px;
 }
 
@@ -99,4 +92,22 @@
 
 .sendBtn:hover {
     background-color: rgb(125, 125, 128);
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.uploadFile {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    width: calc(5% - 1em);
+}
+
+.uploadFile:hover {
+    opacity: 0.8;
 }
