@@ -177,10 +177,53 @@
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhttp.send("codUser=" + codUser);
 				return false;
-            }
+			}
 			
+			function acceptFriend(codUser) {
+                
+				var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						showFriends();                  
+					}
+				};
+				
+				xhttp.open("POST", "pages/acceptFriend.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send("codUser=" + codUser);
+				return false;
+			}
 
+			function denyFriend(codUser) {
+                
+				var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						showFriends();                 
+					}
+				};
+				
+				xhttp.open("POST", "pages/denyFriend.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send("codUser=" + codUser);
+				return false;
+			}
 
+			function sendFriendship() {
+                
+				var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						showContacts();                
+					}
+				};
+				var nameUser = document.getElementById("userTo").value;
+				xhttp.open("POST", "pages/sendFriendship.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send("nameUser=" + nameUser);
+				return false;
+			}
+			
             showContacts();
     
 			

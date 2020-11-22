@@ -59,7 +59,7 @@
                 <input id="codRoomMessage" type="hidden" value = "<?php echo $codeRoom?>">
                 <input id="avatar_chat" type="hidden" value = "<?php echo $avatar_chat?>">
                 <input id="name_chat" type="hidden" value = "<?php echo $name_chat?>">
-			    <input type = "submit" class="sendBtn">
+			    <input type = "submit" class="sendBtn" value="Send">
 		    </form>
 
                    
