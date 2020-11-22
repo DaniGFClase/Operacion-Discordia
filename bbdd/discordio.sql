@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 22-11-2020 a las 12:50:10
+-- Tiempo de generación: 22-11-2020 a las 17:21:51
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.3.12
 
@@ -45,11 +45,11 @@ CREATE TABLE IF NOT EXISTS `friend` (
 
 INSERT INTO `friend` (`userA`, `userB`, `status`, `code`) VALUES
 (1, 3, 1, '1-3'),
-(1, 17, 0, '1-17'),
-(1, 19, 1, '1-19'),
+(1, 20, 1, '1-20'),
 (3, 1, 1, '1-3'),
-(17, 1, 1, '1-17'),
-(19, 1, 1, '1-19');
+(3, 20, 1, '3-20'),
+(20, 1, 1, '1-20'),
+(20, 3, 1, '3-20');
 
 -- --------------------------------------------------------
 
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `message` (
   `cod_room` varchar(50) NOT NULL,
   PRIMARY KEY (`cod_message`),
   KEY `cod_room` (`cod_room`)
-) ENGINE=InnoDB AUTO_INCREMENT=210 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=211 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `message`
@@ -175,7 +175,8 @@ INSERT INTO `message` (`cod_message`, `cod_user`, `text_message`, `date_message`
 (196, 19, 'yes baby', '2020-11-15 21:18:43', '19-1'),
 (197, 1, 'ldfglkgdflkjgdf', '2020-11-16 21:36:34', '19-1'),
 (198, 1, 'puto\n', '2020-11-16 21:36:48', '1-18'),
-(209, 1, 'hoa', '2020-11-22 13:17:36', '1-17');
+(209, 1, 'hoa', '2020-11-22 13:17:36', '1-17'),
+(210, 1, 'asdf', '2020-11-22 14:29:22', '-1');
 
 -- --------------------------------------------------------
 
@@ -235,23 +236,26 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password_hash` varchar(80) NOT NULL,
   `description` varchar(250) NOT NULL,
   `gender` varchar(6) NOT NULL,
+  `rol` tinyint(1) NOT NULL,
   PRIMARY KEY (`cod_user`),
   UNIQUE KEY `nick` (`nick`),
   UNIQUE KEY `mail` (`mail`),
   KEY `cod_user` (`cod_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`cod_user`, `name`, `surname`, `nick`, `mail`, `photo`, `password_hash`, `description`, `gender`) VALUES
-(1, 'adri', 'rod', 'adri', 'adri', 'adri.jpg', '$2y$10$qfpYSsjvATEUv9nzxzdcZO3P.Z4SvNLxNR.N2UEIdLdvFr9kXdS6i', 'jajajaja descr ', ''),
-(3, '', '', 'dani', 'dani', 'dani.jpg', '$2y$10$qfpYSsjvATEUv9nzxzdcZO3P.Z4SvNLxNR.N2UEIdLdvFr9kXdS6i', '', ''),
-(4, '', '', 'toros', 'toros', '', '1234', '', ''),
-(17, 'Ruba', 'Bum', 'Ruba', 'alÃ±skdjf', '', '$2y$10$3q1ZS03zXzHuPImB3lWrlOT1b1Y4mWJtR6soeLydpDgK7YXTfzW9e', '', 'female'),
-(18, 'asdf', 'asdf', 'Rober', 'asdasdfasdasdasf', '', '$2y$10$cg8qevehkZ5wmIUJmf2jNuvQdRVSpYIPfmWCu7.i6WX5RtH28zD4y', '', 'male'),
-(19, 'juan', 'Ã±lkasdflÃ±kjsadf', 'juan', 'aÃ±sldfkjsadflÃ±kj', '', '$2y$10$4EcGyCTrcFUON1nzW2aD/.DfQuJ41VeFDw8nMBd1fJYzTQyEsrG46', '', 'male');
+INSERT INTO `user` (`cod_user`, `name`, `surname`, `nick`, `mail`, `photo`, `password_hash`, `description`, `gender`, `rol`) VALUES
+(1, 'adri', 'rod', 'adri', 'adri', 'adri.jpg', '$2y$10$qfpYSsjvATEUv9nzxzdcZO3P.Z4SvNLxNR.N2UEIdLdvFr9kXdS6i', 'jajajaja descr ', '', 0),
+(3, '', '', 'dani', 'dani', 'dani.jpg', '$2y$10$qfpYSsjvATEUv9nzxzdcZO3P.Z4SvNLxNR.N2UEIdLdvFr9kXdS6i', '', '', 0),
+(17, 'Ruba', 'Bum', 'Ruba', 'alÃ±skdjf', '', '$2y$10$3q1ZS03zXzHuPImB3lWrlOT1b1Y4mWJtR6soeLydpDgK7YXTfzW9e', '', 'female', 0),
+(18, 'asdf', 'asdf', 'Rober', 'asdasdfasdasdasf', '', '$2y$10$cg8qevehkZ5wmIUJmf2jNuvQdRVSpYIPfmWCu7.i6WX5RtH28zD4y', '', 'male', 0),
+(19, 'juan', 'Ã±lkasdflÃ±kjsadf', 'juan', 'aÃ±sldfkjsadflÃ±kj', '', '$2y$10$4EcGyCTrcFUON1nzW2aD/.DfQuJ41VeFDw8nMBd1fJYzTQyEsrG46', '', 'male', 0),
+(20, 'xavi', 'asd', 'xavi', 'asdf', 'default.png', '$2y$10$1Hfcc2Q3/.aOI5FNwXi0BOv6pCh3hEEUiIzBSlsBh57lZEWRaJGjK', '', 'male', 0),
+(21, 'mata', 'mata', 'toros', 'lÃ±kasjdf', 'default.png', '$2y$10$/jjYYWZ0p/HuTtbkX0ckqujUqNKkB1k8F2MhpWVMLUr.2Yha7PTcW', '', 'male', 0),
+(25, 'dsfg', 'dfsg', 'asd', 'asdfasdf', 'default.png', '$2y$10$fmyS3bti2g6KGLEZE.TVs.fml6PyV7UkxuR2q0EoUeJ8fDGX9yD0K', '', 'male', 0);
 
 -- --------------------------------------------------------
 
@@ -288,11 +292,6 @@ INSERT INTO `user_room` (`cod_user`, `cod_room`, `view`) VALUES
 (3, '3-4', 0),
 (3, 'grupo caca2', 0),
 (3, 'grupo caca23', 0),
-(4, '1-4', 0),
-(4, '3-4', 0),
-(4, '4-17', 0),
-(4, 'grupo caca23', 0),
-(4, 'GRUPO1', 0),
 (17, '1-17', 0),
 (17, 'GRUPO1', 0),
 (18, '1-18', 0),
