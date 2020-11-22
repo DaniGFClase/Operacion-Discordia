@@ -53,7 +53,7 @@ select u.cod_user as codUser, nick, photo, cod_room as codRoom, text_message, da
     order by date_message;
     
     
-    -- si son amigos dos usuarios (no se sabe el orden) se crea 1-7 y el 17-1
+    -- si son amigos dos usuarios 
     select nick, photo, cod_user, sum(status) as count, code from user as u
     join friend as f
     on u.cod_user = f.userB
@@ -61,6 +61,15 @@ select u.cod_user as codUser, nick, photo, cod_room as codRoom, text_message, da
     (select userB from user as u
     join friend as f
     on u.cod_user = f.userA
-    where userA like '1' or userB like '1')
+    where userA like '3' or userB like '3')
     group by code;
+    
+    select nick, photo, cod_user, status, code from user as u
+    join friend as f
+    on u.cod_user = f.userB
+    where cod_user in 
+    (select userB from user as u
+    join friend as f
+    on u.cod_user = f.userA
+    where userA like '1' or userB like '1') and cod_user not like '1';
   

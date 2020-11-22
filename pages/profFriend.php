@@ -35,7 +35,6 @@
 
                 <label for="description"><b>Description</b></label>
                 <div class="description"><?php echo $currentData['description']?></div>
-
             
         </div>
 

@@ -214,7 +214,8 @@
 				var xhttp = new XMLHttpRequest();
 					xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
-						showContacts();                
+						//showContacts();                
+						document.getElementById("chat1").innerHTML = this.responseText;
 					}
 				};
 				var nameUser = document.getElementById("userTo").value;

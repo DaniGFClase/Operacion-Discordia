@@ -402,6 +402,30 @@ function denyFriend($myUser, $otherUser){
 	return $r;	
 }
 
+function checkAcceptDeny($myUser){
+
+	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
+	$db = new PDO($res[0], $res[1], $res[2]);
+	$ins = "select nick, photo, cod_user, status, code from user as u
+    join friend as f
+    on u.cod_user = f.userB
+    where cod_user in 
+    (select userB from user as u
+    join friend as f
+    on u.cod_user = f.userA
+	where userA like '$myUser' or userB like '$myUser') and cod_user not like '$myUser'";
+	$resul = $db->query($ins);	
+	if (!$resul) {
+		return FALSE;
+	}
+	if ($resul->rowCount() === 0) {    
+		return FALSE;
+    }
+	//if there is one or more
+	return $resul;	
+}
+
+
 
 function sendFriendship($myUser, $NameOtherUser){
 
@@ -415,6 +439,7 @@ function sendFriendship($myUser, $NameOtherUser){
     $resul = $db->query($ins);
 	$r = $resul->fetch();
 	$otherUser = $r[0];
+
 	
 	$varMin = "";
 	$varMax = "";
@@ -427,10 +452,8 @@ function sendFriendship($myUser, $NameOtherUser){
 		$varMin = $myUser;
 	}
 
-
-
     $ins = "INSERT INTO `friend` (`userA`, `userB`, `status`, `code`) 
-	VALUES ('varMin', 'varMax', '1', 'varMin-varMax'), ('varMax', 'varMin', '0', 'varMin-varMax')";
+	VALUES ('$varMin', '$varMax', '1', '$varMin-$varMax'), ('$varMax', '$varMin', '0', '$varMin-$varMax')";
 	
     $result = $db->query($ins);
 }

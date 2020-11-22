@@ -30,7 +30,19 @@
 
                 </div>
                 ';
-               }else {
+               }                    
+            }
+
+
+            $friendReq = checkAcceptDeny($_SESSION['user']['cod_user']);
+        
+            foreach($friendReq as $ro){	
+
+                $picture = $ro["photo"];
+                $name = $ro["nick"];
+                $codUser = $ro["cod_user"];
+                
+               if ($ro["status"] == 0) {
                    echo'
                    <div class="person">
 
@@ -47,36 +59,10 @@
     
                 </div>
 
-
-
                    ';
-               }
-                   
-
-                    
-
-
-                    
-            
-            /*
-
-             <div onclick="loadChat('.$codRoomString.','.$pictureString.', '.$nameString.')" class="person '.$view.'">
-
-            <button class="person2">
-                <img class="profPict" src="images/avatar/'.$picture.'"alt="image_user">
-                <div class="friendName">'.$name.'</div>
-            </button>
-
-        </div>
-            
-            */
-           
-            
-
-
-
-                
+               }               
             }
+         
 
         }
 
