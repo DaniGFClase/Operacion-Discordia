@@ -72,6 +72,26 @@
 				return false;
 				
 			}
+
+			
+			function sendFriendRequest() {
+				
+				var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						document.getElementById("chat1").innerHTML = this.responseText;
+						showContacts();
+					}
+				};
+			
+                var num1 = document.getElementById("userTo").value;
+				var num2 = document.getElementById("textMessage").value;
+				xhttp.open("POST", "pages/request_friend.php", true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send("user=" + num1 + "&text=" + num2);
+				return false;
+				
+			}
 			
 
             function showSB() {
@@ -97,7 +117,7 @@
 					}
 				};
 				
-				xhttp.open("POST", "pages/search_bar.php", true);
+				xhttp.open("POST", "pages/search_bar_friend.php", true);
                 xhttp.send();
 				return false;
             }
