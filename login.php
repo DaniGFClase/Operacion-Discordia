@@ -17,7 +17,7 @@
                 <label for="password"><b>Password</b></label>
                 <input id="password" type="password" placeholder="Enter Password" name="password" required>
 
-                <button type="submit">Login</button>
+                <button class="btn" type="submit">Login</button>
                 <button class="singIn" onclick="window.location.href='register.php';">Sing in</button>
 
                 <span class="password">
