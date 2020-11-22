@@ -61,5 +61,5 @@ select u.cod_user as codUser, nick, photo, cod_room as codRoom, text_message, da
     (select userB from user as u
     join friend as f
     on u.cod_user = f.userA
-    where userA like '1')
-    group by cod_user;
+    where userA like '1' or userB like '1');
+  

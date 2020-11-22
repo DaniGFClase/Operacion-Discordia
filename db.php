@@ -194,15 +194,15 @@ function load_room($cod){
 function load_friends($cod){
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
-	$ins = "select nick, photo, cod_user from user as u
+	$ins = "    select nick, photo, cod_user, sum(status) as count, code from user as u
     join friend as f
     on u.cod_user = f.userB
     where cod_user in 
     (select userB from user as u
     join friend as f
     on u.cod_user = f.userA
-    where userA like '$cod')
-    group by cod_user";
+    where userA like '$cod' or userB like '$cod')
+    group by code";
 	$resul = $db->query($ins);	
 	if (!$resul) {
 		return FALSE;
