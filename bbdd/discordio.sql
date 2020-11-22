@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 16-11-2020 a las 10:33:42
+-- Tiempo de generación: 22-11-2020 a las 12:50:10
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.3.12
 
@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `friend` (
   `userA` int(11) NOT NULL,
   `userB` int(11) NOT NULL,
   `status` tinyint(1) NOT NULL,
+  `code` varchar(10) NOT NULL,
   PRIMARY KEY (`userA`,`userB`),
   KEY `userA` (`userA`),
   KEY `userB` (`userB`)
@@ -42,11 +43,13 @@ CREATE TABLE IF NOT EXISTS `friend` (
 -- Volcado de datos para la tabla `friend`
 --
 
-INSERT INTO `friend` (`userA`, `userB`, `status`) VALUES
-(1, 3, 0),
-(1, 17, 1),
-(17, 1, 1),
-(17, 3, 0);
+INSERT INTO `friend` (`userA`, `userB`, `status`, `code`) VALUES
+(1, 3, 1, '1-3'),
+(1, 17, 0, '1-17'),
+(1, 19, 1, '1-19'),
+(3, 1, 1, '1-3'),
+(17, 1, 1, '1-17'),
+(19, 1, 1, '1-19');
 
 -- --------------------------------------------------------
 
@@ -63,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `message` (
   `cod_room` varchar(50) NOT NULL,
   PRIMARY KEY (`cod_message`),
   KEY `cod_room` (`cod_room`)
-) ENGINE=InnoDB AUTO_INCREMENT=197 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=210 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `message`
@@ -83,9 +86,7 @@ INSERT INTO `message` (`cod_message`, `cod_user`, `text_message`, `date_message`
 (19, 3, 'dime adri', '2020-11-08 12:31:43', '1-3'),
 (26, 17, 'prueba multi', '2020-11-08 13:43:50', '4-17'),
 (47, 1, 'prueba multiiii', '2020-11-08 13:47:46', '1-4'),
-(48, 1, 'prueba multiiii', '2020-11-08 13:47:46', '1-17'),
 (49, 1, 'asdfasdf test', '2020-11-11 15:17:49', '1-3'),
-(50, 1, ', ', '2020-11-11 15:28:57', '1-17'),
 (51, 1, ', asdfadsf', '2020-11-11 15:35:53', '1-18'),
 (52, 1, ', test', '2020-11-11 15:36:04', '1-18'),
 (53, 1, ', afafa', '2020-11-11 15:36:09', '1-18'),
@@ -99,11 +100,6 @@ INSERT INTO `message` (`cod_message`, `cod_user`, `text_message`, `date_message`
 (61, 1, '', '2020-11-11 15:39:00', '1-4'),
 (62, 1, 'asdfasdf', '2020-11-11 15:39:44', 'GRUPO1'),
 (63, 1, 'asdfasdf', '2020-11-11 15:39:45', 'GRUPO1'),
-(64, 1, 'test', '2020-11-11 15:40:30', '1-17'),
-(65, 17, 'hola', '2020-11-11 15:40:48', '1-17'),
-(66, 1, 'asdfasdf', '2020-11-11 15:41:18', '1-17'),
-(67, 1, 'asdfasdf', '2020-11-11 15:41:19', '1-17'),
-(68, 1, 'asdfasdf', '2020-11-11 15:41:20', '1-17'),
 (69, 1, 'asdf', '2020-11-11 22:23:34', '1-3'),
 (71, 1, 'asdf', '2020-11-11 22:24:58', 'truÃ±o grupo2'),
 (72, 1, 'asdf', '2020-11-11 22:25:52', 'no se'),
@@ -136,9 +132,6 @@ INSERT INTO `message` (`cod_message`, `cod_user`, `text_message`, `date_message`
 (105, 1, 'qwer', '2020-11-15 12:46:42', '1-3'),
 (106, 1, 'qqqqq', '2020-11-15 13:13:48', 'GRUPO1'),
 (107, 1, 'qwerqwerqwer', '2020-11-15 13:13:59', 'grupo caca2'),
-(108, 1, 'test', '2020-11-15 13:14:31', '1-17'),
-(109, 1, 'qwerqwerqwer', '2020-11-15 13:14:46', '1-17'),
-(110, 1, 'jajajaja', '2020-11-15 13:18:10', '1-17'),
 (111, 1, 'puto', '2020-11-15 13:18:18', 'grupo caca2'),
 (112, 1, 'asdf', '2020-11-15 14:24:15', 'GRUPO1'),
 (113, 1, 'qqq', '2020-11-15 14:24:32', 'grupo caca2'),
@@ -146,23 +139,19 @@ INSERT INTO `message` (`cod_message`, `cod_user`, `text_message`, `date_message`
 (115, 1, 'jjjj', '2020-11-15 14:24:57', 'GRUPO1'),
 (116, 1, 'toros', '2020-11-15 14:25:53', '1-4'),
 (117, 1, 'test123', '2020-11-15 14:26:22', '1-4'),
-(118, 1, 'test123', '2020-11-15 14:26:22', '1-17'),
 (119, 1, 'qwer', '2020-11-15 14:27:21', '1-3'),
 (120, 1, 'qqqq', '2020-11-15 14:27:58', 'GRUPO1'),
 (121, 1, 'qqq', '2020-11-15 14:28:03', '1-3'),
 (122, 1, 'qqqq', '2020-11-15 14:28:44', 'GRUPO1'),
 (123, 1, '1234', '2020-11-15 14:34:08', '1-4'),
-(124, 1, 'jaja', '2020-11-15 14:35:58', '1-17'),
 (125, 1, 'hola\n', '2020-11-15 14:36:28', 'grupo caca2'),
 (126, 1, 'asdfasdf', '2020-11-15 14:37:23', 'GRUPO1'),
 (127, 1, 'qqq', '2020-11-15 14:37:32', '1-3'),
 (128, 1, 'eee', '2020-11-15 14:37:34', 'grupo caca2'),
 (129, 1, 'asdf', '2020-11-15 14:37:58', 'GRUPO1'),
-(130, 1, 'qwer', '2020-11-15 14:38:08', '1-17'),
 (131, 1, 'qwer', '2020-11-15 14:38:19', 'GRUPO1'),
 (132, 1, 'asdf', '2020-11-15 14:46:22', 'grupo caca23'),
 (133, 1, 'q', '2020-11-15 14:46:29', 'grupo caca23'),
-(134, 1, 'asdf', '2020-11-15 14:56:56', '1-17'),
 (135, 1, '1', '2020-11-15 14:57:05', 'GRUPO1'),
 (137, 1, 'asdf', '2020-11-15 14:57:29', '1-4'),
 (138, 1, 'qwer', '2020-11-15 14:57:48', 'GRUPO1'),
@@ -181,10 +170,12 @@ INSERT INTO `message` (`cod_message`, `cod_user`, `text_message`, `date_message`
 (153, 1, 'puto', '2020-11-15 20:43:47', 'grupo caca23'),
 (154, 1, 'hola', '2020-11-15 20:44:00', 'grupo caca23'),
 (155, 1, 'puto', '2020-11-15 20:44:06', 'grupo caca23'),
-(156, 1, 'que apsa \n', '2020-11-15 20:44:16', '1-17'),
 (162, 1, 'asdlÃ±kjasdf', '2020-11-15 20:59:27', 'grupo caca2'),
 (195, 19, 'asdlfÃ±k', '2020-11-15 21:18:38', '19-1'),
-(196, 19, 'yes baby', '2020-11-15 21:18:43', '19-1');
+(196, 19, 'yes baby', '2020-11-15 21:18:43', '19-1'),
+(197, 1, 'ldfglkgdflkjgdf', '2020-11-16 21:36:34', '19-1'),
+(198, 1, 'puto\n', '2020-11-16 21:36:48', '1-18'),
+(209, 1, 'hoa', '2020-11-22 13:17:36', '1-17');
 
 -- --------------------------------------------------------
 
@@ -196,6 +187,7 @@ DROP TABLE IF EXISTS `room`;
 CREATE TABLE IF NOT EXISTS `room` (
   `cod_room` varchar(50) NOT NULL,
   `img_room` varchar(50) NOT NULL,
+  `typeOfRoom` varchar(5) NOT NULL,
   PRIMARY KEY (`cod_room`),
   KEY `cod_room` (`cod_room`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -204,26 +196,27 @@ CREATE TABLE IF NOT EXISTS `room` (
 -- Volcado de datos para la tabla `room`
 --
 
-INSERT INTO `room` (`cod_room`, `img_room`) VALUES
-('1-17', ''),
-('1-18', ''),
-('1-3', ''),
-('1-4', ''),
-('12345', 'default_group.jpg'),
-('1234s5', 'default_group.jpg'),
-('12sdf34s5', 'default_group.jpg'),
-('19-1', ''),
-('3-17', ''),
-('3-4', ''),
-('4-17', ''),
-('grupo caca', 'default_group.jpg'),
-('grupo caca2', 'default_group.jpg'),
-('grupo caca23', 'default_group.jpg'),
-('GRUPO1', 'default_group.jpg'),
-('no se', 'default_group.jpg'),
-('nose', 'default_group.jpg'),
-('nose2', 'default_group.jpg'),
-('truÃ±o grupo2', 'default_group.jpg');
+INSERT INTO `room` (`cod_room`, `img_room`, `typeOfRoom`) VALUES
+('-1', '', ''),
+('1-17', '', 'chat'),
+('1-18', '', 'chat'),
+('1-3', '', 'chat'),
+('1-4', '', 'chat'),
+('12345', 'default_group.jpg', 'group'),
+('1234s5', 'default_group.jpg', 'group'),
+('12sdf34s5', 'default_group.jpg', 'group'),
+('19-1', '', 'chat'),
+('3-17', '', 'chat'),
+('3-4', '', 'chat'),
+('4-17', '', 'chat'),
+('grupo caca', 'default_group.jpg', 'group'),
+('grupo caca2', 'default_group.jpg', 'group'),
+('grupo caca23', 'default_group.jpg', 'group'),
+('GRUPO1', 'default_group.jpg', 'group'),
+('no se', 'default_group.jpg', 'group'),
+('nose', 'default_group.jpg', 'group'),
+('nose2', 'default_group.jpg', 'group'),
+('truÃ±o grupo2', 'default_group.jpg', 'group');
 
 -- --------------------------------------------------------
 
@@ -253,7 +246,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`cod_user`, `name`, `surname`, `nick`, `mail`, `photo`, `password_hash`, `description`, `gender`) VALUES
-(1, '', '', 'adri', 'adri', 'adri.jpg', '$2y$10$qfpYSsjvATEUv9nzxzdcZO3P.Z4SvNLxNR.N2UEIdLdvFr9kXdS6i', '', ''),
+(1, 'adri', 'rod', 'adri', 'adri', 'adri.jpg', '$2y$10$qfpYSsjvATEUv9nzxzdcZO3P.Z4SvNLxNR.N2UEIdLdvFr9kXdS6i', 'jajajaja descr ', ''),
 (3, '', '', 'dani', 'dani', 'dani.jpg', '$2y$10$qfpYSsjvATEUv9nzxzdcZO3P.Z4SvNLxNR.N2UEIdLdvFr9kXdS6i', '', ''),
 (4, '', '', 'toros', 'toros', '', '1234', '', ''),
 (17, 'Ruba', 'Bum', 'Ruba', 'alÃ±skdjf', '', '$2y$10$3q1ZS03zXzHuPImB3lWrlOT1b1Y4mWJtR6soeLydpDgK7YXTfzW9e', '', 'female'),
@@ -285,7 +278,7 @@ INSERT INTO `user_room` (`cod_user`, `cod_room`, `view`) VALUES
 (1, '1-18', 1),
 (1, '1-3', 1),
 (1, '1-4', 1),
-(1, '19-1', 0),
+(1, '19-1', 1),
 (1, 'grupo caca', 1),
 (1, 'grupo caca2', 1),
 (1, 'grupo caca23', 1),
@@ -303,7 +296,7 @@ INSERT INTO `user_room` (`cod_user`, `cod_room`, `view`) VALUES
 (17, '1-17', 0),
 (17, 'GRUPO1', 0),
 (18, '1-18', 0),
-(19, '19-1', 1);
+(19, '19-1', 0);
 
 --
 -- Restricciones para tablas volcadas
