@@ -11,7 +11,7 @@
     resize: none;
 }
 
-input[type="file"] {
+input[name="myfile"] {
     display: none;
 }
 
