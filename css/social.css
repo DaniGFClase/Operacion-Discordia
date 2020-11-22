@@ -51,9 +51,11 @@
 .person {
     margin-left: 5px;
     margin-right: 5px;
+    cursor: pointer;
 }
 
 .person2 {
+    cursor: pointer;
     margin-top: 1.5em;
     margin-bottom: 1.5em;
     text-decoration: none;
@@ -66,9 +68,8 @@
     display: flex;
 }
 
-.person2:hover {
+.person:hover {
     transform: scale(1.1);
-    cursor: pointer;
 }
 
 .rest {
@@ -104,6 +105,7 @@
 }
 
 .usrSpaBtn {
+    width: 100%;
     cursor: pointer;
     background-color: #5c5a81;
     border: rgb(151, 156, 168) thin solid;
@@ -128,23 +130,21 @@
 }
 
 .notView {
-    animation-name: example;
-    animation-duration: 0.25s;
-    animation-iteration-count: infinite;
+    animation: pulse 2s infinite;
 }
 
-@keyframes example {
+@keyframes pulse {
     0% {
-        background-color: #41ff00;
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 #ff0000;
     }
-    25% {
-        background-color: #00e4ff;
-    }
-    50% {
-        background-color: #fc466b;
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
     }
     100% {
-        background-color: #eaff00;
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
     }
 }
 
