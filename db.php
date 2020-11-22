@@ -73,8 +73,8 @@ function register_user($name, $surname, $nick, $email, $password, $gender){
 		$password_hash = password_hash($password, PASSWORD_DEFAULT);
 
 		$ins = "INSERT INTO `user` 
-		(`cod_user`, `name`, `surname`, `nick`, `mail`, `photo`, `password_hash`, `description`, `gender`) VALUES 
-		(NULL, '$name', '$surname', '$nick', '$email', 'default.png', '$password_hash', '', '$gender')";
+		(`cod_user`, `name`, `surname`, `nick`, `mail`, `photo`, `password_hash`, `description`, `gender`, `rol`) VALUES 
+		(NULL, '$name', '$surname', '$nick', '$email', 'default.png', '$password_hash', '', '$gender',0)";
 
 		$resul = $db->query($ins);
 		
@@ -191,18 +191,15 @@ function load_room($cod){
 	return $resul;	
 }
 
-function load_friends($cod){
+function load_friends($myUser){
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
-	$ins = "    select nick, photo, cod_user, sum(status) as count, code from user as u
-    join friend as f
-    on u.cod_user = f.userB
-    where cod_user in 
-    (select userB from user as u
-    join friend as f
-    on u.cod_user = f.userA
-    where userA like '$cod' or userB like '$cod')
-    group by code";
+	$ins = "select nick, photo, cod_user, status from
+    (select if(userA not like '$myUser', userA, userB) as otherUser, sum(status) as status from friend as f
+    where userA like '$myUser' or userB like '$myUser'
+    group by code) as inter
+    join user as u
+    on inter.otherUser = u.cod_user";
 	$resul = $db->query($ins);	
 	if (!$resul) {
 		return FALSE;
@@ -406,14 +403,11 @@ function checkAcceptDeny($myUser){
 
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
-	$ins = "select nick, photo, cod_user, status, code from user as u
-    join friend as f
-    on u.cod_user = f.userB
-    where cod_user in 
-    (select userB from user as u
-    join friend as f
-    on u.cod_user = f.userA
-	where userA like '$myUser' or userB like '$myUser') and cod_user not like '$myUser'";
+	$ins = "select nick, photo, cod_user, status from
+    (select if(userA not like '$myUser', userA, userB) as otherUser, (status) as status from friend as f
+    where userA like '$myUser') as inter
+    join user as u
+    on inter.otherUser = u.cod_user";
 	$resul = $db->query($ins);	
 	if (!$resul) {
 		return FALSE;
@@ -453,7 +447,7 @@ function sendFriendship($myUser, $NameOtherUser){
 	}
 
     $ins = "INSERT INTO `friend` (`userA`, `userB`, `status`, `code`) 
-	VALUES ('$varMin', '$varMax', '1', '$varMin-$varMax'), ('$varMax', '$varMin', '0', '$varMin-$varMax')";
+	VALUES ('$varMin', '$varMax', '0', '$varMin-$varMax'), ('$varMax', '$varMin', '1', '$varMin-$varMax')";
 	
     $result = $db->query($ins);
 }

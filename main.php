@@ -287,9 +287,6 @@
 			Profile
 		</button>
               
-      
-		<!-- showModifyProfile-->
-      
     </div>
 
 

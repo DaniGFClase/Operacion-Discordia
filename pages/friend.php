@@ -14,7 +14,7 @@
                 $name = $ro["nick"];
                 $codUser = $ro["cod_user"];
                 
-               if ($ro["count"] == 2) {
+               if ($ro["status"] == 2) {
 
                 echo '
 

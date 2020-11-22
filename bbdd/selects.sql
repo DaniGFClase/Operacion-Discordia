@@ -54,22 +54,11 @@ select u.cod_user as codUser, nick, photo, cod_room as codRoom, text_message, da
     
     
     -- si son amigos dos usuarios 
-    select nick, photo, cod_user, sum(status) as count, code from user as u
-    join friend as f
-    on u.cod_user = f.userB
-    where cod_user in 
-    (select userB from user as u
-    join friend as f
-    on u.cod_user = f.userA
-    where userA like '3' or userB like '3')
-    group by code;
     
-    select nick, photo, cod_user, status, code from user as u
-    join friend as f
-    on u.cod_user = f.userB
-    where cod_user in 
-    (select userB from user as u
-    join friend as f
-    on u.cod_user = f.userA
-    where userA like '1' or userB like '1') and cod_user not like '1';
-  
+    select nick, photo, cod_user, status from
+    (select if(userA not like '3', userA, userB) as otherUser, min(status) as status from friend as f
+    where userA like '3' or userB like '3'
+    group by code) as inter
+    join user as u
+    on inter.otherUser = u.cod_user;
+    
