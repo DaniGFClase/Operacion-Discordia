@@ -1,7 +1,7 @@
 .container>input[type=text],
 .container>select[name=gender],
 .container>textarea[name=description],
-.container>div {
+.container>div.profFrie {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;

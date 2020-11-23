@@ -22,19 +22,19 @@
       <div class="container">
 
                 <label for="name"><b>Name and surname</b></label>
-                <div class="name"><?php echo $currentData['name']." ".$currentData['surname']?></div>
+                <div class="profFrie"><?php echo $currentData['name']." ".$currentData['surname']?></div>
 
                 <label for="nick"><b>Nick</b></label>
-                <div  class="surname"><?php echo $currentData['nick']?></div>
+                <div  class="profFrie"><?php echo $currentData['nick']?></div>
 
                 <label for="surname"><b>Email</b></label>
-                <div  class="surname"><?php echo $currentData['mail']?></div>
+                <div  class="profFrie"><?php echo $currentData['mail']?></div>
 
                 <label for="surname"><b>Gender</b></label>
-                <div  class="surname"><?php echo $currentData['gender']?></div>
+                <div  class="profFrie"><?php echo $currentData['gender']?></div>
 
                 <label for="description"><b>Description</b></label>
-                <div class="description"><?php echo $currentData['description']?></div>
+                <div class="profFrie"><?php echo $currentData['description']?></div>
             
         </div>
 

@@ -5,7 +5,7 @@
             <div class="image"></div>
         </a>
 
-        <div class="companyName"> DISCORDIA</div>
+        <div class="companyNameLog"> DISCORDIA</div>
 
 
 		<form onsubmit = "return accessLogin();">
