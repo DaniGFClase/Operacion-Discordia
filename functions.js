@@ -198,7 +198,6 @@ function showNewGroup() {
             document.getElementById("chat1").innerHTML = this.responseText;
         }
     };
-
     xhttp.open("POST", "pages/newGroup.php", true);
     xhttp.send();
     return false;
@@ -209,12 +208,14 @@ function createNewGroup() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-
+            document.getElementById("chat1").innerHTML = this.responseText;
         }
     };
-
-    xhttp.open("POST", "pages/newGroup.php", true);
-    xhttp.send();
+    var users = document.getElementById("userTo").value;
+    var namegroup = document.getElementById("nameGroup").value;
+    xhttp.open("POST", "pages/createNewGroup.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("users=" + users + "&nameGroup=" + namegroup);
     return false;
 }
 
