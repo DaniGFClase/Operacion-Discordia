@@ -51,7 +51,7 @@
 			Add friend
         </button>
 
-        <button class="usrSpaBtn" onclick="showModifyProfile()">
+        <button class="usrSpaBtn" onclick="showNewGroup()">
             New group
 		</button>
 		
