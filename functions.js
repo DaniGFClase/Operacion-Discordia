@@ -52,6 +52,8 @@ function loadChat(codRoom, avatar_chat, name_chat) {
             document.getElementById("chat1").innerHTML = this.responseText;
             var myDiv = document.getElementById("textChat");
             myDiv.scrollTop = myDiv.scrollHeight;
+            showContacts();
+
         }
     };
     xhttp.open("POST", "pages/chat_AJAX.php", true);

@@ -283,6 +283,11 @@ function create_group($myUser, $toUserGroup, $name_group){
 	
 	}
 
+	$ins = "INSERT INTO `message` (`cod_message`, `cod_user`, `text_message`, `date_message`, `cod_room`) VALUES (NULL, '$myUser', 'Welcome to this group', current_timestamp(), '$name_group'); ";
+	
+	$result = $db->query($ins);
+
+
 	
 }
 
