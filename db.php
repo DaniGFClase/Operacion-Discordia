@@ -88,8 +88,7 @@ function register_user($name, $surname, $nick, $email, $password, $gender){
 
 function send_Message($myUser, $toUser, $message){
 
-
-	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
+		$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
 
 	$severalUser = explode(" ", $toUser);
@@ -98,38 +97,47 @@ function send_Message($myUser, $toUser, $message){
 		$insCod = "select cod_user from user 
 	where nick like '$toUser'";
 	$resulCod = $db->query($insCod);
-	$CodResult = $resulCod->fetch();
+
+	
+	if ($resulCod->rowCount() !== 0) {    
+		$CodResult = $resulCod->fetch();
 
 	$ins = "select count(*) as count, group_concat(cod_user separator ',') as users, cod_room
     from user_room 
     group by cod_room
     having count like 2";
 	
-    $resul = $db->query($ins);
+	$resul = $db->query($ins);
+	$r = $resul->fetch();
+	
+
     $result = $db->query($ins);
-    $r = $resul->fetch();
+    
     
 
     if (!$r) {
 		createTable ($myUser, $CodResult[0]);
 	}
 	
+	$cod_room = "";
+	
 
-    $cod_room = "";
     foreach($result as $re){
 
-       if ($re['users']==($myUser.",".$CodResult[0]) || $re['users']==($CodResult[0].",".$myUser)) {
-        $cod_room = $re['cod_room'];
-       }else {
-		$cod_room = createTable($myUser, $CodResult[0]);
-       }
+			if ($re['users']==($myUser.",".$CodResult[0]) || $re['users']==($CodResult[0].",".$myUser)) {
+				$cod_room = $re['cod_room'];
+			   }else {
+				$cod_room = createTable($myUser, $CodResult[0]);
+			   }
+
+       
 	}
 
 	$ins = "INSERT INTO `message` (`cod_message`, `cod_user`, `text_message`, `date_message`, `cod_room`) VALUES (NULL, '$myUser', '$message', current_timestamp(), '$cod_room')";
-	
-	
-	
 	$insertMessage = $db->query($ins);
+	}
+
+	
 
 	}
 	
