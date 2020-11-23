@@ -7,9 +7,9 @@
     <div class="pantalla">
 		<p id="nameMail"><a href="main.php">DISCORDIA</a></p>
 		
-		<form action="logout.php">
-			<button type="submit" class="logout">Log out</button>
-		</form>
+		
+			<button onclick="logOut()" class="logout">Log out</button>
+		
 
 
 
