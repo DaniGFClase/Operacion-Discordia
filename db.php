@@ -284,10 +284,16 @@ function create_group($myUser, $toUserGroup, $name_group){
 	$insCod = "select cod_user from user 
 	where nick like '$toUser'";
 	$resulCod = $db->query($insCod);
-	$CodResult = $resulCod->fetch();
-	$ins = "INSERT INTO `user_room` (`cod_user`, `cod_room`, `view`) VALUES ('$CodResult[0]', '$name_group', 0)";
+
+	if ($resulCod->rowCount() !== 0) {
+		$CodResult = $resulCod->fetch();
+		$ins = "INSERT INTO `user_room` (`cod_user`, `cod_room`, `view`) VALUES ('$CodResult[0]', '$name_group', 0)";
+		
+		$result = $db->query($ins);
+
+	}
+
 	
-	$result = $db->query($ins);
 	
 	}
 
