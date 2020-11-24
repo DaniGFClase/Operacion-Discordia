@@ -60,13 +60,15 @@
                 <input id="avatar_chat" type="hidden" value = "<?php echo $avatar_chat?>">
                 <input id="name_chat" type="hidden" value = "<?php echo $name_chat?>">
 
-			    
+			  
                 <label for="file-upload" class="sendBtn">Choose file</label>
                 <input id="file-upload" type="file" class="sendBtn" name="myfile" value="">
-
+               
 			    <input type = "submit" class="sendBtn" value="Send">
 
 		    </form>
+
+
 
                    
 
