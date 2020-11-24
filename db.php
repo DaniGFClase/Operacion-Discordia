@@ -41,7 +41,7 @@ function load_name_user($coduser){
 function check_user($nick, $password){
 	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
 	$db = new PDO($res[0], $res[1], $res[2]);
-	$ins = "select cod_user from user where (nick = '$nick' or mail ='$nick')";
+	$ins = "select cod_user, rol from user where (nick = '$nick' or mail ='$nick')";
 	
 	
 	$resul = $db->query($ins);
@@ -208,6 +208,23 @@ function load_friends($myUser){
     group by code) as inter
     join user as u
     on inter.otherUser = u.cod_user";
+	$resul = $db->query($ins);	
+	if (!$resul) {
+		return FALSE;
+	}
+	if ($resul->rowCount() === 0) {    
+		return FALSE;
+    }
+	//if there is one or more
+	return $resul;	
+}
+
+function load_allUser(){
+	$res = load_config(dirname(__FILE__)."/configuration.xml", dirname(__FILE__)."/configuration.xsd");
+	$db = new PDO($res[0], $res[1], $res[2]);
+	$ins = "select nick, photo, cod_user
+    from user
+    where rol not like '1'";
 	$resul = $db->query($ins);	
 	if (!$resul) {
 		return FALSE;

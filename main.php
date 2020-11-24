@@ -22,7 +22,15 @@
 
             <div class="menu">
                 <button class="tab" onclick="showContacts()">Messages</button>
-                <button class="tab" onclick="showFriends()">Friends</button>
+                
+                <?php 
+                    if ($_SESSION['user']['rol'] == 0) {
+                        echo '<button class="tab" onclick="showFriends()">Friends</button>';
+                    }else {
+                        echo '<button class="tab" onclick="showAllUsers()">All Users</button>';
+                    }
+                ?>
+
             </div>
             </div>
 
@@ -36,7 +44,6 @@
     <div class="photo">
         
     <?php 
-
         $resul = load_name_user($_SESSION['user']['cod_user']);
      
         echo '
