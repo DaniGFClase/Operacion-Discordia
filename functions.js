@@ -78,14 +78,11 @@ function sendMessage() {
 
     var num1 = document.getElementById("codRoomMessage").value;
     var num2 = document.getElementById("textMessage").value;
-    //Prueba de archivos
-    var dir = document.getElementById("file-upload").value;
-    num3 = dir.substring(dir.lastIndexOf('\\') + 1);
 
-    console.log(dir);
+
     xhttp.open("POST", "pages/send_message_AJAX.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("codRoom=" + num1 + "&text=" + num2 + "&file=" + num3);
+    xhttp.send("codRoom=" + num1 + "&text=" + num2);
     return false;
 }
 
