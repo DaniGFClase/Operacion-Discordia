@@ -18,11 +18,6 @@
 
                 <button class="btn" type="submit">Login</button>
                 <button class="singIn" onclick="window.location.href='register.php';">Sing in</button>
-
-                <span class="password">
-					Forgot <a href="#">password?</a>
-				</span>
-
 				
 					<?php 
 						if(isset($_GET["redirected"])){
