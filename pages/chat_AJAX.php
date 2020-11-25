@@ -62,7 +62,7 @@
 
 			  
                 <label for="file-upload" class="sendBtn">Choose file</label>
-                <input id="file-upload" type="file" class="sendBtn" name="myfile" value="">
+                <input id="file-upload" type="file" class="sendBtn" name="myfile" >
                
 			    <input type = "submit" class="sendBtn" value="Send">
 
