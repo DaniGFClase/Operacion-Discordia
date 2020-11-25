@@ -90,6 +90,7 @@ function sendMessage() {
 async function uploadFile() {
     let formData = new FormData();
     formData.append("file", fileupload.files[0]);
+    formData.append("code_room", document.getElementById("codRoomMessage").value);
 
     await fetch('pages/upload_files.php', {
         method: "POST",

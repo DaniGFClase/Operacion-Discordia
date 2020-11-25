@@ -70,7 +70,7 @@
 
 
             <input id="fileupload" type="file" name="pepe" />
-    <button id="upload-button" onclick="uploadFile()"> Upload </button>
+            <button id="upload-button" onclick="uploadFile()"> Upload </button>
 
 
         </div>
