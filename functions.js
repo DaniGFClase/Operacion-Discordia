@@ -86,6 +86,19 @@ function sendMessage() {
     return false;
 }
 
+
+async function uploadFile() {
+    let formData = new FormData();
+    formData.append("file", fileupload.files[0]);
+
+    await fetch('pages/upload_files.php', {
+        method: "POST",
+        body: formData
+    });
+    console.log("aaaa");
+    alert('The file has been uploaded successfully.');
+}
+
 function sendNewMessage() {
 
     var xhttp = new XMLHttpRequest();
