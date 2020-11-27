@@ -64,25 +64,21 @@
     display: flex;
     flex-direction: row;
     z-index: 2;
-    border: red dotted thin;
 }
 
 .txtMsj {
     flex-direction: row;
     align-items: center;
+    flex-wrap: nowrap;
     justify-content: center;
-    z-index: 2;
-}
-
-.fileBtn {
-    border: aquamarine dotted thin;
+    width: 90%;
 }
 
 .msgBar {
     color: white;
     border: none;
+    width: 90%;
     background-color: rgb(101, 101, 102);
-    width: 85%;
     height: 25px;
 }
 
@@ -96,7 +92,6 @@
     border: none;
     background-color: rgb(101, 101, 102);
     cursor: pointer;
-    width: calc(5% - 1em);
     height: 25px;
 }
 
