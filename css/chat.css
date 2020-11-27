@@ -65,7 +65,18 @@
     align-items: center;
     justify-content: center;
     z-index: 2;
-    width: 100%;
+    border: red dotted thin;
+}
+
+.txtMsj {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.fileBtn {
+    border: aquamarine dotted thin;
 }
 
 .msgBar {
@@ -92,4 +103,8 @@
 
 .sendBtn:hover {
     background-color: rgb(125, 125, 128);
+}
+
+input[name="pepe"] {
+    display: none;
 }

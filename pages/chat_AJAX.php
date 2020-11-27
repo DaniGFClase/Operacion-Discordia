@@ -54,25 +54,34 @@
         
             </div>
 
-            <form onsubmit = "return sendMessage();" class="chtBot">
-			    <input type="text" placeholder="Write here" id="textMessage" value="" class="msgBar">     
-                <input id="codRoomMessage" type="hidden" value = "<?php echo $codeRoom?>">
-                <input id="avatar_chat" type="hidden" value = "<?php echo $avatar_chat?>">
-                <input id="name_chat" type="hidden" value = "<?php echo $name_chat?>">
+            <div class="chtBot">
 
-			  
+                <form onsubmit = "return sendMessage();" class="txtMsj">
+                    <input type="text" placeholder="Write here" id="textMessage" value="" class="msgBar">     
+                    <input id="codRoomMessage" type="hidden" value = "<?php echo $codeRoom?>">
+                    <input id="avatar_chat" type="hidden" value = "<?php echo $avatar_chat?>">
+                    <input id="name_chat" type="hidden" value = "<?php echo $name_chat?>">
+
+                
+                
+                    <input type = "submit" class="sendBtn" value="Send">
+
+                </form>
+
+                <div class="fileBtn">
+                <input id="code_my_usr" type="hidden" value = "<?php echo $_SESSION['user']['cod_user']?>">
                
-			    <input type = "submit" class="sendBtn" value="Send">
+                
+               <label for="fileupload" class="sendBtn">Choose file</label>
+               <input id="fileupload" type="file" name="pepe" />
+               <button for="fileupload" onclick="uploadFile()" class="sendBtn"> Upload </button>
 
-		    </form>
+          
+                </div>
+            </div>
 
-
-            <input id="code_my_usr" type="hidden" value = "<?php echo $_SESSION['user']['cod_user']?>">
-
-            <input id="fileupload" type="file" name="pepe" />
-            <button id="upload-button" onclick="uploadFile()"> Upload </button>
-
-
+           
+                
         </div>
 
     </div>
