@@ -61,13 +61,13 @@
                 <input id="name_chat" type="hidden" value = "<?php echo $name_chat?>">
 
 			  
-            
                
 			    <input type = "submit" class="sendBtn" value="Send">
 
 		    </form>
 
 
+            <input id="code_my_usr" type="hidden" value = "<?php echo $_SESSION['user']['cod_user']?>">
 
             <input id="fileupload" type="file" name="pepe" />
             <button id="upload-button" onclick="uploadFile()"> Upload </button>

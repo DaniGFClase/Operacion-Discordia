@@ -91,13 +91,19 @@ async function uploadFile() {
     let formData = new FormData();
     formData.append("file", fileupload.files[0]);
     formData.append("code_room", document.getElementById("codRoomMessage").value);
+    formData.append("code_my_usr", document.getElementById("code_my_usr").value);
 
     await fetch('pages/upload_files.php', {
         method: "POST",
         body: formData
     });
-    console.log("aaaa");
-    alert('The file has been uploaded successfully.');
+
+
+    showContacts();
+    var var1 = document.getElementById("codRoomMessage").value;
+    var var2 = document.getElementById("avatar_chat").value;
+    var var3 = document.getElementById("name_chat").value;
+    loadChat(var1, var2, var3);
 }
 
 function sendNewMessage() {
