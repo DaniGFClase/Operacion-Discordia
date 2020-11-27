@@ -36,7 +36,17 @@
                         <div class="photo">
                          <img class="profPict" src="images/avatar/'.$ro["photo"].'"alt="image_user">
                         </div>
-                        <div class="content">'.$ro["text_message"].'</div>
+                        <div class="content">';
+                        
+                        $link = preg_match("/\/\/localhost/", $ro["text_message"]);
+                       if ($link == 1) {
+                           echo '<a href="'.$ro["text_message"].'">'.$ro["text_message"].'</a>';
+                       } else {
+                           echo $ro["text_message"];
+                       }
+                        
+                        
+                        echo'</div>
                     </div>
                     ';
 			}
