@@ -17,7 +17,7 @@ if ( move_uploaded_file($_FILES['file']['tmp_name'], $location) ) {
   echo 'Failure'; 
 }
 
-send_chat_Message( $_POST['code_my_usr'], $_POST['code_room'], $_FILES['file']['name']);
+send_chat_Message( $_POST['code_my_usr'], $_POST['code_room'], "http://localhost/DES/PHP/Operacion-Discordia/files/".$_FILES['file']['name']);
 setNotView($_POST['codRoom'], $_SESSION['user']['cod_user']);
 
 ?>
