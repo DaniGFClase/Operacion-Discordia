@@ -56,15 +56,13 @@ select u.cod_user as codUser, nick, photo, cod_room as codRoom, text_message, da
     -- si son amigos dos usuarios 
     
     select nick, photo, cod_user, status from
-    (select if(userA not like '1', userA, userB) as otherUser, sum(status) as status from friend as f
-    where userA like '1' or userB like '1'
+    (select if(userA not like '3', userA, userB) as otherUser, min(status) as status from friend as f
+    where userA like '3' or userB like '3'
     group by code) as inter
     join user as u
     on inter.otherUser = u.cod_user;
     
-    select nick, photo, cod_user, status from
-    (select if(userA not like '1', userA, userB) as otherUser, (status) as status from friend as f
-    where userA like '1') as inter
-    join user as u
-    on inter.otherUser = u.cod_user;
+    select nick, photo, cod_user
+    from user
+    where rol not like 1;
     
