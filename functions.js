@@ -1,3 +1,4 @@
+// create login form
 function loadLogin() {
 
     var xhttp = new XMLHttpRequest();
@@ -12,7 +13,7 @@ function loadLogin() {
 }
 
 
-
+// load function to access the user account
 function accessLogin() {
 
     var xhttp = new XMLHttpRequest();
@@ -31,7 +32,7 @@ function accessLogin() {
 }
 
 
-
+// load main page
 function load_Main() {
 
     var xhttp = new XMLHttpRequest();
@@ -46,6 +47,7 @@ function load_Main() {
 }
 
 
+// load a specific chat
 function loadChat(codRoom, avatar_chat, name_chat) {
 
     var xhttp = new XMLHttpRequest();
@@ -64,6 +66,8 @@ function loadChat(codRoom, avatar_chat, name_chat) {
     return false;
 }
 
+
+// send a text menssage in a select chat
 function sendMessage() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -79,7 +83,6 @@ function sendMessage() {
     var num1 = document.getElementById("codRoomMessage").value;
     var num2 = document.getElementById("textMessage").value;
 
-
     xhttp.open("POST", "pages/send_message_AJAX.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("codRoom=" + num1 + "&text=" + num2);
@@ -87,6 +90,7 @@ function sendMessage() {
 }
 
 
+// load a file as a url in a chat
 async function uploadFile() {
     let formData = new FormData();
     formData.append("file", fileupload.files[0]);
@@ -98,7 +102,6 @@ async function uploadFile() {
         body: formData
     });
 
-
     showContacts();
     var var1 = document.getElementById("codRoomMessage").value;
     var var2 = document.getElementById("avatar_chat").value;
@@ -106,6 +109,8 @@ async function uploadFile() {
     loadChat(var1, var2, var3);
 }
 
+
+// send message to one or more users 
 function sendNewMessage() {
 
     var xhttp = new XMLHttpRequest();
@@ -126,6 +131,7 @@ function sendNewMessage() {
 }
 
 
+// send a friendship request
 function sendFriendRequest() {
 
     var xhttp = new XMLHttpRequest();
@@ -146,6 +152,7 @@ function sendFriendRequest() {
 }
 
 
+// load a form to send a message
 function showSB() {
 
     var xhttp = new XMLHttpRequest();
@@ -160,6 +167,8 @@ function showSB() {
     return false;
 }
 
+
+// load a form to send a friendship
 function showSBF() {
 
     var xhttp = new XMLHttpRequest();
@@ -174,6 +183,8 @@ function showSBF() {
     return false;
 }
 
+
+// show all chats actives
 function showContacts() {
 
     var xhttp = new XMLHttpRequest();
@@ -188,6 +199,8 @@ function showContacts() {
     return false;
 }
 
+
+// show all friends and pending friend requests
 function showFriends() {
 
     var xhttp = new XMLHttpRequest();
@@ -202,6 +215,8 @@ function showFriends() {
     return false;
 }
 
+
+// function to admin users, show all registers users
 function showAllUsers() {
 
     var xhttp = new XMLHttpRequest();
@@ -216,6 +231,8 @@ function showAllUsers() {
     return false;
 }
 
+
+// show a form to modify users profiles
 function showModifyProfile() {
 
     var xhttp = new XMLHttpRequest();
@@ -230,6 +247,8 @@ function showModifyProfile() {
     return false;
 }
 
+
+// show a form to create a new group
 function showNewGroup() {
 
     var xhttp = new XMLHttpRequest();
@@ -243,6 +262,8 @@ function showNewGroup() {
     return false;
 }
 
+
+// function to create new group, not show anything 
 function createNewGroup() {
 
     var xhttp = new XMLHttpRequest();
@@ -260,7 +281,7 @@ function createNewGroup() {
 }
 
 
-
+// load the profile of a friend
 function loadFriendProfile(codUser) {
 
     var xhttp = new XMLHttpRequest();
@@ -276,6 +297,8 @@ function loadFriendProfile(codUser) {
     return false;
 }
 
+
+// function to accept a friendship
 function acceptFriend(codUser) {
 
     var xhttp = new XMLHttpRequest();
@@ -291,6 +314,8 @@ function acceptFriend(codUser) {
     return false;
 }
 
+
+// function to deny a friendship
 function denyFriend(codUser) {
 
     var xhttp = new XMLHttpRequest();
@@ -306,6 +331,7 @@ function denyFriend(codUser) {
     return false;
 }
 
+// function to send a friendship
 function sendFriendship() {
 
     var xhttp = new XMLHttpRequest();
@@ -322,6 +348,8 @@ function sendFriendship() {
     return false;
 }
 
+
+// function to logOut and delete session
 function logOut() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {

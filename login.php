@@ -6,7 +6,6 @@
 
         <div class="companyNameLog"> DISCORDIA</div>
 
-
 		<form onsubmit = "return accessLogin();">
 		
             <div class="log">
@@ -27,9 +26,6 @@
 						if(isset($err) and $err == true){
 						echo '<p>Check user and password</p>';
 					}?>
-
-					
-				
 
             </div>
 
