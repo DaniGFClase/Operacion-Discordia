@@ -40,7 +40,9 @@
                         
                         $link = preg_match("/\/\/localhost/", $ro["text_message"]);
                        if ($link == 1) {
-                           echo '<a href="'.$ro["text_message"].'">'.$ro["text_message"].'</a>';
+                           echo '
+                           <a href="'.$ro["text_message"].'">'.$ro["text_message"].'</a>
+                           <img class="profPict" src="'.$ro["text_message"].'"alt="image_user">';
                        } else {
                            echo $ro["text_message"];
                        }
