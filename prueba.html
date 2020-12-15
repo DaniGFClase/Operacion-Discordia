@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        background-color: rgb(32, 33, 36);
+        color: white;
+    }
+    
+    .parent {
+        display: grid;
+        grid-template-columns: 0.25fr 1fr;
+        grid-template-rows: 1fr;
+        grid-column-gap: 33px;
+        grid-row-gap: 0px;
+    }
+    
+    .left {
+        grid-area: 1 / 1 / 2 / 2;
+        border: 1px black solid;
+        border: solid thin lightgrey;
+        display: grid;
+        text-align: center;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 2.5px;
+        grid-row-gap: 2px;
+    }
+    
+    .btn {
+        background-color: #5c5a81;
+        border: rgb(151, 156, 168) thin solid;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    
+    .btn:hover {
+        background-color: rgb(123, 182, 138);
+        border: rgb(13, 13, 14) thin solid;
+        color: black;
+    }
+    
+    .div1 {
+        grid-area: 1 / 1 / 2 / 3;
+    }
+    
+    .div2 {
+        grid-area: 2 / 1 / 3 / 2;
+    }
+    
+    .div3 {
+        grid-area: 2 / 2 / 3 / 3;
+    }
+    
+    .right {
+        grid-area: 1 / 2 / 2 / 3;
+        border: 1px black solid;
+        background-color: rgb(59, 62, 68);
+    }
+</style>
+
+<body>
+    <div class="parent">
+        <div class="left">
+            <div class="btn div1"> 1</div>
+            <div class="btn div2"> 2</div>
+            <div class="btn div3"> 3</div>
+        </div>
+        <div class="right">b </div>
+    </div>
+</body>
+
+</html>
