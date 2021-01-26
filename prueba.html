@@ -28,8 +28,11 @@
     }
     
     .left {
+        display: flex;
         border: 1px black solid;
         border: solid thin lightgrey;
+        flex-direction: column;
+        justify-content: space-between;
     }
     
     .btns {
@@ -68,6 +71,13 @@
         grid-area: 2 / 2 / 3 / 3;
     }
     
+    .personal {
+        display: grid;
+        border: red 1px solid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr;
+    }
+    
     .right {
         grid-area: 1 / 2 / 2 / 3;
         border: 1px black solid;
@@ -81,6 +91,16 @@
     
     .fot {
         grid-area: 1 / 1 / 2 / 2;
+        background-size: cover;
+        background-position: center;
+        padding: 16px;
+        width: 25px;
+        height: 25px;
+        float: left;
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        border: white thin solid;
     }
     
     .nom {
@@ -114,15 +134,30 @@
                 <div class="btn div3"> 3</div>
             </div>
 
+            <div class="contacts">a</div>
+
+            <div class="personal">
+                <div class="fot"> 1</div>
+                <div class="nom"> 2</div>
+
+                <div class="btnsSoc">
+                    <div class="btn"> 3</div>
+                    <div class="btn"> 4</div>
+                    <div class="btn"> 5</div>
+                </div>
+            </div>
+
         </div>
         <div class="right">
             <div class="prof">
                 <div class="fot"> 1</div>
                 <div class="nom"> 2</div>
             </div>
-            <div class="ch"> 2</div>
+            <div class="ch"> 3</div>
         </div>
     </div>
 </body>
+
+</html>
 
 </html>
